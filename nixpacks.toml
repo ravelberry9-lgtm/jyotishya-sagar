@@ -1,9 +1,4 @@
-# Force Railway/Nixpacks to use the Python provider, ignoring any leftover
-# package.json. The Procfile + requirements.txt define the actual build.
+# Force Railway/Nixpacks to use the Python provider, ignoring the leftover
+# package.json. The default Python provider handles pip install + Procfile;
+# we don't override its phases (the previous version did, which broke pip).
 providers = ["python"]
-
-[phases.setup]
-nixPkgs = ["python311", "gcc"]
-
-[phases.install]
-cmds = ["pip install --upgrade pip", "pip install -r requirements.txt"]
