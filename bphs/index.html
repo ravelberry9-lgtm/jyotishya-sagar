@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>జ్యోతిష్య గ్రంథాలయము · Jyotiṣa Granthālaya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;600;700;800&family=Tiro+Telugu&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --saffron:#ff6b1a;--saffron-deep:#d94f00;--maroon:#6b1d1d;--gold:#d4a017;
+  --cream:#fff7ec;--cream-2:#fdeed3;--ink:#2b1810;--muted:#6b5a4b;--line:#e9d8b8;
+  --good:#2e8b57;--bad:#b22222;--paper:#fffdf6;
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Noto Sans Telugu','Poppins',system-ui,sans-serif;background:linear-gradient(180deg,#fff7ec 0%,#fdeed3 100%);color:var(--ink);min-height:100vh;line-height:1.65}
+
+/* ===== Header (sticky) ===== */
+header{background:linear-gradient(135deg,var(--saffron) 0%,var(--saffron-deep) 60%,var(--maroon) 100%);color:#fff;padding:14px 20px;position:sticky;top:0;z-index:100;box-shadow:0 4px 14px rgba(107,29,29,.18)}
+header::before{content:'🕉';position:absolute;font-size:140px;opacity:.06;right:24px;top:-40px;pointer-events:none}
+.htop{display:flex;align-items:center;gap:14px;max-width:1320px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.brand .om{font-size:30px;background:rgba(255,255,255,.18);width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.4)}
+.brand-text h1{margin:0;font-size:19px;font-weight:800;line-height:1.15}
+.brand-text .tag{font-size:11px;opacity:.92;font-family:'Poppins',sans-serif;margin-top:1px}
+.htop nav{display:flex;gap:6px;flex:1;justify-content:center;flex-wrap:wrap}
+.htop nav button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);padding:7px 14px;border-radius:7px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .12s;display:flex;align-items:center;gap:6px}
+.htop nav button:hover{background:rgba(255,255,255,.28)}
+.htop nav button.active{background:#fff;color:var(--saffron-deep);box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.htop nav button .lbl-en{font-size:10px;opacity:.85;font-family:'Poppins',sans-serif;font-weight:500;margin-left:4px}
+.htop nav button.active .lbl-en{color:var(--maroon);opacity:.9}
+#globalSearch{flex-basis:280px;max-width:380px;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:7px;background:rgba(255,255,255,.96);color:var(--ink);font-family:inherit;font-size:13px}
+#globalSearch:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.back-link{color:#fff;font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;background:rgba(255,255,255,.16);padding:7px 12px;border-radius:7px;border:1px solid rgba(255,255,255,.3);white-space:nowrap}
+.back-link:hover{background:rgba(255,255,255,.28)}
+
+/* ===== Layout ===== */
+.layout{display:grid;grid-template-columns:280px 1fr;gap:0;max-width:1320px;margin:0 auto;min-height:calc(100vh - 76px)}
+@media (max-width:880px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto;max-height:none;display:none}.sidebar.show{display:block}}
+.sidebar{background:rgba(255,253,246,.85);border-right:1px solid var(--line);padding:14px 12px;position:sticky;top:76px;height:calc(100vh - 76px);overflow-y:auto}
+.sidebar h3{margin:14px 0 8px;font-size:12px;color:var(--maroon);letter-spacing:.3px;font-family:'Noto Sans Telugu',sans-serif;font-weight:700;line-height:1.3}
+.sidebar h3:first-child{margin-top:0}
+.sidebar h3 .sb-en{display:block;font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-top:1px}
+.ch-list{list-style:none;padding:0;margin:0}
+.ch-list li{margin-bottom:2px}
+.ch-list a{display:block;padding:8px 11px;color:var(--ink);text-decoration:none;border-radius:6px;font-size:12.5px;line-height:1.35;border-left:3px solid transparent;transition:all .12s}
+.ch-list a:hover{background:rgba(217,79,0,.08);border-left-color:var(--saffron-deep)}
+.ch-list a.active{background:linear-gradient(135deg,var(--saffron),var(--saffron-deep));color:#fff;border-left-color:var(--gold);font-weight:600}
+.ch-list a.unavailable{opacity:.42;pointer-events:none;cursor:not-allowed}
+.ch-list a.unavailable::after{content:'⏳';margin-left:4px;font-size:10px}
+.ch-list a .ch-num{font-family:'Poppins',sans-serif;font-size:11px;opacity:.85;margin-right:6px;font-weight:600}
+.ch-list a .lbl-te{display:block;font-size:12.5px;line-height:1.3;color:inherit}
+.ch-list a .lbl-en{display:block;font-size:10.5px;line-height:1.3;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:400;margin-top:2px;font-style:italic}
+.ch-list a.active .lbl-en{color:rgba(255,255,255,.78);font-style:normal}
+.ch-list a:hover .lbl-en{color:var(--saffron-deep)}
+.text-link-color{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+
+/* ===== Reader ===== */
+.reader{padding:24px 32px;background:var(--paper);min-height:calc(100vh - 76px);overflow-x:hidden}
+@media (max-width:600px){.reader{padding:16px 14px}}
+
+/* ===== Library landing — text cards ===== */
+.lib-hero{background:linear-gradient(135deg,#fff8e1,var(--cream-2));border-left:6px solid var(--gold);border-radius:0 14px 14px 0;padding:22px 26px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.lib-hero .lh-title{font-size:22px;color:var(--maroon);font-weight:800;margin:0 0 4px}
+.lib-hero .lh-sub{font-size:13px;color:var(--muted);font-family:'Poppins',sans-serif;line-height:1.5;max-width:560px}
+.lib-hero .lh-stats{text-align:right;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--muted);min-width:160px}
+.lib-hero .lh-stats strong{color:var(--saffron-deep);font-size:15px;font-weight:700;display:block;margin-bottom:1px}
+
+.cat-section{margin-bottom:30px}
+.cat-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;gap:10px;border-bottom:2px solid var(--line);padding-bottom:8px}
+.cat-header h2{margin:0;font-size:18px;color:var(--maroon);font-weight:800;letter-spacing:.3px}
+.cat-header .cat-en{font-size:12px;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:1.2px;font-weight:600}
+.cat-desc{font-size:12.5px;color:var(--muted);margin:0 0 14px;line-height:1.6;font-style:italic}
+.cat-desc .en{display:block;font-family:'Poppins',sans-serif;font-size:11.5px;margin-top:3px;font-style:normal}
+
+.text-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.text-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;cursor:pointer;transition:all .15s;position:relative;overflow:hidden}
+.text-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--card-color,var(--saffron));border-radius:14px 14px 0 0}
+.text-card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(107,29,29,.12);border-color:var(--card-color,var(--saffron))}
+.text-card .tc-icon{position:absolute;top:12px;right:14px;font-size:20px;opacity:.85}
+.text-card .tc-title-te{font-size:17px;font-weight:800;color:var(--card-color-dark,var(--maroon));margin:0 0 2px;padding-right:30px;line-height:1.2}
+.text-card .tc-title-en{font-size:11.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-bottom:10px}
+.text-card .tc-author{font-size:12px;color:var(--ink);margin:0 0 4px;line-height:1.4}
+.text-card .tc-author-en{font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-bottom:10px}
+.text-card .tc-date{font-size:11px;color:var(--muted);font-family:'Poppins',sans-serif;margin-bottom:8px;font-weight:600;letter-spacing:.3px}
+.text-card .tc-summary{font-size:12px;color:var(--ink);line-height:1.55;margin-bottom:12px;min-height:48px}
+.text-card .tc-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.text-card .tc-progress{font-size:11px;color:var(--muted);font-family:'Poppins',sans-serif}
+.text-card .tc-progress strong{color:var(--card-color-dark,var(--maroon));font-size:12px;font-weight:700}
+.text-card .tc-cta{background:var(--card-color,var(--saffron));color:#fff;padding:5px 12px;border-radius:6px;font-size:11px;font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.text-card.unavailable{opacity:.7}
+.text-card.unavailable .tc-cta{background:var(--muted);color:#fff}
+.text-card.unavailable .tc-cta::before{content:'⏳ '}
+.text-card .auth-badge{display:inline-block;font-size:10px;font-family:'Poppins',sans-serif;font-weight:700;padding:2px 8px;border-radius:10px;margin-bottom:8px;background:var(--card-color-bg,var(--cream));color:var(--card-color-dark,var(--maroon));border:1px solid var(--card-color,var(--saffron))}
+
+/* ===== Per-text reader (chapter view) ===== */
+.text-header{margin-bottom:22px;padding:18px 22px;border-radius:14px;background:var(--card-color-bg,#fff8e1);border-left:6px solid var(--card-color,var(--saffron))}
+.text-header .th-eyebrow{font-size:10.5px;color:var(--card-color-dark,var(--maroon));font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px}
+.text-header h1{margin:0;font-size:24px;color:var(--card-color-dark,var(--maroon));font-weight:800;line-height:1.2}
+.text-header .th-en{font-size:13px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px}
+.text-header .th-meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:11.5px;color:var(--muted);font-family:'Poppins',sans-serif}
+
+.ch-header{margin-bottom:22px;padding-bottom:14px;border-bottom:2px solid var(--gold);position:relative}
+.ch-header::before{content:'';position:absolute;bottom:-2px;left:0;width:50px;height:2px;background:var(--card-color,var(--saffron-deep))}
+.ch-header .ch-eyebrow{font-size:11px;color:var(--card-color,var(--saffron-deep));font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:5px}
+.ch-header h1{margin:0;font-size:26px;color:var(--card-color-dark,var(--maroon));font-weight:800;line-height:1.2}
+.ch-header .ch-en{font-size:13px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:5px}
+.ch-summary{background:linear-gradient(135deg,#fff8e1,var(--cream));border-left:4px solid var(--card-color,var(--saffron));padding:13px 17px;border-radius:0 10px 10px 0;margin:16px 0 24px;font-size:13.5px;line-height:1.7;font-style:italic;color:var(--ink)}
+
+/* ===== Verse cards ===== */
+.verse{background:#fff;border:1px solid var(--line);border-radius:13px;padding:17px 21px;margin-bottom:16px;box-shadow:0 2px 8px rgba(107,29,29,.05);transition:box-shadow .15s}
+.verse:hover{box-shadow:0 5px 14px rgba(107,29,29,.09)}
+.verse-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;flex-wrap:wrap;gap:6px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.verse-cite{font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--card-color,var(--saffron-deep));font-weight:700;letter-spacing:.4px}
+.verse-meta{font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;display:flex;gap:6px;align-items:center}
+.badge{display:inline-block;padding:2px 7px;border-radius:9px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif}
+.badge.auto{background:#fff4d4;color:#7a5a1a}
+.badge.user{background:#d4f4d4;color:#1a5e1a}
+.sanskrit-block{background:linear-gradient(135deg,#fdf6e3,#fef8d3);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:13px 16px;margin-bottom:12px;font-size:16px;line-height:1.95;color:var(--maroon);font-weight:500;font-family:'Tiro Telugu','Noto Sans Telugu',serif}
+.bhava-block{font-size:14.5px;line-height:1.8;color:var(--ink);margin-top:5px}
+.bhava-label{display:inline-block;color:var(--card-color,var(--saffron-deep));font-weight:700;margin-right:5px;font-size:13px}
+.english-block{margin-top:10px;padding:7px 11px;background:#f9f6f0;border-radius:6px;font-size:11.5px;color:var(--muted);font-family:'Poppins',sans-serif;line-height:1.55;font-style:italic}
+.tag-row{margin-top:9px;display:flex;flex-wrap:wrap;gap:5px}
+.tag{display:inline-block;background:var(--cream);color:var(--maroon);font-size:10px;padding:2px 8px;border-radius:10px;font-family:'Poppins',sans-serif;cursor:pointer;border:1px solid transparent}
+.tag:hover{border-color:var(--card-color,var(--saffron-deep))}
+
+/* ===== Empty / loading states ===== */
+.empty{text-align:center;padding:70px 20px;color:var(--muted)}
+.empty .icon{font-size:56px;margin-bottom:14px}
+.empty h2{font-size:19px;color:var(--maroon);margin:0 0 6px;font-weight:700}
+.empty p{font-size:13px;font-family:'Poppins',sans-serif;max-width:420px;margin:0 auto;line-height:1.6}
+
+/* ===== Research section content ===== */
+.research-block-te{background:linear-gradient(135deg,#fff8e1,#fef3d3);border-left:4px solid var(--saffron-deep);border-radius:0 10px 10px 0;padding:16px 20px;margin-bottom:16px}
+.research-block-te .lang-tag{font-size:10.5px;color:var(--saffron-deep);font-weight:700;font-family:Tahoma,sans-serif;letter-spacing:1px;margin-bottom:8px}
+.research-block-te p{margin:0 0 9px;font-size:14.5px;line-height:1.8;font-family:'Noto Sans Telugu',serif}
+.research-block-en{background:#f5f7fa;border-left:4px solid #4a73c8;border-radius:0 10px 10px 0;padding:16px 20px;margin-bottom:16px}
+.research-block-en .lang-tag{font-size:10.5px;color:#4a73c8;font-weight:700;font-family:'Poppins',sans-serif;letter-spacing:1px;margin-bottom:8px}
+.research-block-en p{margin:0 0 9px;font-size:13.5px;line-height:1.7;font-family:'Poppins',sans-serif}
+
+/* ===== Mode toggle (mobile sidebar) ===== */
+.toc-toggle{display:none;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:14px;cursor:pointer;padding:6px 12px;border-radius:6px;font-family:inherit;font-weight:600}
+@media (max-width:880px){.toc-toggle{display:block}}
+
+footer.bookfoot{background:var(--maroon);color:#fff;padding:14px;text-align:center;font-size:11px;font-family:'Poppins',sans-serif;opacity:.92}
+footer.bookfoot a{color:#ffd58a;text-decoration:none}
+
+/* ===== Print mode ===== */
+@media print{
+  header,.htop nav,.htop input,.back-link,.toc-toggle,footer.bookfoot,.sidebar{display:none!important}
+  .layout{grid-template-columns:1fr;display:block}
+  .reader{padding:0;background:#fff}
+  .verse,.text-card{box-shadow:none;border:1px solid #ccc;page-break-inside:avoid}
+  .ch-header,.text-header{page-break-before:auto}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="htop">
+    <button class="toc-toggle" id="tocToggle" onclick="document.querySelector('.sidebar').classList.toggle('show')">☰</button>
+    <div class="brand" onclick="goHome()">
+      <div class="om">🕉</div>
+      <div class="brand-text">
+        <h1>జ్యోతిష్య గ్రంథాలయము</h1>
+        <div class="tag">Jyotiṣa Granthālaya · Pañcaratna · BPHS · Specialized texts</div>
+      </div>
+    </div>
+    <nav>
+      <button data-mode="library" class="active" onclick="setMode('library')">🏛 గ్రంథశాల<span class="lbl-en">Library</span></button>
+      <button data-mode="research" onclick="setMode('research')">📚 పరిశోధన<span class="lbl-en">Research</span></button>
+    </nav>
+    <input type="text" id="globalSearch" placeholder="🔍 వెదకండి · Search..." oninput="onGlobalSearch()">
+    <a href="../app.html" class="back-link">← App</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <!-- Sidebar content rendered dynamically based on mode -->
+  </aside>
+  <main class="reader" id="reader">
+    <div class="empty">
+      <div class="icon">📚</div>
+      <h2>లోడ్ అవుచున్నది... · Loading library...</h2>
+      <p>If this message persists, ensure <code>granthas.js</code> and <code>bphs-data.js</code> are in the same folder.</p>
+    </div>
+  </main>
+</div>
+
+<footer class="bookfoot">
+  జ్యోతిష్య గ్రంథాలయము · Jyotiṣa Granthālaya v1.0 ·
+  <a href="../app.html">జ్యోతిష్య సాగర్ Application</a>
+</footer>
+
+<script src="granthas.js"></script>
+<script src="bphs-data.js"></script>
+<script src="brihat-jataka-data.js"></script>
+<script src="saravali-data.js"></script>
+<script src="phaladipika-data.js"></script>
+<script src="sarvartha-cintamani-data.js"></script>
+<script src="jataka-parijata-data.js"></script>
+<script src="prasna-marga-data.js"></script>
+<script src="tajika-nilakanthi-data.js"></script>
+<script src="muhurta-cintamani-data.js"></script>
+<script src="research-notes.js"></script>
+<script>
+"use strict";
+
+/* Re-link BPHS data into GRANTHAS structure (in case of load order) */
+if (window.__linkBPHSToGranthas) window.__linkBPHSToGranthas();
+
+const G = window.GRANTHAS;
+const H = window.GRANTHAS_HELPERS;
+const research = window.JYOTISHA_RESEARCH;
+
+let state = {
+  mode: 'library',           // 'library' | 'research' | 'text-reader'
+  currentTextId: null,        // when reading a specific text
+  currentChapter: null,       // chapter number within that text
+  currentResearchId: null
+};
+
+/* ============================================================ */
+/* === MODE SWITCHING === */
+function setMode(mode) {
+  state.mode = mode;
+  state.currentTextId = null;
+  state.currentChapter = null;
+  state.currentResearchId = null;
+  document.querySelectorAll('header nav button').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+  if (mode === 'library') {
+    renderLibraryLanding();
+    renderLibrarySidebar();
+  } else if (mode === 'research') {
+    renderResearchSidebar();
+    if (research && research.sections.length) loadResearch(research.sections[0].id);
+  }
+  if (history && history.replaceState) history.replaceState(null, '', '#' + mode);
+}
+
+function goHome() { setMode('library'); }
+
+/* ============================================================ */
+/* === LIBRARY LANDING === */
+function renderLibraryLanding() {
+  const reader = document.getElementById('reader');
+  const total_v = H.totalExtractedVerses();
+  const total_c = H.totalExtractedChapters();
+  const total_t = Object.keys(G.texts).length;
+
+  let h = '<div class="lib-hero">' +
+    '<div>' +
+    '<h1 class="lh-title">' + G.meta.library_title_te + ' <span style="font-size:14px;color:var(--muted);font-family:Poppins;font-weight:600">· ' + G.meta.library_title_en + '</span></h1>' +
+    '<div class="lh-sub">' + G.meta.tagline_te + '<br><em>' + G.meta.tagline_en + '</em></div>' +
+    '</div>' +
+    '<div class="lh-stats">' +
+    '<strong>' + total_t + '</strong> texts cataloged<br>' +
+    '<strong>' + total_c + '</strong> chapters extracted<br>' +
+    '<strong>' + total_v + '</strong> verses with bhāva<br>' +
+    '</div></div>';
+
+  // Render each category
+  for (const [catId, cat] of Object.entries(G.categories)) {
+    h += '<div class="cat-section">' +
+      '<div class="cat-header"><h2>' + cat.title_te + '</h2><span class="cat-en">' + cat.title_en + '</span></div>' +
+      '<div class="cat-desc">' + cat.desc_te + '<span class="en">' + cat.desc_en + '</span></div>' +
+      '<div class="text-grid">';
+    for (const id of cat.member_ids) {
+      const text = G.texts[id];
+      if (!text) continue;
+      h += renderTextCard(text);
+    }
+    h += '</div></div>';
+  }
+
+  reader.innerHTML = h;
+  reader.scrollTop = 0;
+}
+
+function renderTextCard(text) {
+  const m = text.meta;
+  const extracted_chapters = (m.extracted_chapters || Object.keys(text.chapters).map(Number)).filter(c => text.chapters[c]).length;
+  const total_v = Object.values(text.chapters || {}).reduce((s, ch) => s + (ch.verses || []).length, 0);
+  const isAvailable = extracted_chapters > 0;
+  const auth = G.authority_levels[m.authority] || {te: '', en: ''};
+  return '<div class="text-card' + (isAvailable ? '' : ' unavailable') + '" ' +
+    'style="--card-color:' + m.color + ';--card-color-dark:' + (m.color_dark || m.color) + ';--card-color-bg:' + (m.color_bg || '#fff8e1') + '" ' +
+    'onclick="openText(\'' + m.id + '\')">' +
+    '<span class="tc-icon">' + (m.icon || '📖') + '</span>' +
+    '<div class="auth-badge">' + auth.te + '</div>' +
+    '<div class="tc-title-te">' + m.title_te + '</div>' +
+    '<div class="tc-title-en">' + m.title_en + '</div>' +
+    '<div class="tc-author"><strong>రచయిత:</strong> ' + m.author_te + '</div>' +
+    '<div class="tc-author-en">Author: ' + m.author_en + '</div>' +
+    '<div class="tc-date">' + (m.date_te || m.date) + ' · ' + m.date + '</div>' +
+    '<div class="tc-summary">' + (m.summary_te || '').substring(0, 180) + (m.summary_te && m.summary_te.length > 180 ? '...' : '') + '</div>' +
+    '<div class="tc-meta">' +
+    '<div class="tc-progress"><strong>' + extracted_chapters + '</strong> / ' + (m.total_chapters || '?') + ' chapters · <strong>' + total_v + '</strong> verses</div>' +
+    '<div class="tc-cta">' + (isAvailable ? 'Open →' : 'Pending') + '</div>' +
+    '</div></div>';
+}
+
+/* ============================================================ */
+/* === LIBRARY SIDEBAR (text list) === */
+function renderLibrarySidebar() {
+  const sb = document.getElementById('sidebar');
+  let h = '';
+  for (const [catId, cat] of Object.entries(G.categories)) {
+    h += '<h3>' + cat.title_te + '<span class="sb-en">' + cat.title_en + '</span></h3><ul class="ch-list">';
+    for (const id of cat.member_ids) {
+      const text = G.texts[id];
+      if (!text) continue;
+      const m = text.meta;
+      const extracted_chapters = Object.keys(text.chapters).filter(c => text.chapters[c]).length;
+      const isAvailable = extracted_chapters > 0;
+      const isActive = state.currentTextId === id;
+      h += '<li><a class="' + (isAvailable ? '' : 'unavailable') + (isActive ? ' active' : '') + '" ' +
+        'onclick="openText(\'' + id + '\');return false" href="#text-' + id + '">' +
+        '<span class="text-link-color" style="background:' + m.color + '"></span>' +
+        '<span class="lbl-te">' + (m.icon || '📖') + ' ' + m.title_te + '</span>' +
+        '<span class="lbl-en">' + m.title_en + '</span>' +
+        '</a></li>';
+    }
+    h += '</ul>';
+  }
+  sb.innerHTML = h;
+}
+
+/* ============================================================ */
+/* === TEXT READER (per-text chapter view) === */
+function openText(textId) {
+  const text = G.texts[textId];
+  if (!text) return;
+  state.mode = 'text-reader';
+  state.currentTextId = textId;
+  state.currentChapter = null;
+  document.querySelectorAll('header nav button').forEach(b => b.classList.remove('active'));
+  renderTextSidebar(textId);
+  renderTextLanding(text);
+  if (history && history.replaceState) history.replaceState(null, '', '#text-' + textId);
+}
+
+function renderTextSidebar(textId) {
+  const sb = document.getElementById('sidebar');
+  const text = G.texts[textId];
+  const m = text.meta;
+  let h = '<div style="margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line)">' +
+    '<a onclick="setMode(\'library\');return false" href="#library" style="font-size:11.5px;color:var(--muted);font-family:Poppins;font-weight:600;text-decoration:none">← గ్రంథశాల · Library</a>' +
+    '</div>' +
+    '<h3 style="color:' + m.color_dark + '">' + (m.icon || '📖') + ' ' + m.title_te + '<span class="sb-en">' + m.title_en + '</span></h3>';
+  h += '<ul class="ch-list">';
+  const haveCh = new Set(Object.keys(text.chapters).map(Number));
+  const totalCh = m.total_chapters || Math.max(...haveCh, 1);
+  for (let i = 1; i <= totalCh; i++) {
+    const ch = text.chapters[i];
+    const haveIt = haveCh.has(i);
+    const titleTe = haveIt ? ch.title_te : '(extraction pending)';
+    const titleEn = haveIt ? (ch.title_en || '') : '';
+    const cls = haveIt ? '' : 'unavailable';
+    const isActive = state.currentChapter === i;
+    h += '<li><a class="' + cls + (isActive ? ' active' : '') + '" ' +
+      'onclick="openChapter(\'' + textId + '\',' + i + ');return false" href="#text-' + textId + '-ch-' + i + '">' +
+      '<span class="lbl-te"><span class="ch-num">' + i + '.</span>' + titleTe + '</span>' +
+      (titleEn ? '<span class="lbl-en">Ch. ' + i + ' · ' + titleEn + '</span>' : '') +
+      '</a></li>';
+  }
+  h += '</ul>';
+  sb.innerHTML = h;
+}
+
+function renderTextLanding(text) {
+  const reader = document.getElementById('reader');
+  const m = text.meta;
+  const auth = G.authority_levels[m.authority] || {};
+  const extracted_chapters = Object.keys(text.chapters).filter(c => text.chapters[c]).length;
+  const total_v = Object.values(text.chapters || {}).reduce((s, ch) => s + (ch.verses || []).length, 0);
+  let h = '<div class="text-header" style="--card-color:' + m.color + ';--card-color-dark:' + m.color_dark + ';--card-color-bg:' + m.color_bg + '">' +
+    '<div class="th-eyebrow">' + (m.icon || '📖') + ' ' + auth.te + ' · ' + auth.en + '</div>' +
+    '<h1>' + m.title_te + '</h1>' +
+    '<div class="th-en">' + m.title_en + ' · by ' + m.author_en + ' · ' + m.date + '</div>' +
+    '<div class="th-meta">' +
+    '<span><strong>రచయిత:</strong> ' + m.author_te + '</span>' +
+    '<span><strong>రచనా కాలము:</strong> ' + (m.date_te || m.date) + '</span>' +
+    '<span><strong>మొత్తం అధ్యాయములు:</strong> ' + (m.total_chapters || '?') + '</span>' +
+    '<span><strong>సేకరితము:</strong> ' + extracted_chapters + ' / ' + (m.total_chapters || '?') + ' అధ్యాయములు, ' + total_v + ' శ్లోకములు</span>' +
+    '</div></div>';
+
+  if (m.summary_te) {
+    h += '<div class="ch-summary">' + m.summary_te + '<br><br><em style="font-family:Poppins;font-size:12px">' + (m.summary_en || '') + '</em></div>';
+  }
+
+  // Manuscript provenance
+  if (m.manuscript_te) {
+    h += '<div style="background:var(--cream);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:14px">' +
+      '<div style="font-size:11px;color:var(--saffron-deep);font-family:Poppins;font-weight:700;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase">📜 హస్తలిఖిత ప్రతి సాక్ష్యము · Manuscript Provenance</div>' +
+      '<div style="font-size:13.5px;line-height:1.65">' + m.manuscript_te + '</div>' +
+      (m.manuscript_en ? '<div style="font-size:11.5px;color:var(--muted);font-family:Poppins;line-height:1.55;margin-top:5px;font-style:italic">' + m.manuscript_en + '</div>' : '') +
+      '</div>';
+  }
+
+  // Recommended use
+  if (m.recommend_for_te) {
+    h += '<div style="background:#f6fdf8;border-left:4px solid var(--good);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:14px">' +
+      '<div style="font-size:11px;color:var(--good);font-family:Poppins;font-weight:700;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase">💡 ప్రయోజనము · Recommended For</div>' +
+      '<div style="font-size:13.5px;line-height:1.65">' + m.recommend_for_te + '</div>' +
+      (m.recommend_for_en ? '<div style="font-size:11.5px;color:var(--muted);font-family:Poppins;line-height:1.55;margin-top:5px;font-style:italic">' + m.recommend_for_en + '</div>' : '') +
+      '</div>';
+  }
+
+  // Editions if available
+  if (m.editions_te && m.editions_te.length) {
+    h += '<div style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px 18px;margin-bottom:14px">' +
+      '<div style="font-size:11px;color:var(--maroon);font-family:Poppins;font-weight:700;letter-spacing:1px;margin-bottom:8px;text-transform:uppercase">📚 ముద్రణలు · Editions</div>' +
+      '<ul style="margin:0;padding-left:20px;font-size:12.5px;line-height:1.7">';
+    for (const ed of m.editions_te) h += '<li>' + ed + '</li>';
+    h += '</ul></div>';
+  }
+
+  // Chapter list call-out
+  if (extracted_chapters > 0) {
+    h += '<div style="background:linear-gradient(135deg,' + m.color + ',' + m.color_dark + ');color:#fff;border-radius:10px;padding:14px 18px;text-align:center">' +
+      '<strong style="font-size:14px">📖 ' + extracted_chapters + ' అధ్యాయములు అందుబాటులో ఉన్నవి</strong><br>' +
+      '<span style="font-size:11.5px;opacity:.92;font-family:Poppins">Choose a chapter from the sidebar to begin reading</span>' +
+      '</div>';
+  } else {
+    h += '<div style="background:#fff8e1;border:1px dashed var(--gold);border-radius:10px;padding:18px;text-align:center;color:var(--muted)">' +
+      '<strong style="color:var(--saffron-deep);font-size:14px">⏳ ఈ గ్రంథము సేకరణ ఇంకా ప్రారంభము కాలేదు</strong><br>' +
+      '<span style="font-size:12px;font-family:Poppins">This text\'s chapter extraction has not yet started. Coming in a future session.</span>' +
+      '</div>';
+  }
+
+  reader.innerHTML = h;
+  reader.scrollTop = 0;
+}
+
+function openChapter(textId, chNum) {
+  state.mode = 'text-reader';
+  state.currentTextId = textId;
+  state.currentChapter = chNum;
+  const text = G.texts[textId];
+  if (!text) return;
+  const ch = text.chapters[chNum];
+  if (!ch) {
+    document.getElementById('reader').innerHTML = '<div class="empty"><div class="icon">⏳</div><h2>అధ్యాయం ' + chNum + '</h2><p>This chapter has not yet been extracted. Coming in a future session.</p></div>';
+    return;
+  }
+  // Update sidebar active state
+  document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+  const link = document.querySelector('.sidebar a[href="#text-' + textId + '-ch-' + chNum + '"]');
+  if (link) link.classList.add('active');
+
+  const m = text.meta;
+  let h = '<div class="ch-header" style="--card-color:' + m.color + ';--card-color-dark:' + m.color_dark + '">' +
+    '<div class="ch-eyebrow">' + (m.icon || '📖') + ' ' + m.title_te + ' · అధ్యాయం ' + chNum + '</div>' +
+    '<h1>' + ch.title_te + '</h1>';
+  if (ch.title_en) h += '<div class="ch-en">' + m.title_en + ' · Chapter ' + chNum + ' · ' + ch.title_en + '</div>';
+  h += '</div>';
+  if (ch.summary_te) h += '<div class="ch-summary" style="border-left-color:' + m.color + '">' + ch.summary_te + '</div>';
+
+  for (const v of (ch.verses || [])) {
+    h += renderVerseCard(textId, chNum, v, m);
+  }
+
+  document.getElementById('reader').innerHTML = h;
+  document.getElementById('reader').scrollTop = 0;
+  if (history && history.replaceState) history.replaceState(null, '', '#text-' + textId + '-ch-' + chNum);
+}
+
+function renderVerseCard(textId, chNum, v, textMeta) {
+  const verifClass = v.verified === 'user' ? 'user' : 'auto';
+  const verifLabel = v.verified === 'user' ? '✓ verified' : '⏳ auto';
+  const tagsHtml = v.tags ? '<div class="tag-row">' + v.tags.map(t =>
+    '<span class="tag" onclick="document.getElementById(\'globalSearch\').value=\'' + t + '\';onGlobalSearch()">#' + t + '</span>'
+  ).join('') + '</div>' : '';
+  return '<article class="verse" style="--card-color:' + textMeta.color + ';--card-color-dark:' + textMeta.color_dark + '">' +
+    '<div class="verse-head">' +
+    '<span class="verse-cite">' + textMeta.title_en + ' · Ch. ' + chNum + ' · శ్లోకము ' + v.sl + '</span>' +
+    '<span class="verse-meta"><span class="badge ' + verifClass + '">' + verifLabel + '</span>' + (v.page ? '<span>p. ' + v.page + '</span>' : '') + '</span>' +
+    '</div>' +
+    '<div class="sanskrit-block">' + v.sanskrit + '</div>' +
+    '<div class="bhava-block"><span class="bhava-label">భావము:</span>' + v.telugu_bhava + '</div>' +
+    (v.english ? '<div class="english-block">' + v.english + '</div>' : '') +
+    tagsHtml +
+    '</article>';
+}
+
+/* ============================================================ */
+/* === RESEARCH SIDEBAR + LOADER === */
+function renderResearchSidebar() {
+  const sb = document.getElementById('sidebar');
+  if (!research || !research.sections) {
+    sb.innerHTML = '<p style="color:var(--muted);font-size:13px">Research notes not loaded.</p>';
+    return;
+  }
+  let h = '<h3>📚 పరిశోధన గమనికలు<span class="sb-en">Research Notes</span></h3><ul class="ch-list">';
+  for (const sec of research.sections) {
+    const isActive = state.currentResearchId === sec.id;
+    h += '<li><a class="' + (isActive ? 'active' : '') + '" onclick="loadResearch(\'' + sec.id + '\');return false" href="#research-' + sec.id + '">' +
+      '<span class="lbl-te">' + (sec.icon || '📌') + ' ' + (sec.title_te || sec.id) + '</span>' +
+      (sec.title_en ? '<span class="lbl-en">' + sec.title_en + '</span>' : '') +
+      '</a></li>';
+  }
+  h += '</ul>';
+  sb.innerHTML = h;
+}
+
+function loadResearch(sectionId) {
+  state.mode = 'research';
+  state.currentResearchId = sectionId;
+  document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+  const link = document.querySelector('.sidebar a[href="#research-' + sectionId + '"]');
+  if (link) link.classList.add('active');
+  const sec = research.sections.find(s => s.id === sectionId);
+  if (!sec) return;
+  const reader = document.getElementById('reader');
+  let h = '<div class="ch-header"><div class="ch-eyebrow">📚 పరిశోధన గమనిక · Research Note</div>' +
+    '<h1>' + (sec.icon || '') + ' ' + (sec.title_te || sec.title_en || '') + '</h1>';
+  if (sec.title_en && sec.title_te) h += '<div class="ch-en">' + sec.title_en + '</div>';
+  h += '</div>';
+  if (sec.content_te && sec.content_te.length) {
+    h += '<div class="research-block-te"><div class="lang-tag">తెలుగు</div>';
+    for (const para of sec.content_te) h += '<p>' + formatBoldStars(para) + '</p>';
+    h += '</div>';
+  }
+  if (sec.content_en && sec.content_en.length) {
+    h += '<div class="research-block-en"><div class="lang-tag">ENGLISH</div>';
+    for (const para of sec.content_en) h += '<p>' + formatBoldStars(para) + '</p>';
+    h += '</div>';
+  }
+  if (sec.status) {
+    const bg = sec.status === 'verified' ? '#d4f4d4' : '#fff4d4';
+    const txt = sec.status === 'verified' ? '✓ ' + sec.status : '⏳ ' + sec.status;
+    h += '<div style="text-align:right;margin-top:12px"><span style="background:' + bg + ';padding:4px 10px;border-radius:12px;font-size:11px;font-family:Poppins;color:var(--muted)">' + txt + '</span></div>';
+  }
+  reader.innerHTML = h;
+  reader.scrollTop = 0;
+  if (history && history.replaceState) history.replaceState(null, '', '#research-' + sectionId);
+}
+
+function formatBoldStars(text) {
+  return text.replace(/\*\*([^*]+)\*\*/g, '<strong style="color:var(--maroon)">$1</strong>');
+}
+
+/* ============================================================ */
+/* === GLOBAL SEARCH === */
+function onGlobalSearch() {
+  const q = document.getElementById('globalSearch').value.trim().toLowerCase();
+  if (!q) {
+    if (state.mode === 'library') renderLibraryLanding();
+    else if (state.mode === 'research' && state.currentResearchId) loadResearch(state.currentResearchId);
+    else if (state.currentTextId && state.currentChapter) openChapter(state.currentTextId, state.currentChapter);
+    return;
+  }
+  // Search across all texts' verses
+  const hits = [];
+  for (const [textId, text] of Object.entries(G.texts)) {
+    for (const [chNum, ch] of Object.entries(text.chapters || {})) {
+      for (const v of (ch.verses || [])) {
+        const blob = (v.sanskrit + ' ' + v.telugu_bhava + ' ' + (v.english || '') + ' ' + (v.tags || []).join(' ') + ' ' + (ch.title_te || '')).toLowerCase();
+        if (blob.includes(q)) hits.push({textId, ch: +chNum, v, textMeta: text.meta, chTitle: ch.title_te});
+      }
+    }
+  }
+  // Also search research notes
+  const researchHits = [];
+  if (research && research.sections) {
+    for (const sec of research.sections) {
+      const blob = ((sec.content_te || []).join(' ') + ' ' + (sec.content_en || []).join(' ') + ' ' + sec.title_te + ' ' + sec.title_en).toLowerCase();
+      if (blob.includes(q)) researchHits.push(sec);
+    }
+  }
+  let h = '<div class="ch-header"><div class="ch-eyebrow">🔍 అన్వేషణ ఫలితములు · Search Results</div><h1>"' + q + '"</h1>' +
+    '<div class="ch-en">' + hits.length + ' verses · ' + researchHits.length + ' research notes</div></div>';
+  if (researchHits.length) {
+    h += '<h3 style="color:var(--maroon);margin:18px 0 10px">📚 Research Notes (' + researchHits.length + ')</h3>';
+    for (const sec of researchHits) {
+      h += '<div style="background:#fff;border:1px solid var(--line);border-left:4px solid #5e3aa8;border-radius:8px;padding:12px 16px;margin-bottom:10px;cursor:pointer" onclick="loadResearch(\'' + sec.id + '\')">' +
+        '<strong>' + (sec.icon || '') + ' ' + sec.title_te + '</strong><br>' +
+        '<small style="color:var(--muted);font-family:Poppins">' + sec.title_en + '</small></div>';
+    }
+  }
+  if (hits.length) {
+    h += '<h3 style="color:var(--maroon);margin:18px 0 10px">📜 Verses (' + hits.length + ')</h3>';
+    for (const {textId, ch, v, textMeta, chTitle} of hits) {
+      h += '<div onclick="openChapter(\'' + textId + '\',' + ch + ')" style="cursor:pointer">' + renderVerseCard(textId, ch, v, textMeta) + '</div>';
+    }
+  }
+  if (!hits.length && !researchHits.length) {
+    h += '<div class="empty"><div class="icon">🔍</div><h2>ఫలితము లేదు · No matches</h2><p>Try a different word or try Telugu/English/Sanskrit transliteration.</p></div>';
+  }
+  document.getElementById('reader').innerHTML = h;
+  document.getElementById('reader').scrollTop = 0;
+}
+
+/* ============================================================ */
+/* === INIT (deep-link routing) === */
+const hash = location.hash || '';
+if (hash.startsWith('#text-')) {
+  const parts = hash.replace('#text-', '').split('-ch-');
+  const textId = parts[0];
+  if (G.texts[textId]) {
+    if (parts[1]) {
+      openText(textId);
+      openChapter(textId, parseInt(parts[1]));
+    } else {
+      openText(textId);
+    }
+  } else {
+    setMode('library');
+  }
+} else if (hash.startsWith('#research-')) {
+  setMode('research');
+  loadResearch(hash.replace('#research-', ''));
+} else {
+  setMode('library');
+}
+</script>
+</body>
+</html>

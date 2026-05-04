@@ -1,0 +1,4 @@
+{
+  "_comment": "Deprecated. Project moved to Flask + Procfile. See app.py / requirements.txt / Procfile / nixpacks.toml. This file is kept only because the host filesystem blocked deletion at migration time. Safe to git rm.",
+  "private": true
+}

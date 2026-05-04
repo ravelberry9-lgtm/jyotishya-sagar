@@ -1,0 +1,16 @@
+{
+  "source": "Brihat Parashara Hora Shastra · Telugu transliteration",
+  "source_pdf": "brihat-parasara-hora-sastra-telugu.pdf",
+  "total_pages": 160,
+  "total_chapters": 97,
+  "format_note": "PDF contains Sanskrit verses transliterated into Telugu script (no inline Telugu prose commentary). Telugu bhāva is added by Claude as a translation, marked verified manually after user review.",
+  "verification_states": {
+    "auto-transcribed-300dpi": "Best-effort visual transcription, awaiting user verification",
+    "user-verified": "User confirmed against hardcopy",
+    "needs-review": "Low-confidence reading, please re-check"
+  },
+  "chapters_extracted": [
+    {"ch": 4, "title": "రాశిస్వరూపాధ్యాయః", "verses_extracted": 3, "verses_total_estimate": 30, "page_range": [6, "?"], "file": "bphs-ch04.json"}
+  ],
+  "chapters_pending": "1-3, 5-97"
+}

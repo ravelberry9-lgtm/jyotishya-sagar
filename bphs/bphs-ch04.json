@@ -1,0 +1,35 @@
+{
+  "chapter": 4,
+  "title_te": "రాశిస్వరూపాధ్యాయః",
+  "title_en": "Chapter on the Forms of Rāśis",
+  "source_pdf": "brihat-parasara-hora-sastra-telugu.pdf",
+  "verses": [
+    {
+      "sl": 1,
+      "page": 6,
+      "sanskrit_te_script": "అహోరాత్రస్య పూర్వాన్తలోపాద్ హోరాఽవశిష్యతే । తస్య విజ్ఞానమాత్రేణ జాతకర్మఫలం వదేత్‌ ॥ 1 ॥",
+      "telugu_bhava": "\"అహోరాత్రము\" అను పదమునకు మొదటి, చివరి అక్షరములను తీసివేసిన \"హోరా\" అను శబ్దము మిగులును. ఆ హోరాశాస్త్ర జ్ఞానము మాత్రముననే జాతకుని జన్మ-కర్మ ఫలములను చెప్పవచ్చును.",
+      "english_gist": "Drop the first and last syllables of 'ahōrātra' (day-night), and 'hōrā' remains. Knowledge of that alone enables prediction of jātaka-karma-phala.",
+      "verified": "auto-transcribed-300dpi",
+      "source_cite": "BPHS Ch.4 śl.1"
+    },
+    {
+      "sl": 2,
+      "page": 6,
+      "sanskrit_te_script": "యదవ్యక్తాత్మకో విష్ణుః కాలరూపో జనార్దనః । తస్యాంగాని నిబోధ త్వం క్రమాన్మే పాదిరాశయః ॥ 2 ॥",
+      "telugu_bhava": "ఏ అవ్యక్త-ఆత్మస్వరూపుడు, కాలరూపుడు అయిన విష్ణువు ఉన్నాడో — ఆ జనార్దనుని అవయవములు (అంగములు) వరుసగా నీవు నా నుండి తెలిసికొనుము. మొదటిది: 12 రాశులే ఆ భగవంతుని పాదములు.",
+      "english_gist": "The unmanifest Vishnu is Time-form Janārdana. Hear from me His limbs in sequence — the rāśis are His feet (the first limb).",
+      "verified": "auto-transcribed-300dpi",
+      "source_cite": "BPHS Ch.4 śl.2"
+    },
+    {
+      "sl": 3,
+      "page": 6,
+      "sanskrit_te_script": "మేషో వృషశ్చ మిథునం కర్కసింహకుమారికాః । తులాలిశ్చ ధనుర్నక్రే కుమ్భో మీనస్తతః పరమ్‌ ॥ 3 ॥",
+      "telugu_bhava": "మేషము, వృషభము, మిథునము, కర్కటకము, సింహము, కన్య (కుమారిక), తుల, వృశ్చికము (అలి), ధనుస్సు, మకరము (నక్ర), కుంభము, మీనము — ఇవియే ఆ పన్నెండు రాశులు.",
+      "english_gist": "The twelve rāśis: Mēṣa, Vr̥ṣabha, Mithuna, Karka, Siṁha, Kanyā, Tulā, Vr̥ścika, Dhanus, Makara, Kumbha, Mīna.",
+      "verified": "auto-transcribed-300dpi",
+      "source_cite": "BPHS Ch.4 śl.3"
+    }
+  ]
+}

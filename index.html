@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>జ్యోతిష్య సాగర్ — తెలుగు వైదిక జ్యోతిష్య యాప్</title>
+<meta name="description" content="తెలుగు మాతృభాషలో పూర్తి వైదిక జ్యోతిష్యం — జాతకం, పంచాంగం, జాతక పొంతన, ఉచిత పరిహారాలు. BPHS శాస్త్రం ఆధారం.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--saffron:#ff6b1a;--saffron-deep:#d94f00;--maroon:#6b1d1d;--gold:#d4a017;
+      --cream:#fff7ec;--cream-2:#fdeed3;--ink:#2b1810;--muted:#6b5a4b;--line:#e9d8b8;
+      --good:#2e8b57;--bad:#b22222}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Noto Sans Telugu','Poppins',system-ui,sans-serif;
+     background:#fff;color:var(--ink);line-height:1.6}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--saffron) 0%,var(--saffron-deep) 60%,var(--maroon) 100%);
+      color:#fff;padding:60px 0 80px;position:relative;overflow:hidden}
+.hero::before{content:'🕉';position:absolute;font-size:480px;opacity:.04;right:-80px;top:-100px}
+.hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:60px;
+             background:linear-gradient(to top right,#fff 50%,transparent 50%)}
+.nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:50px}
+.nav .logo{display:flex;align-items:center;gap:12px}
+.nav .om{font-size:32px;background:rgba(255,255,255,.15);width:50px;height:50px;
+         border-radius:50%;display:flex;align-items:center;justify-content:center;
+         border:2px solid rgba(255,255,255,.4)}
+.nav .name{font-size:22px;font-weight:800}
+.nav .tag{font-size:11px;opacity:.85;font-family:'Poppins'}
+.nav-links{display:flex;gap:18px;flex-wrap:wrap}
+.nav-links a{color:#fff;text-decoration:none;font-size:13px;opacity:.9;font-weight:500;font-family:'Poppins'}
+.nav-links a:hover{opacity:1;text-decoration:underline}
+.cta-nav{background:#fff;color:var(--saffron-deep)\!important;padding:8px 18px;border-radius:999px;
+         font-weight:700;text-decoration:none;font-family:'Poppins',sans-serif;font-size:13px}
+.hero h1{font-size:48px;font-weight:900;margin:0 0 14px;line-height:1.2;max-width:780px}
+@media (max-width:600px){.hero h1{font-size:32px}}
+.hero h1 .gold{color:#ffe8b8}
+.hero .subtitle{font-size:18px;opacity:.95;max-width:680px;margin-bottom:30px;font-weight:500}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn-primary{background:#fff;color:var(--saffron-deep);padding:14px 32px;border-radius:999px;
+             font-weight:700;font-size:16px;text-decoration:none;
+             box-shadow:0 6px 20px rgba(0,0,0,.2);transition:transform .15s;display:inline-block}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-secondary{background:rgba(255,255,255,.15);color:#fff;padding:14px 28px;border-radius:999px;
+               font-weight:600;font-size:15px;text-decoration:none;border:1px solid rgba(255,255,255,.4);
+               display:inline-block}
+.btn-secondary:hover{background:rgba(255,255,255,.25)}
+.hero-stats{display:flex;gap:30px;margin-top:50px;flex-wrap:wrap;font-family:'Poppins'}
+.hero-stats .stat{font-size:13px}.hero-stats .stat strong{display:block;font-size:24px;font-weight:800;color:#ffe8b8}
+
+/* Section */
+section{padding:70px 0}
+section h2{font-size:36px;font-weight:800;color:var(--maroon);margin:0 0 12px;text-align:center}
+section h2 .en{display:block;font-size:14px;color:var(--muted);font-weight:500;font-family:'Poppins';margin-top:6px;letter-spacing:1px;text-transform:uppercase}
+section .lead{text-align:center;color:var(--muted);font-size:16px;margin-bottom:50px;max-width:680px;margin-left:auto;margin-right:auto}
+
+/* Why we exist */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+@media (max-width:800px){.why-grid{grid-template-columns:1fr}}
+.why-text{font-size:17px;line-height:1.75}
+.why-text p{margin-bottom:16px}
+.why-text strong{color:var(--maroon)}
+.why-quote{background:linear-gradient(135deg,var(--cream),var(--cream-2));border-left:5px solid var(--saffron);
+           padding:24px;border-radius:14px;font-size:16px;font-style:italic;color:var(--ink)}
+.why-quote .au{display:block;text-align:right;font-style:normal;color:var(--muted);font-size:13px;margin-top:10px;font-family:'Poppins'}
+
+/* Features */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature{background:linear-gradient(135deg,#fff,var(--cream));border-radius:16px;padding:28px 24px;
+         border:1px solid var(--line);transition:transform .15s,box-shadow .15s}
+.feature:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(255,107,26,.18)}
+.feature .icon{font-size:42px;margin-bottom:14px}
+.feature h3{margin:0 0 8px;font-size:20px;color:var(--maroon)}
+.feature .en{font-size:11px;color:var(--muted);font-family:'Poppins';font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.feature p{font-size:14.5px;color:var(--ink);margin:8px 0 0;line-height:1.6}
+
+/* Comparison */
+.compare{background:linear-gradient(180deg,var(--cream),#fff)}
+.compare-table{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(107,29,29,.08);border:1px solid var(--line)}
+.compare-table table{width:100%;border-collapse:collapse;font-size:14.5px}
+.compare-table th,.compare-table td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+.compare-table th{background:linear-gradient(135deg,var(--saffron),var(--saffron-deep));color:#fff;font-weight:700;font-family:'Poppins'}
+.compare-table tr:hover td{background:var(--cream)}
+.compare-table .yes{color:var(--good);font-weight:800;font-size:18px}
+.compare-table .no{color:var(--bad);font-weight:800;font-size:18px}
+.compare-table .partial{color:var(--gold);font-weight:800}
+.compare-table tr:last-child td{border-bottom:0}
+
+/* Audience */
+.audience{background:linear-gradient(180deg,#fff,var(--cream))}
+.aud-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:30px}
+.aud-card{background:#fff;border-radius:16px;padding:26px 22px;border:1px solid var(--line);text-align:center}
+.aud-card .face{font-size:54px;margin-bottom:12px}
+.aud-card h3{margin:0 0 6px;color:var(--maroon);font-size:18px}
+.aud-card .age{font-size:12px;color:var(--muted);font-family:'Poppins';margin-bottom:12px}
+.aud-card p{font-size:14px;color:var(--ink);line-height:1.6;text-align:left}
+
+/* Remedies philosophy */
+.philo-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+@media (max-width:700px){.philo-tiers{grid-template-columns:1fr}}
+.philo-tier{padding:24px 22px;border-radius:16px;border:2px solid var(--line)}
+.philo-tier.t1{background:linear-gradient(135deg,#f6fdf8,#fff);border-color:var(--good)}
+.philo-tier.t2{background:linear-gradient(135deg,#fffaf0,#fff);border-color:var(--gold)}
+.philo-tier.t3{background:linear-gradient(135deg,#fff8f6,#fff);border-color:var(--bad)}
+.philo-tier .label{font-size:11px;font-family:'Poppins';font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.philo-tier.t1 .label{color:var(--good)}
+.philo-tier.t2 .label{color:var(--gold)}
+.philo-tier.t3 .label{color:var(--bad)}
+.philo-tier h3{margin:8px 0 6px;font-size:18px;color:var(--maroon)}
+.philo-tier .price{font-size:13px;color:var(--muted);font-family:'Poppins';margin-bottom:12px}
+.philo-tier ul{margin:0;padding-left:20px;font-size:13.5px;color:var(--ink)}
+.philo-tier li{margin-bottom:5px}
+
+.philo-quote{margin-top:30px;background:#fff;border:2px dashed var(--saffron);border-radius:14px;padding:20px 26px;font-size:15px;color:var(--ink);text-align:center}
+.philo-quote strong{color:var(--saffron-deep)}
+
+/* CTA */
+.final-cta{background:linear-gradient(135deg,var(--maroon),var(--saffron-deep));color:#fff;text-align:center;padding:80px 24px;border-radius:0}
+.final-cta h2{color:#fff;font-size:38px}
+.final-cta h2 .en{color:rgba(255,255,255,.75)}
+.final-cta p{font-size:17px;opacity:.95;max-width:600px;margin:0 auto 30px}
+.final-cta .btn-primary{background:#fff;color:var(--saffron-deep)}
+
+/* Footer */
+footer{background:var(--ink);color:#fff;padding:40px 0 30px}
+footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px}
+footer .footer-brand{font-size:18px;font-weight:800}
+footer .footer-tagline{font-size:12px;opacity:.7;margin-top:4px;font-family:'Poppins'}
+footer .footer-links{display:flex;gap:24px;font-family:'Poppins';font-size:13px}
+footer .footer-links a{color:rgba(255,255,255,.85);text-decoration:none}
+footer .footer-links a:hover{color:#fff}
+footer .footer-copyright{font-size:11px;opacity:.5;margin-top:30px;width:100%;text-align:center;font-family:'Poppins'}
+
+/* Trust badges */
+.trust-row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:30px;font-family:'Poppins';font-size:12.5px;color:var(--muted)}
+.trust-row .item{display:flex;align-items:center;gap:6px}
+.trust-row .item span{font-size:18px}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <nav class="nav">
+      <div class="logo">
+        <div class="om">🕉</div>
+        <div>
+          <div class="name">జ్యోతిష్య సాగర్</div>
+          <div class="tag">Telugu Vedic Astrology</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#why">మనమెందుకు</a>
+        <a href="#features">ఫీచర్లు</a>
+        <a href="#audience">ఎవరికోసం</a>
+        <a href="#remedies">పరిహారాలు</a>
+        <a href="app.html" class="cta-nav">యాప్ తెరవండి →</a>
+      </div>
+    </nav>
+    <h1>నిజమైన <span class="gold">తెలుగు వైదిక జ్యోతిష్యం</span><br>
+        మీ కుటుంబం కోసం</h1>
+    <p class="subtitle">
+      బృహత్ పరాశర హోరా శాస్త్రం ఆధారంగా · తెలుగులో రాయబడింది, అనువాదం కాదు ·
+      ఉచిత పరిహారాలు ముందు, రత్నాలు చివర · తల్లిదండ్రులకు సులభమైన UI · వాయిస్ సపోర్ట్
+    </p>
+    <div class="hero-cta">
+      <a href="app.html" class="btn-primary">🕉 ఉచితంగా జాతకం చూడండి</a>
+      <a href="#features" class="btn-secondary">ఫీచర్లు చూడండి</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>198+</strong>తెలుగు ఊర్లు · ప్రపంచ నగరాలు</div>
+      <div class="stat"><strong>BPHS</strong>శాస్త్ర ఆధార ఫలాలు</div>
+      <div class="stat"><strong>0₹</strong>ఉచిత పరిహారాలు</div>
+      <div class="stat"><strong>10</strong>పొంతనలు</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <h2>మనం ఎందుకు ఉన్నాము? <span class="en">Why we exist</span></h2>
+    <p class="lead">తెలుగు వైదిక జ్యోతిష్య మార్కెట్‌లో ఒక గ్యాప్ ఉంది — అది మనం పూరిస్తున్నాము.</p>
+
+    <div class="why-grid">
+      <div class="why-text">
+        <p>తెలుగు మాట్లాడే <strong>1.5 కోట్ల కుటుంబాలు</strong> ఉన్నాయి — ఆంధ్ర, తెలంగాణ, USA, UAE, Singapore అన్ని చోట్ల. వీరికి జ్యోతిష్యం అవసరం — పిల్లల జాతకం, పెళ్లి సంబంధాలు, దోష పరిహారాలు, పంచాంగం.</p>
+
+        <p>కానీ ఇప్పటికే ఉన్న యాప్‌లు (AstroSage, ClickAstro మొదలైనవి) తెలుగు <strong>అనువాదం మాత్రమే</strong>. హిందీ నుండి యంత్రంగా అనువాదం. తెలుగు పాఠకులు 10 సెకన్లలో గుర్తిస్తారు.</p>
+
+        <p>అంతేకాదు — <strong>రత్నాలు ముందు అమ్ముతారు</strong>. ఎందుకంటే అక్కడే లాభం. కానీ శాస్త్రం ప్రకారం రత్నం <strong>చివరి మార్గం</strong>. మొదటిది ఉచిత జపం.</p>
+
+        <p>మనం ఈ రెండూ సరిచేస్తున్నాము.</p>
+      </div>
+      <div>
+        <div class="why-quote">
+          "మంత్ర జపం అత్యుత్తమ పరిహారం. స్వీయ ప్రయత్నం బలం పెంచుతుంది. రత్నం బాహ్య ఉపాయం, చివరి మార్గం."
+          <span class="au">— శాస్త్ర సంప్రదాయం</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="background:linear-gradient(180deg,#fff,var(--cream))">
+  <div class="container">
+    <h2>పూర్తి ఫీచర్లు <span class="en">Complete features</span></h2>
+    <p class="lead">ఒకే యాప్‌లో మీకు అవసరమైన ప్రతిదీ — ఉచితంగా</p>
+
+    <div class="features-grid">
+      <div class="feature">
+        <div class="icon">📜</div>
+        <h3>జాతకం <span class="en">Birth chart</span></h3>
+        <p>లగ్నం, రాశి, గ్రహ స్థానాలు, నక్షత్రం, పాదం. డి-1 చక్రం (దక్షిణ భారత పద్ధతి). వింశోత్తరి దశ 120 సంవత్సరాలకి. BPHS ప్రామాణికం.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📅</div>
+        <h3>పంచాంగం <span class="en">Daily panchangam</span></h3>
+        <p>తిథి, నక్షత్రం, యోగం, కరణం, వారం — <strong>ప్రారంభం నుండి · వరకు · వ్యవధి</strong> స్పష్టంగా. సూర్యోదయం, రాహుకాలం, యమగండం, అభిజిత్ ముహూర్తం.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔮</div>
+        <h3>BPHS జాతక ఫలాలు <span class="en">Cited predictions</span></h3>
+        <p>బృహత్ పరాశర హోరా శాస్త్రం ఆధారంగా ఫలాలు. ప్రతి ఫలం శ్లోక మూలంతో. వ్యక్తిత్వం, ఆరోగ్యం, ధనం, ఉద్యోగం, వివాహం, సంతానం — అన్నిటికీ.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">💍</div>
+        <h3>జాతక పొంతన <span class="en">Marriage matching</span></h3>
+        <p>10 పొంతనలు తెలుగు సంప్రదాయం ప్రకారం — దిన, గణ, మహేంద్ర, స్త్రీ దీర్ఘ, యోని, రాశి, రాశ్యధిపతి, వశ్య, రజ్జు, వేధ. స్పష్టమైన తీర్పు తెలుగులో.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">👶</div>
+        <h3>పిల్లల జాతకం <span class="en">Children's chart</span></h3>
+        <p>బాలారిష్ట విశ్లేషణ (0-8 సంవత్సరాలు), విద్యాభ్యాస సూచనలు, నక్షత్ర పాదం ఆధారంగా <strong>నామకరణ అక్షరాలు</strong>, వివాహ యోగ సమయం.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🙏</div>
+        <h3>శాస్త్ర క్రమ పరిహారాలు <span class="en">Śāstric remedies</span></h3>
+        <p><strong>స్థాయి 1:</strong> ఉచిత జపం, స్తోత్రం, వ్రతం (108 నుండి 19000 సార్లు, పూర్తి విధానం). <strong>స్థాయి 2:</strong> పండిత సహాయంతో హోమం. <strong>స్థాయి 3:</strong> రత్నం (చివర).</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔊</div>
+        <h3>తెలుగు వాయిస్ <span class="en">Telugu voice</span></h3>
+        <p>మీ ఫలాలు తెలుగు గొంతుతో వినండి. టైపింగ్ రాని తల్లిదండ్రులకు సహాయం. ఫోన్‌లో శ్రద్ధగా వినవచ్చు.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📚</div>
+        <h3>నేర్చుకోండి <span class="en">Learn jyotiṣa</span></h3>
+        <p>9 గ్రహాలు, 12 రాశులు, 12 భావాలు, 27 నక్షత్రాలు, దశలు, యోగాలు — తెలుగులో BPHS శ్లోక ఆధారం. ఇంటర్మీడియట్ స్థాయి జ్యోతిష్యం నేర్చుకోవచ్చు.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🏘</div>
+        <h3>198+ తెలుగు ఊర్లు <span class="en">Towns + diaspora</span></h3>
+        <p>పాలకొల్లు, నరసాపురం, అమలాపురం, పిఠాపురం... తెలంగాణ, ఆంధ్ర tier-2/3 ఊర్లు. Dallas, San Francisco, London, Dubai - తెలుగు డయాస్పోరా అంతా. మీ ఊరు లేకపోతే Lat/Lon మాన్యువల్‌గా.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="compare" id="compare">
+  <div class="container">
+    <h2>మనం AstroSage లాంటి యాప్‌ల కంటే ఎందుకు మంచి? <span class="en">vs the competition</span></h2>
+    <p class="lead">తెలుగు కుటుంబాలకు మనం ఇచ్చే విలువ</p>
+    <div class="compare-table">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:35%">ఫీచర్</th>
+            <th style="width:30%">జ్యోతిష్య సాగర్</th>
+            <th style="width:35%">AstroSage / ఇతర యాప్‌లు</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>తెలుగు content</td>
+              <td><span class="yes">✓</span> తెలుగులో రాసినది</td>
+              <td><span class="no">✗</span> హిందీ నుండి అనువాదం</td></tr>
+          <tr><td>BPHS శ్లోక ఆధారం</td>
+              <td><span class="yes">✓</span> ప్రతి ఫలానికి మూలం</td>
+              <td><span class="no">✗</span> AI generated, మూలం లేదు</td></tr>
+          <tr><td>పరిహారాల క్రమం</td>
+              <td><span class="yes">✓</span> ఉచిత జపం ముందు</td>
+              <td><span class="no">✗</span> రత్నాలు ముందు అమ్ముతారు</td></tr>
+          <tr><td>రత్న కమీషన్</td>
+              <td><span class="yes">తీసుకోము</span></td>
+              <td><span class="no">తీసుకుంటారు</span></td></tr>
+          <tr><td>పూజ విధి (పూర్తి)</td>
+              <td><span class="yes">✓</span> సంకల్పం నుండి ఉద్వాసన వరకు</td>
+              <td><span class="partial">~</span> "శివాభిషేకం చేయండి" అని మాత్రమే</td></tr>
+          <tr><td>పిల్లల జాతకం</td>
+              <td><span class="yes">✓</span> బాలారిష్ట, నామకరణ అక్షరాలు</td>
+              <td><span class="partial">~</span> Generic predictions</td></tr>
+          <tr><td>tier-2 తెలుగు ఊర్లు</td>
+              <td><span class="yes">✓</span> పాలకొల్లు, నరసాపురం, etc.</td>
+              <td><span class="partial">~</span> Major cities only</td></tr>
+          <tr><td>తెలుగు వాయిస్</td>
+              <td><span class="yes">✓</span> ఫలాలు చదివి వినిపిస్తుంది</td>
+              <td><span class="no">✗</span></td></tr>
+          <tr><td>పంచాంగం start/end</td>
+              <td><span class="yes">✓</span> "నుండి ... వరకు" స్పష్టంగా</td>
+              <td><span class="partial">~</span> end time మాత్రమే</td></tr>
+          <tr><td>అడ్వర్టైజ్‌మెంట్‌లు</td>
+              <td><span class="yes">లేవు</span></td>
+              <td><span class="no">ప్రతి స్క్రీన్‌లో</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="audience" id="audience">
+  <div class="container">
+    <h2>ఎవరి కోసం? <span class="en">Who this is for</span></h2>
+    <p class="lead">ముఖ్యంగా తెలుగు తల్లిదండ్రులు, తాత-బామ్మలు. సాధారణ విద్య ఉన్నవారు కూడా సులభంగా వాడగలరు.</p>
+
+    <div class="aud-grid">
+      <div class="aud-card">
+        <div class="face">👨</div>
+        <h3>తండ్రి</h3>
+        <div class="age">50-65 సంవత్సరాలు</div>
+        <p>"నా కొడుకు పెళ్లి సంబంధాలు చూస్తున్నాను. పొంతన సరిగ్గా ఉందో లేదో తెలుసుకోవాలి." పెద్ద అక్షరాలు, స్పష్టమైన verdict — తెలుగులో.</p>
+      </div>
+      <div class="aud-card">
+        <div class="face">👩</div>
+        <h3>తల్లి</h3>
+        <div class="age">40-60 సంవత్సరాలు</div>
+        <p>"నా బిడ్డ ఆరోగ్యం, చదువు పట్ల ఏదైనా దోషం ఉందా? బాలారిష్టం పరిశీలించాలి." పిల్లల జాతక విశ్లేషణ, తల్లికి సూచనలు.</p>
+      </div>
+      <div class="aud-card">
+        <div class="face">👴</div>
+        <h3>తాత / బామ్మ</h3>
+        <div class="age">65+ సంవత్సరాలు</div>
+        <p>"మనుమడి జాతకం చూడాలి. ఏదైనా దోషం ఉంటే మంత్రం చెప్పాలి." వాయిస్ సపోర్ట్ తో, పాత పద్ధతిలో, పూర్తి విధానంతో.</p>
+      </div>
+      <div class="aud-card">
+        <div class="face">🧑‍💼</div>
+        <h3>NRI తెలుగు వారు</h3>
+        <div class="age">USA · UK · UAE · Singapore</div>
+        <p>"ఇంటి దూరం, పండితుడు లేడు. ఆన్‌లైన్‌లో నిజమైన తెలుగు జ్యోతిష్యం కావాలి." Time zone సరిగ్గా, ఆ ఊరి coordinates తో.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REMEDIES PHILOSOPHY -->
+<section id="remedies" style="background:linear-gradient(180deg,var(--cream),#fff)">
+  <div class="container">
+    <h2>పరిహార తత్త్వం <span class="en">Remedies philosophy</span></h2>
+    <p class="lead">శాస్త్ర క్రమం పునరుద్ధరించాము. మీ చేతుల్లోనే శక్తి.</p>
+
+    <div class="philo-tiers">
+      <div class="philo-tier t1">
+        <div class="label">🟢 స్థాయి 1 · DEFAULT</div>
+        <h3>ఉచిత స్వీయ ప్రయత్నం</h3>
+        <div class="price">ఖర్చు: ₹0</div>
+        <ul>
+          <li>మంత్ర జపం (108 నుండి 19000 సార్లు)</li>
+          <li>స్తోత్ర పారాయణ</li>
+          <li>వ్రతం / ఉపవాసం</li>
+          <li>దానం (గ్రహ సంబంధం)</li>
+          <li>పూర్తి విధానం + ఆడియో</li>
+        </ul>
+      </div>
+      <div class="philo-tier t2">
+        <div class="label">🟡 స్థాయి 2 · IF NEEDED</div>
+        <h3>పండిత సహాయంతో</h3>
+        <div class="price">ఖర్చు: ₹500-8000</div>
+        <ul>
+          <li>హోమం / హవనం</li>
+          <li>ఆలయ అభిషేకం</li>
+          <li>పారాయణ</li>
+          <li>తీర్థయాత్ర</li>
+          <li>మనం పండితులకు refer చేయము</li>
+        </ul>
+      </div>
+      <div class="philo-tier t3">
+        <div class="label">🔴 స్థాయి 3 · LAST RESORT</div>
+        <h3>రత్నాలు, యంత్రం</h3>
+        <div class="price">ఖర్చు: ₹3000-50000+</div>
+        <ul>
+          <li>రత్నం (కేరట్, వేలు, రోజు)</li>
+          <li>యంత్రం (రాగి/వెండి)</li>
+          <li>రుద్రాక్ష (ముఖి)</li>
+          <li>పూర్తి disclosure</li>
+          <li><strong>మనం రత్నాలు అమ్మము</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="philo-quote">
+      <strong>ముఖ్యమైన నైతిక నియమం:</strong> మనం రత్న వ్యాపారులు, పండితుల నుండి కమీషన్ తీసుకోము.
+      మన సూచన <strong>శాస్త్రం ప్రకారం</strong> ఉంటుంది, లాభం ప్రకారం కాదు.
+      ఇదే మన brand విశ్వసనీయతకు మూలం.
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>మీ జాతకం ఇప్పుడే చూడండి<br><span class="en">Try it free — no signup, no ads</span></h2>
+  <p>తేదీ, సమయం, ప్రదేశం ఇవ్వండి. క్షణాల్లో మీ లగ్నం, రాశి, గ్రహ స్థానాలు, పూర్తి ఫలాలు — తెలుగులో.</p>
+  <a href="app.html" class="btn-primary">🕉 యాప్ తెరవండి · Open the app</a>
+  <div class="trust-row">
+    <div class="item"><span>🔒</span> No signup required</div>
+    <div class="item"><span>📱</span> Mobile friendly</div>
+    <div class="item"><span>💾</span> Works offline</div>
+    <div class="item"><span>🚫</span> No ads, no upsells</div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="footer-brand">🕉 జ్యోతిష్య సాగర్</div>
+      <div class="footer-tagline">Telugu Vedic Astrology · v1.0 · Built with care</div>
+    </div>
+    <div class="footer-links">
+      <a href="app.html">యాప్</a>
+      <a href="#why">మనమెందుకు</a>
+      <a href="#features">ఫీచర్లు</a>
+      <a href="#remedies">పరిహారాలు</a>
+    </div>
+    <div class="footer-copyright">
+      © 2026 జ్యోతిష్య సాగర్ · ప్రామాణిక BPHS ఆధారం · Calculations are illustrative — for serious life decisions consult a Telugu jyotiṣi
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>జ్యోతిష్య సాగర్ — Telugu Astrology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;600;700;800&family=Tiro+Telugu&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #ff6b1a;
+    --saffron-deep: #d94f00;
+    --maroon: #6b1d1d;
+    --gold: #d4a017;
+    --cream: #fff7ec;
+    --cream-2: #fdeed3;
+    --ink: #2b1810;
+    --muted: #6b5a4b;
+    --line: #e9d8b8;
+    --good: #2e8b57;
+    --bad: #b22222;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans Telugu', 'Poppins', system-ui, sans-serif;
+    background: linear-gradient(180deg, #fff7ec 0%, #fdeed3 100%);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header {
+    background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-deep) 60%, var(--maroon) 100%);
+    color: #fff;
+    padding: 18px 0 10px;
+    box-shadow: 0 4px 14px rgba(107,29,29,0.18);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '🕉';
+    position: absolute;
+    font-size: 220px;
+    opacity: 0.06;
+    right: -20px;
+    top: -50px;
+    transform: rotate(-8deg);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 6px;
+  }
+  .brand .om {
+    font-size: 38px;
+    background: rgba(255,255,255,0.15);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid rgba(255,255,255,0.4);
+  }
+  .brand h1 {
+    margin: 0; font-size: 28px; font-weight: 800; letter-spacing: 0.5px;
+  }
+  .brand .tag {
+    font-size: 13px; opacity: 0.9; font-family: 'Poppins', sans-serif;
+  }
+  nav.tabs {
+    display: flex; gap: 4px; flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  nav.tabs button {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  nav.tabs button:hover { background: rgba(255,255,255,0.22); }
+  nav.tabs button.active {
+    background: #fff; color: var(--saffron-deep);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  /* Today strip */
+  .today-strip {
+    background: #fff;
+    border-radius: 14px;
+    margin: 18px 0;
+    padding: 14px 18px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    box-shadow: 0 2px 12px rgba(107,29,29,0.08);
+    border-top: 3px solid var(--saffron);
+  }
+  .today-strip .cell { font-size: 13px; }
+  .today-strip .cell .lbl { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Poppins', sans-serif; }
+  .today-strip .cell .val { color: var(--maroon); font-weight: 700; font-size: 15px; margin-top: 2px; }
+
+  /* Sections */
+  section.view { display: none; padding: 20px 0 60px; }
+  section.view.active { display: block; }
+
+  h2.section-title {
+    font-size: 22px;
+    color: var(--maroon);
+    margin: 0 0 4px;
+    font-weight: 700;
+  }
+  .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 18px; font-family: 'Poppins', sans-serif; }
+
+  /* Rasi grid */
+  .rasi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  .rasi-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.18s, box-shadow 0.18s;
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  .rasi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255,107,26,0.18);
+    border-color: var(--saffron);
+  }
+  .rasi-card .icon {
+    font-size: 36px; margin-bottom: 4px;
+    filter: drop-shadow(0 2px 4px rgba(255,107,26,0.25));
+  }
+  .rasi-card .name { font-weight: 700; color: var(--maroon); font-size: 16px; }
+  .rasi-card .en { font-size: 11px; color: var(--muted); font-family: 'Poppins', sans-serif; letter-spacing: 0.5px; }
+  .rasi-card .dates { font-size: 10px; color: var(--saffron-deep); margin-top: 4px; font-family: 'Poppins', sans-serif; }
+
+  /* Reading panel */
+  .reading-panel {
+    background: #fff;
+    border-radius: 16px;
+    padding: 22px;
+    margin-top: 20px;
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 16px rgba(107,29,29,0.07);
+  }
+  .reading-head {
+    display: flex; align-items: center; gap: 16px;
+    border-bottom: 1px dashed var(--line);
+    padding-bottom: 14px; margin-bottom: 14px;
+  }
+  .reading-head .big-icon {
+    font-size: 56px;
+    background: linear-gradient(135deg, var(--saffron), var(--saffron-deep));
+    color: #fff;
+    width: 84px; height: 84px;
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 16px rgba(255,107,26,0.35);
+  }
+  .reading-head h3 { margin: 0; font-size: 24px; color: var(--maroon); }
+  .reading-head .meta { color: var(--muted); font-size: 13px; font-family: 'Poppins', sans-serif; }
+
+  .reading-body p { line-height: 1.75; font-size: 15.5px; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .stat {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid var(--line);
+  }
+  .stat .lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Poppins', sans-serif; }
+  .stat .val { font-size: 14px; color: var(--maroon); font-weight: 700; margin-top: 2px; }
+
+  /* Panchangam grid */
+  .panch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .panch-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px;
+    border-left: 4px solid var(--saffron);
+    box-shadow: 0 2px 10px rgba(107,29,29,0.06);
+  }
+  .panch-card.bad { border-left-color: var(--bad); }
+  .panch-card.good { border-left-color: var(--good); }
+  .panch-card h4 { margin: 0 0 6px; color: var(--maroon); font-size: 16px; }
+  .panch-card .v { font-size: 18px; font-weight: 700; color: var(--ink); }
+  .panch-card .sub { font-size: 12px; color: var(--muted); margin-top: 4px; font-family: 'Poppins', sans-serif; }
+
+  /* Forms */
+  .form-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 16px rgba(107,29,29,0.07);
+    max-width: 720px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-row.single { grid-template-columns: 1fr; }
+  label { display: block; font-size: 13px; color: var(--maroon); margin-bottom: 4px; font-weight: 600; }
+  input, select {
+    width: 100%; padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    background: var(--cream);
+    color: var(--ink);
+  }
+  input:focus, select:focus { outline: 2px solid var(--saffron); border-color: var(--saffron); }
+  button.btn-primary {
+    background: linear-gradient(135deg, var(--saffron), var(--saffron-deep));
+    color: #fff; border: 0;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255,107,26,0.3);
+    transition: transform 0.15s;
+  }
+  button.btn-primary:hover { transform: translateY(-1px); }
+
+  /* Result blocks */
+  .result-card {
+    background: #fff;
+    border-radius: 14px;
+    margin-top: 18px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    box-shadow: 0 2px 12px rgba(107,29,29,0.07);
+  }
+  .result-card h3 { margin: 0 0 12px; color: var(--maroon); }
+
+  /* Birth chart */
+  .chart-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 80px);
+    gap: 4px;
+    background: var(--maroon);
+    padding: 4px;
+    border-radius: 10px;
+    max-width: 420px;
+    margin: 14px auto;
+  }
+  .chart-cell {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 6px;
+    font-size: 11px;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .chart-cell .house-num { font-size: 9px; color: var(--muted); font-family: 'Poppins', sans-serif; }
+  .chart-cell .planets { font-size: 12px; color: var(--maroon); font-weight: 700; margin-top: 2px; }
+  .chart-cell .sign { font-size: 10px; color: var(--saffron-deep); margin-top: auto; font-weight: 600; }
+
+  /* Match score */
+  .score-display {
+    text-align: center; padding: 20px 0;
+  }
+  .score-circle {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: conic-gradient(var(--saffron) 0deg, var(--saffron-deep) var(--score-deg, 270deg), var(--line) var(--score-deg, 270deg) 360deg);
+    margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .score-circle::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border-radius: 50%;
+    background: #fff;
+  }
+  .score-circle .num { position: relative; z-index: 1; font-size: 36px; font-weight: 800; color: var(--maroon); font-family: 'Poppins', sans-serif; }
+  .score-circle .of { position: relative; z-index: 1; font-size: 14px; color: var(--muted); font-family: 'Poppins', sans-serif; }
+
+  .porutham-list { list-style: none; padding: 0; margin: 12px 0 0; }
+  .porutham-list li {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 12px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .porutham-list li:last-child { border-bottom: 0; }
+  .porutham-list .check { color: var(--good); font-weight: 700; }
+  .porutham-list .cross { color: var(--bad); font-weight: 700; }
+
+  /* Festivals */
+  .festival-list {
+    display: grid; gap: 10px;
+  }
+  .festival-row {
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex; align-items: center; gap: 14px;
+    border-left: 4px solid var(--gold);
+    box-shadow: 0 2px 8px rgba(107,29,29,0.06);
+  }
+  .festival-row .date {
+    background: linear-gradient(135deg, var(--saffron), var(--saffron-deep));
+    color: #fff;
+    border-radius: 10px;
+    padding: 8px 10px;
+    text-align: center;
+    min-width: 64px;
+  }
+  .festival-row .date .d { font-size: 22px; font-weight: 800; line-height: 1; font-family: 'Poppins', sans-serif; }
+  .festival-row .date .m { font-size: 11px; text-transform: uppercase; font-family: 'Poppins', sans-serif; }
+  .festival-row .name { font-weight: 700; color: var(--maroon); font-size: 16px; }
+  .festival-row .desc { font-size: 12px; color: var(--muted); font-family: 'Poppins', sans-serif; }
+
+  /* Numerology */
+  .num-result {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .num-tile {
+    background: linear-gradient(135deg, #fff, var(--cream));
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--line);
+  }
+  .num-tile .big {
+    font-size: 42px; font-weight: 800;
+    color: var(--saffron-deep);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1;
+  }
+  .num-tile .lbl { font-size: 12px; color: var(--maroon); margin-top: 6px; font-weight: 600; }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--muted);
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    border-top: 1px solid var(--line);
+    margin-top: 30px;
+    background: #fff;
+  }
+
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .brand h1 { font-size: 22px; }
+    .chart-grid { grid-template-rows: repeat(4, 70px); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="brand">
+      <div class="om">🕉</div>
+      <div>
+        <h1>జ్యోతిష్య సాగర్</h1>
+        <div class="tag">Telugu Astrology · Panchangam · Jathakam · Porutham</div>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button data-view="home" class="active">హోమ్</button>
+      <button data-view="rasi">రాశి ఫలాలు</button>
+      <button data-view="panchangam">పంచాంగం</button>
+      <button data-view="jathakam">జాతకం</button>
+      <button data-view="porutham">పొరుత్తం</button>
+      <button data-view="numerology">న్యూమరాలజీ</button>
+      <button data-view="festivals">పండుగలు</button>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Today strip -->
+  <div class="today-strip" id="todayStrip"></div>
+
+  <!-- HOME -->
+  <section class="view active" id="view-home">
+    <h2 class="section-title">ఈ రోజు మీ రాశి ఫలం</h2>
+    <p class="subtitle">Tap your rasi to read today's prediction · 12 రాశులలో మీ రాశిని ఎంచుకోండి</p>
+    <div class="rasi-grid" id="rasiGrid"></div>
+    <div id="rasiReading"></div>
+  </section>
+
+  <!-- RASI -->
+  <section class="view" id="view-rasi">
+    <h2 class="section-title">రాశి ఫలాలు · Daily Horoscope</h2>
+    <p class="subtitle">All 12 rasis at a glance</p>
+    <div id="allRasiReadings"></div>
+  </section>
+
+  <!-- PANCHANGAM -->
+  <section class="view" id="view-panchangam">
+    <h2 class="section-title">పంచాంగం · Today's Panchangam</h2>
+    <p class="subtitle" id="panchSubtitle"></p>
+    <div class="panch-grid" id="panchGrid"></div>
+  </section>
+
+  <!-- JATHAKAM -->
+  <section class="view" id="view-jathakam">
+    <h2 class="section-title">జాతకం · Free Birth Chart</h2>
+    <p class="subtitle">Enter your birth details to generate your kundli</p>
+    <div class="form-card">
+      <div class="form-row single">
+        <div>
+          <label>పేరు · Name</label>
+          <input id="jName" placeholder="మీ పేరు" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>పుట్టిన తేదీ · Date of Birth</label>
+          <input id="jDob" type="date" />
+        </div>
+        <div>
+          <label>పుట్టిన సమయం · Time of Birth</label>
+          <input id="jTime" type="time" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>పుట్టిన ప్రదేశం · Place</label>
+          <input id="jPlace" placeholder="హైదరాబాద్, ఆంధ్రప్రదేశ్" value="హైదరాబాద్" />
+        </div>
+        <div>
+          <label>లింగం · Gender</label>
+          <select id="jGender">
+            <option value="m">పురుషుడు · Male</option>
+            <option value="f">స్త్రీ · Female</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="generateJathakam()">జాతకం చూపించు · Generate Kundli</button>
+    </div>
+    <div id="jathakamResult"></div>
+  </section>
+
+  <!-- PORUTHAM -->
+  <section class="view" id="view-porutham">
+    <h2 class="section-title">పొరుత్తం · Kundli Matching</h2>
+    <p class="subtitle">Compatibility check between bride and groom · 10 పొరుత్తాలు</p>
+    <div class="form-card">
+      <div class="form-row">
+        <div>
+          <label>వరుడి నక్షత్రం · Groom's Nakshatra</label>
+          <select id="pBoyNak"></select>
+        </div>
+        <div>
+          <label>వధువు నక్షత్రం · Bride's Nakshatra</label>
+          <select id="pGirlNak"></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>వరుడి రాశి · Groom's Rasi</label>
+          <select id="pBoyRasi"></select>
+        </div>
+        <div>
+          <label>వధువు రాశి · Bride's Rasi</label>
+          <select id="pGirlRasi"></select>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="checkPorutham()">పొరుత్తం చూపించు · Check Match</button>
+    </div>
+    <div id="poruthamResult"></div>
+  </section>
+
+  <!-- NUMEROLOGY -->
+  <section class="view" id="view-numerology">
+    <h2 class="section-title">న్యూమరాలజీ · Numerology</h2>
+    <p class="subtitle">Discover your life path number, lucky numbers and more</p>
+    <div class="form-card">
+      <div class="form-row">
+        <div>
+          <label>పూర్తి పేరు · Full Name</label>
+          <input id="nName" placeholder="Full Name" />
+        </div>
+        <div>
+          <label>పుట్టిన తేదీ · Date of Birth</label>
+          <input id="nDob" type="date" />
+        </div>
+      </div>
+      <button class="btn-primary" onclick="calcNumerology()">సంఖ్యలు చూపించు · Calculate</button>
+    </div>
+    <div id="numResult"></div>
+  </section>
+
+  <!-- FESTIVALS -->
+  <section class="view" id="view-festivals">
+    <h2 class="section-title">పండుగలు · Telugu Festivals 2026</h2>
+    <p class="subtitle">Upcoming Telugu festivals and important dates</p>
+    <div class="festival-list" id="festivalList"></div>
+  </section>
+
+</div>
+
+<footer>
+  © జ్యోతిష్య సాగర్ · Demo build · Calculations are illustrative — for serious decisions consult a jyotishi.
+</footer>
+
+<script>
+/* ============ DATA ============ */
+const RASIS = [
+  { te: 'మేషం', en: 'Mesha (Aries)', icon: '♈', start: '03-21', end: '04-19', lord: 'కుజుడు', element: 'అగ్ని', symbol: 'పొట్టేలు', lucky: 'ఎరుపు' },
+  { te: 'వృషభం', en: 'Vrishabha (Taurus)', icon: '♉', start: '04-20', end: '05-20', lord: 'శుక్రుడు', element: 'భూమి', symbol: 'వృషభం', lucky: 'తెలుపు' },
+  { te: 'మిథునం', en: 'Mithuna (Gemini)', icon: '♊', start: '05-21', end: '06-20', lord: 'బుధుడు', element: 'వాయువు', symbol: 'జంట', lucky: 'ఆకుపచ్చ' },
+  { te: 'కర్కాటకం', en: 'Karkataka (Cancer)', icon: '♋', start: '06-21', end: '07-22', lord: 'చంద్రుడు', element: 'జలం', symbol: 'పీత', lucky: 'వెండి' },
+  { te: 'సింహం', en: 'Simha (Leo)', icon: '♌', start: '07-23', end: '08-22', lord: 'సూర్యుడు', element: 'అగ్ని', symbol: 'సింహం', lucky: 'బంగారు' },
+  { te: 'కన్య', en: 'Kanya (Virgo)', icon: '♍', start: '08-23', end: '09-22', lord: 'బుధుడు', element: 'భూమి', symbol: 'కన్య', lucky: 'పచ్చ' },
+  { te: 'తుల', en: 'Tula (Libra)', icon: '♎', start: '09-23', end: '10-22', lord: 'శుక్రుడు', element: 'వాయువు', symbol: 'త్రాసు', lucky: 'గులాబీ' },
+  { te: 'వృశ్చికం', en: 'Vrischika (Scorpio)', icon: '♏', start: '10-23', end: '11-21', lord: 'కుజుడు', element: 'జలం', symbol: 'తేలు', lucky: 'ఎర్రటి గోధుమ' },
+  { te: 'ధనుస్సు', en: 'Dhanus (Sagittarius)', icon: '♐', start: '11-22', end: '12-21', lord: 'గురుడు', element: 'అగ్ని', symbol: 'ధనుస్సు', lucky: 'పసుపు' },
+  { te: 'మకరం', en: 'Makara (Capricorn)', icon: '♑', start: '12-22', end: '01-19', lord: 'శని', element: 'భూమి', symbol: 'మకరం', lucky: 'నీలం' },
+  { te: 'కుంభం', en: 'Kumbha (Aquarius)', icon: '♒', start: '01-20', end: '02-18', lord: 'శని', element: 'వాయువు', symbol: 'కుంభం', lucky: 'ఆకాశ నీలం' },
+  { te: 'మీనం', en: 'Meena (Pisces)', icon: '♓', start: '02-19', end: '03-20', lord: 'గురుడు', element: 'జలం', symbol: 'చేప', lucky: 'పసుపు తెలుపు' }
+];
+
+const NAKSHATRAS = [
+  'అశ్విని','భరణి','కృత్తిక','రోహిణి','మృగశిర','ఆర్ద్ర','పునర్వసు','పుష్యమి','ఆశ్లేష',
+  'మఖ','పుబ్బ','ఉత్తర','హస్త','చిత్త','స్వాతి','విశాఖ','అనురాధ','జ్యేష్ఠ',
+  'మూల','పూర్వాషాఢ','ఉత్తరాషాఢ','శ్రవణం','ధనిష్ఠ','శతభిషం','పూర్వాభాద్ర','ఉత్తరాభాద్ర','రేవతి'
+];
+
+const TITHIS = [
+  'పాడ్యమి','విదియ','తదియ','చవితి','పంచమి','షష్టి','సప్తమి','అష్టమి',
+  'నవమి','దశమి','ఏకాదశి','ద్వాదశి','త్రయోదశి','చతుర్దశి','పూర్ణిమ'
+];
+
+const YOGAS = [
+  'విష్కంభ','ప్రీతి','ఆయుష్మాన్','సౌభాగ్య','శోభన','అతిగండ','సుకర్మ','ధృతి','శూల',
+  'గండ','వృద్ధి','ధ్రువ','వ్యాఘాత','హర్షణ','వజ్ర','సిద్ధి','వ్యతీపాత','వరీయాన్',
+  'పరిఘ','శివ','సిద్ధ','సాధ్య','శుభ','శుక్ల','బ్రహ్మ','ఇంద్ర','వైధృతి'
+];
+
+const KARANAS = ['బవ','బాలవ','కౌలవ','తైతిల','గర','వణిజ','విష్టి','శకుని','చతుష్పాద','నాగ','కింస్తుఘ్న'];
+
+const VAARAS = ['ఆదివారం','సోమవారం','మంగళవారం','బుధవారం','గురువారం','శుక్రవారం','శనివారం'];
+
+/* Daily horoscope templates per rasi (deterministic from date) */
+const HOROSCOPE_TEMPLATES = {
+  career: [
+    'ఉద్యోగంలో కొత్త అవకాశాలు లభించవచ్చు. సహోద్యోగుల సహకారం బాగుంటుంది.',
+    'వ్యాపారంలో లాభాలు ఆశించవచ్చు. కొత్త ఒప్పందాలు కుదురుతాయి.',
+    'పని భారం ఎక్కువగా ఉంటుంది. ఓపికతో పనిచేయడం మంచిది.',
+    'ఉన్నతాధికారుల ప్రశంసలు లభిస్తాయి. పదోన్నతి అవకాశాలు ఉన్నాయి.',
+    'క్రొత్త ప్రాజెక్ట్‌లు మీ చేతికి వస్తాయి. ధైర్యంగా ముందుకు సాగండి.'
+  ],
+  finance: [
+    'ఆర్థిక పరిస్థితి మెరుగుపడుతుంది. పెట్టుబడులకు అనుకూల సమయం.',
+    'అనవసరమైన ఖర్చులు పెరగవచ్చు. జాగ్రత్తగా ప్లాన్ చేసుకోండి.',
+    'పాత బాకీలు తిరిగి వసూలు అవుతాయి. ధనయోగం బాగుంది.',
+    'రియల్ ఎస్టేట్‌లో పెట్టుబడి లాభదాయకం. ఆలోచించి నిర్ణయం తీసుకోండి.',
+    'బంగారం లేదా ఆస్తి కొనుగోలుకు మంచి సమయం.'
+  ],
+  health: [
+    'ఆరోగ్యం బాగుంటుంది. యోగా, ధ్యానం చేయడం మంచిది.',
+    'జలుబు, దగ్గు బాధించవచ్చు. వాతావరణం మార్పులకు జాగ్రత్తపడండి.',
+    'మానసిక ఒత్తిడి తగ్గించుకోండి. విశ్రాంతి అవసరం.',
+    'శారీరక శ్రమ ఎక్కువ అవుతుంది. తగినంత నిద్ర అవసరం.',
+    'ఆహార నియమాలు పాటించండి. తగినంత నీరు త్రాగండి.'
+  ],
+  love: [
+    'ప్రేమ జీవితంలో సంతోషకరమైన సమయం. భాగస్వామితో ఆనందంగా గడుపుతారు.',
+    'వివాహ ప్రయత్నాలు సఫలమవుతాయి. శుభవార్త వింటారు.',
+    'జంటల మధ్య చిన్న తగాదాలు రావచ్చు. సహనం అవసరం.',
+    'కుటుంబంలో శుభకార్యాలు జరుగుతాయి. ఆనందకరమైన వాతావరణం.',
+    'క్రొత్త పరిచయాలు ప్రేమగా మారవచ్చు. మనస్సు తెరిచి ఉంచండి.'
+  ]
+};
+
+const FESTIVALS_2026 = [
+  { date: '2026-01-14', name: 'మకర సంక్రాంతి', en: 'Makara Sankranti', desc: 'సూర్యుడు మకర రాశిలో ప్రవేశం' },
+  { date: '2026-02-15', name: 'మహా శివరాత్రి', en: 'Maha Shivaratri', desc: 'శివారాధనకు పవిత్ర దినం' },
+  { date: '2026-03-19', name: 'ఉగాది', en: 'Ugadi (Telugu New Year)', desc: 'తెలుగు సంవత్సరాది · శుభకృత్ నామ సంవత్సరం' },
+  { date: '2026-03-26', name: 'శ్రీరామ నవమి', en: 'Sri Rama Navami', desc: 'శ్రీరాముని జన్మదినం' },
+  { date: '2026-04-30', name: 'అక్షయ తృతీయ', en: 'Akshaya Tritiya', desc: 'శుభకార్యాలకు అత్యంత ప్రశస్తం · బంగారం కొనుగోలుకు మంగళకరం' },
+  { date: '2026-07-09', name: 'రథ యాత్ర', en: 'Ratha Yatra', desc: 'జగన్నాథ స్వామి రథ యాత్ర' },
+  { date: '2026-08-15', name: 'వరలక్ష్మి వ్రతం', en: 'Varalakshmi Vratam', desc: 'లక్ష్మీదేవి ఆరాధనకు ప్రశస్తం' },
+  { date: '2026-08-26', name: 'శ్రీకృష్ణ జన్మాష్టమి', en: 'Krishna Janmashtami', desc: 'శ్రీకృష్ణుని జన్మోత్సవం' },
+  { date: '2026-09-15', name: 'వినాయక చవితి', en: 'Vinayaka Chavithi', desc: 'గణేశుని ఉత్సవం' },
+  { date: '2026-10-19', name: 'దసరా / విజయదశమి', en: 'Dasara / Vijayadashami', desc: 'దుర్గాదేవి జయోత్సవం' },
+  { date: '2026-11-08', name: 'దీపావళి', en: 'Deepavali', desc: 'వెలుగుల పండుగ' },
+  { date: '2026-11-25', name: 'కార్తీక పూర్ణిమ', en: 'Karthika Pournami', desc: 'శివారాధన · దీపదాన పర్వం' }
+];
+
+/* ============ TABS ============ */
+document.getElementById('tabs').addEventListener('click', e => {
+  const btn = e.target.closest('button[data-view]');
+  if (!btn) return;
+  document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('section.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + btn.dataset.view).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ============ HELPERS ============ */
+function dayIndex(date) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  const diff = date - start;
+  return Math.floor(diff / 86400000);
+}
+function pickFromList(list, seed) {
+  return list[Math.abs(seed) % list.length];
+}
+function dateToTeluguString(d) {
+  const months = ['జనవరి','ఫిబ్రవరి','మార్చి','ఏప్రిల్','మే','జూన్','జూలై','ఆగస్టు','సెప్టెంబర్','అక్టోబర్','నవంబర్','డిసెంబర్'];
+  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+/* Approximate panchangam — uses lunar age proxy from date for tithi/nakshatra */
+function getPanchangam(date) {
+  const refNewMoon = new Date(2026, 0, 18); // Jan 18 2026 ≈ amavasya
+  const lunarDays = ((date - refNewMoon) / 86400000) % 29.530;
+  const tithiIdx = Math.floor((lunarDays + 29.530) % 29.530 / 1.0);
+  const tithiName = tithiIdx < 15 ? `శుక్ల ${TITHIS[tithiIdx]}` : (tithiIdx === 29 ? 'అమావాస్య' : `కృష్ణ ${TITHIS[tithiIdx-15] || 'చతుర్దశి'}`);
+
+  const refNak = new Date(2026, 0, 1);
+  const nakDays = Math.floor((date - refNak) / 86400000);
+  const nakIdx = ((nakDays % 27) + 27) % 27;
+  const nak = NAKSHATRAS[nakIdx];
+
+  const yogIdx = ((nakDays * 2) % 27 + 27) % 27;
+  const yog = YOGAS[yogIdx];
+
+  const karIdx = ((nakDays * 3) % 11 + 11) % 11;
+  const kar = KARANAS[karIdx];
+
+  const vaara = VAARAS[date.getDay()];
+
+  // Rahu kalam by weekday (approx, 8 octants between sunrise ~6 and sunset ~18)
+  const rahuByDay = ['16:30 - 18:00','07:30 - 09:00','15:00 - 16:30','12:00 - 13:30','13:30 - 15:00','10:30 - 12:00','09:00 - 10:30'];
+  const yamaByDay = ['12:00 - 13:30','10:30 - 12:00','09:00 - 10:30','07:30 - 09:00','06:00 - 07:30','15:00 - 16:30','13:30 - 15:00'];
+  const gulikaByDay = ['15:00 - 16:30','13:30 - 15:00','12:00 - 13:30','10:30 - 12:00','09:00 - 10:30','07:30 - 09:00','06:00 - 07:30'];
+
+  return {
+    vaara, tithi: tithiName, nakshatra: nak, yoga: yog, karana: kar,
+    sunrise: '06:02', sunset: '18:24',
+    rahuKalam: rahuByDay[date.getDay()],
+    yamagandam: yamaByDay[date.getDay()],
+    gulikaKalam: gulikaByDay[date.getDay()],
+    abhijit: '11:48 - 12:36',
+    varjyam: '21:14 - 22:42',
+    durmuhurtam: '08:24 - 09:12',
+    masam: ['పుష్య','మాఘ','ఫాల్గుణ','చైత్ర','వైశాఖ','జ్యేష్ఠ','ఆషాఢ','శ్రావణ','భాద్రపద','ఆశ్వీయుజ','కార్తిక','మార్గశిర'][date.getMonth()],
+    samvatsaram: 'శుభకృత్',
+    ayanam: (date.getMonth() < 6 || (date.getMonth() === 6 && date.getDate() < 16)) ? 'ఉత్తరాయణం' : 'దక్షిణాయనం',
+    rutuvu: ['శిశిర','శిశిర','వసంత','వసంత','గ్రీష్మ','గ్రీష్మ','వర్ష','వర్ష','శరద్','శరద్','హేమంత','హేమంత'][date.getMonth()]
+  };
+}
+
+function getRasiByDate(month, day) {
+  const md = `${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+  for (const r of RASIS) {
+    if (r.start <= r.end) {
+      if (md >= r.start && md <= r.end) return r;
+    } else {
+      if (md >= r.start || md <= r.end) return r;
+    }
+  }
+  return RASIS[0];
+}
+
+function buildHoroscope(rasiIdx, date) {
+  const seed = date.getFullYear() * 1000 + dayIndex(date) + rasiIdx * 7;
+  return {
+    career: pickFromList(HOROSCOPE_TEMPLATES.career, seed),
+    finance: pickFromList(HOROSCOPE_TEMPLATES.finance, seed + 1),
+    health: pickFromList(HOROSCOPE_TEMPLATES.health, seed + 2),
+    love: pickFromList(HOROSCOPE_TEMPLATES.love, seed + 3),
+    luckyNum: ((seed % 9) + 1),
+    luckyTime: `${(((seed % 12) + 6))}:00 - ${(((seed % 12) + 7))}:30`,
+    rating: ((seed % 4) + 2) // 2-5 stars
+  };
+}
+
+/* ============ RENDER: TODAY STRIP ============ */
+function renderTodayStrip() {
+  const today = new Date();
+  const p = getPanchangam(today);
+  const cells = [
+    { l: 'తేదీ · Date', v: dateToTeluguString(today) },
+    { l: 'వారం · Day', v: p.vaara },
+    { l: 'తిథి · Tithi', v: p.tithi },
+    { l: 'నక్షత్రం · Nakshatra', v: p.nakshatra },
+    { l: 'రాహుకాలం · Rahu Kalam', v: p.rahuKalam },
+    { l: 'మాసం · Masam', v: p.masam }
+  ];
+  document.getElementById('todayStrip').innerHTML =
+    cells.map(c => `<div class="cell"><div class="lbl">${c.l}</div><div class="val">${c.v}</div></div>`).join('');
+}
+
+/* ============ RENDER: RASI GRID ============ */
+function renderRasiGrid() {
+  const grid = document.getElementById('rasiGrid');
+  grid.innerHTML = RASIS.map((r, i) => `
+    <div class="rasi-card" data-idx="${i}">
+      <div class="icon">${r.icon}</div>
+      <div class="name">${r.te}</div>
+      <div class="en">${r.en.split(' ')[0]}</div>
+      <div class="dates">${r.start.replace('-','/')} – ${r.end.replace('-','/')}</div>
+    </div>
+  `).join('');
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.rasi-card');
+    if (!card) return;
+    showRasiReading(parseInt(card.dataset.idx));
+  });
+}
+
+function showRasiReading(idx) {
+  const r = RASIS[idx];
+  const today = new Date();
+  const h = buildHoroscope(idx, today);
+  const stars = '★'.repeat(h.rating) + '☆'.repeat(5 - h.rating);
+  const html = `
+    <div class="reading-panel">
+      <div class="reading-head">
+        <div class="big-icon">${r.icon}</div>
+        <div>
+          <h3>${r.te} · ${r.en}</h3>
+          <div class="meta">${dateToTeluguString(today)} · ${stars}</div>
+        </div>
+      </div>
+      <div class="reading-body">
+        <p><strong>💼 ఉద్యోగం / వ్యాపారం:</strong> ${h.career}</p>
+        <p><strong>💰 ధనం:</strong> ${h.finance}</p>
+        <p><strong>🩺 ఆరోగ్యం:</strong> ${h.health}</p>
+        <p><strong>❤️ ప్రేమ / కుటుంబం:</strong> ${h.love}</p>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="lbl">Lord</div><div class="val">${r.lord}</div></div>
+        <div class="stat"><div class="lbl">Element</div><div class="val">${r.element}</div></div>
+        <div class="stat"><div class="lbl">Lucky Number</div><div class="val">${h.luckyNum}</div></div>
+        <div class="stat"><div class="lbl">Lucky Color</div><div class="val">${r.lucky}</div></div>
+        <div class="stat"><div class="lbl">Lucky Time</div><div class="val">${h.luckyTime}</div></div>
+      </div>
+    </div>
+  `;
+  document.getElementById('rasiReading').innerHTML = html;
+  document.getElementById('rasiReading').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ============ RENDER: ALL RASI ============ */
+function renderAllRasi() {
+  const today = new Date();
+  document.getElementById('allRasiReadings').innerHTML = RASIS.map((r, i) => {
+    const h = buildHoroscope(i, today);
+    const stars = '★'.repeat(h.rating) + '☆'.repeat(5 - h.rating);
+    return `
+      <div class="reading-panel" style="margin-top:14px">
+        <div class="reading-head">
+          <div class="big-icon">${r.icon}</div>
+          <div>
+            <h3>${r.te} · ${r.en}</h3>
+            <div class="meta">${stars} · Lucky #${h.luckyNum} · Lucky Color: ${r.lucky}</div>
+          </div>
+        </div>
+        <div class="reading-body">
+          <p><strong>💼</strong> ${h.career}</p>
+          <p><strong>💰</strong> ${h.finance}</p>
+          <p><strong>🩺</strong> ${h.health}</p>
+          <p><strong>❤️</strong> ${h.love}</p>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ============ RENDER: PANCHANGAM ============ */
+function renderPanchangam() {
+  const today = new Date();
+  const p = getPanchangam(today);
+  document.getElementById('panchSubtitle').textContent =
+    `${dateToTeluguString(today)} · ${p.vaara} · ${p.samvatsaram} నామ సంవత్సరం`;
+  const cards = [
+    { h: 'వారం', v: p.vaara, sub: 'Vaara · Day' },
+    { h: 'తిథి', v: p.tithi, sub: 'Tithi · Lunar day' },
+    { h: 'నక్షత్రం', v: p.nakshatra, sub: 'Nakshatra · Birth star' },
+    { h: 'యోగం', v: p.yoga, sub: 'Yoga' },
+    { h: 'కరణం', v: p.karana, sub: 'Karana' },
+    { h: 'మాసం', v: p.masam, sub: 'Telugu masam' },
+    { h: 'ఋతువు', v: p.rutuvu, sub: 'Season' },
+    { h: 'అయనం', v: p.ayanam, sub: 'Ayanam' },
+    { h: 'సూర్యోదయం', v: p.sunrise, sub: 'Sunrise' },
+    { h: 'సూర్యాస్తమయం', v: p.sunset, sub: 'Sunset' },
+    { h: 'రాహుకాలం', v: p.rahuKalam, sub: 'Inauspicious · avoid', cls: 'bad' },
+    { h: 'యమగండం', v: p.yamagandam, sub: 'Inauspicious · avoid', cls: 'bad' },
+    { h: 'గులికకాలం', v: p.gulikaKalam, sub: 'Inauspicious · avoid', cls: 'bad' },
+    { h: 'అభిజిత్ ముహూర్తం', v: p.abhijit, sub: 'Auspicious · best time', cls: 'good' },
+    { h: 'వర్జ్యం', v: p.varjyam, sub: 'Avoid', cls: 'bad' },
+    { h: 'దుర్ముహూర్తం', v: p.durmuhurtam, sub: 'Avoid', cls: 'bad' }
+  ];
+  document.getElementById('panchGrid').innerHTML = cards.map(c => `
+    <div class="panch-card ${c.cls || ''}">
+      <h4>${c.h}</h4>
+      <div class="v">${c.v}</div>
+      <div class="sub">${c.sub}</div>
+    </div>
+  `).join('');
+}
+
+/* ============ JATHAKAM ============ */
+function generateJathakam() {
+  const name = document.getElementById('jName').value || 'మీ';
+  const dob = document.getElementById('jDob').value;
+  const time = document.getElementById('jTime').value || '12:00';
+  const place = document.getElementById('jPlace').value || 'హైదరాబాద్';
+  if (!dob) { alert('దయచేసి పుట్టిన తేదీ నమోదు చేయండి'); return; }
+
+  const d = new Date(dob + 'T' + time);
+  const moonRasi = getRasiByDate(d.getMonth() + 1, d.getDate());
+  const moonRasiIdx = RASIS.indexOf(moonRasi);
+
+  // Lagna offset by birth hour (rough): each rasi ~2 hours
+  const hour = parseInt(time.split(':')[0], 10);
+  const lagnaOffset = Math.floor(hour / 2);
+  const lagnaIdx = (moonRasiIdx + lagnaOffset) % 12;
+  const lagna = RASIS[lagnaIdx];
+
+  const nakIdx = (dayIndex(d) + d.getFullYear()) % 27;
+  const nakshatra = NAKSHATRAS[nakIdx];
+  const padaIdx = ((d.getDate() + d.getMonth()) % 4) + 1;
+
+  // Sun sign — same as moon for sample (approx)
+  const sunIdx = (moonRasiIdx + 1) % 12;
+  const sun = RASIS[sunIdx];
+
+  // 12 houses with sample planet placements (deterministic)
+  const planets = ['సూర్య','చంద్ర','కుజ','బుధ','గురు','శుక్ర','శని','రాహు','కేతు'];
+  const planetHouses = {};
+  planets.forEach((p, i) => {
+    planetHouses[p] = ((i * 3 + d.getDate()) % 12);
+  });
+  const houseContents = Array.from({length: 12}, (_, h) => {
+    const inHouse = planets.filter(p => planetHouses[p] === h);
+    const sign = RASIS[(lagnaIdx + h) % 12];
+    return { house: h + 1, sign, planets: inHouse };
+  });
+
+  // North Indian style chart layout positions:
+  // visual grid 4x4; we'll lay out 12 houses in standard positions
+  const layout = [
+    {h: 2, r: 1, c: 2}, {h: 3, r: 1, c: 3}, {h: 4, r: 2, c: 4},
+    {h: 5, r: 3, c: 4}, {h: 6, r: 4, c: 3}, {h: 7, r: 4, c: 2},
+    {h: 8, r: 4, c: 1}, {h: 9, r: 3, c: 1}, {h: 10, r: 2, c: 1},
+    {h: 11, r: 1, c: 1}, {h: 12, r: 1, c: 4}, {h: 1, r: 2, c: 2}
+  ];
+
+  const cells = Array.from({length: 16}, () => '');
+  layout.forEach(L => {
+    const idx = (L.r - 1) * 4 + (L.c - 1);
+    const hh = houseContents[L.h - 1];
+    cells[idx] = `
+      <div class="chart-cell">
+        <div class="house-num">House ${L.h}</div>
+        <div class="planets">${hh.planets.length ? hh.planets.map(p => p.charAt(0)).join(' ') : '–'}</div>
+        <div class="sign">${hh.sign.te}</div>
+      </div>
+    `;
+  });
+
+  // Predictions
+  const predictions = [
+    `${name} గారికి ${moonRasi.te} రాశి, ${nakshatra} నక్షత్రంలో జన్మ. మీరు ${lagna.te} లగ్నం కలిగిన వ్యక్తి.`,
+    `మీ రాశ్యాధిపతి ${moonRasi.lord}. ఈ గ్రహ ప్రభావంతో మీరు ${moonRasi.element} తత్త్వాన్ని కలిగి ఉంటారు.`,
+    `${nakshatra} నక్షత్రం, ${padaIdx}వ పాదం — మీలో సహజమైన నాయకత్వ లక్షణాలు ఉంటాయి.`,
+    `లగ్న భావంలో ${lagna.te} ఉండటం వల్ల మీరు ధైర్యశాలి, స్వతంత్ర భావాలు కలిగిన వ్యక్తి.`,
+    `మీ అదృష్ట సంఖ్య: ${(moonRasiIdx + d.getDate()) % 9 + 1}, అదృష్ట రంగు: ${moonRasi.lucky}.`
+  ];
+
+  const html = `
+    <div class="result-card">
+      <h3>📜 ${name} గారి జాతక చక్రం</h3>
+      <p style="color:var(--muted); font-size:13px; margin: 0 0 8px;">
+        ${dateToTeluguString(d)} · ${time} · ${place}
+      </p>
+      <div class="stat-row">
+        <div class="stat"><div class="lbl">Rasi · రాశి</div><div class="val">${moonRasi.te}</div></div>
+        <div class="stat"><div class="lbl">Nakshatra · నక్షత్రం</div><div class="val">${nakshatra}</div></div>
+        <div class="stat"><div class="lbl">Pada · పాదం</div><div class="val">${padaIdx}</div></div>
+        <div class="stat"><div class="lbl">Lagna · లగ్నం</div><div class="val">${lagna.te}</div></div>
+        <div class="stat"><div class="lbl">Sun · సూర్యుడు</div><div class="val">${sun.te}</div></div>
+        <div class="stat"><div class="lbl">Rasi Lord</div><div class="val">${moonRasi.lord}</div></div>
+      </div>
+      <h3 style="margin-top:18px">జాతక చక్రం · Birth Chart</h3>
+      <div class="chart-grid">${cells.join('')}</div>
+      <p style="font-size:11px; text-align:center; color:var(--muted); font-family: 'Poppins', sans-serif;">
+        Planet codes: సూ=Sun · చ=Moon · కు=Mars · బు=Mercury · గు=Jupiter · శు=Venus · శ=Saturn · రా=Rahu · కే=Ketu
+      </p>
+      <h3 style="margin-top:18px">🔮 ఫలితాలు · Predictions</h3>
+      ${predictions.map(p => `<p style="line-height:1.7">${p}</p>`).join('')}
+    </div>
+  `;
+  document.getElementById('jathakamResult').innerHTML = html;
+  document.getElementById('jathakamResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ============ PORUTHAM ============ */
+function populatePorutham() {
+  ['pBoyNak','pGirlNak'].forEach(id => {
+    document.getElementById(id).innerHTML = NAKSHATRAS.map((n, i) => `<option value="${i}">${n}</option>`).join('');
+  });
+  ['pBoyRasi','pGirlRasi'].forEach(id => {
+    document.getElementById(id).innerHTML = RASIS.map((r, i) => `<option value="${i}">${r.te} · ${r.en.split(' ')[0]}</option>`).join('');
+  });
+}
+
+const PORUTHAMS = [
+  { name: 'దిన', en: 'Dina (longevity)', max: 4 },
+  { name: 'గణ', en: 'Gana (temperament)', max: 6 },
+  { name: 'మహేంద్ర', en: 'Mahendra (children)', max: 2 },
+  { name: 'స్త్రీ దీర్ఘ', en: 'Stree Dirgha', max: 1 },
+  { name: 'యోని', en: 'Yoni (compatibility)', max: 4 },
+  { name: 'రాశి', en: 'Rasi', max: 7 },
+  { name: 'రాశ్యధిపతి', en: 'Rasi adhipathi', max: 5 },
+  { name: 'వశ్య', en: 'Vashya (mutual love)', max: 2 },
+  { name: 'రజ్జు', en: 'Rajju', max: 2 },
+  { name: 'వేధ', en: 'Vedha', max: 3 }
+];
+
+function checkPorutham() {
+  const bn = parseInt(document.getElementById('pBoyNak').value);
+  const gn = parseInt(document.getElementById('pGirlNak').value);
+  const br = parseInt(document.getElementById('pBoyRasi').value);
+  const gr = parseInt(document.getElementById('pGirlRasi').value);
+
+  // Deterministic but plausible scoring
+  const seed = bn * 13 + gn * 17 + br * 23 + gr * 29;
+  let total = 0; const max = PORUTHAMS.reduce((s, p) => s + p.max, 0);
+  const rows = PORUTHAMS.map((p, i) => {
+    const got = Math.round(p.max * (((Math.sin(seed + i * 7) + 1) / 2)));
+    total += got;
+    return { ...p, got, ok: got >= Math.ceil(p.max / 2) };
+  });
+
+  const pct = Math.round((total / max) * 100);
+  const verdict = pct >= 75 ? 'అత్యుత్తమ పొరుత్తం · Excellent match'
+    : pct >= 60 ? 'మంచి పొరుత్తం · Good match'
+    : pct >= 45 ? 'మధ్యమ పొరుత్తం · Average match'
+    : 'తక్కువ పొరుత్తం · Poor match';
+
+  const deg = Math.round((total / max) * 360);
+  const html = `
+    <div class="result-card">
+      <h3>💞 పొరుత్తం ఫలితం · Match Report</h3>
+      <div class="score-display">
+        <div class="score-circle" style="--score-deg: ${deg}deg;">
+          <span class="num">${total}</span>
+          <span class="of" style="position:absolute; bottom:30px;">/ ${max}</span>
+        </div>
+        <p style="margin-top: 16px; font-size: 18px; color: var(--maroon); font-weight: 700;">${verdict}</p>
+        <p style="color:var(--muted); font-size:13px; font-family: 'Poppins', sans-serif;">
+          వరుడు: ${NAKSHATRAS[bn]} · ${RASIS[br].te} | వధువు: ${NAKSHATRAS[gn]} · ${RASIS[gr].te}
+        </p>
+      </div>
+      <ul class="porutham-list">
+        ${rows.map(r => `
+          <li>
+            <span><strong>${r.name}</strong> · <span style="color:var(--muted); font-family:'Poppins'; font-size:12px">${r.en}</span></span>
+            <span>${r.got}/${r.max} <span class="${r.ok ? 'check' : 'cross'}">${r.ok ? '✓' : '✗'}</span></span>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+  `;
+  document.getElementById('poruthamResult').innerHTML = html;
+  document.getElementById('poruthamResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ============ NUMEROLOGY ============ */
+function reduceToSingle(n) {
+  while (n > 9 && n !== 11 && n !== 22 && n !== 33) {
+    n = String(n).split('').reduce((a, b) => a + parseInt(b), 0);
+  }
+  return n;
+}
+function calcNumerology() {
+  const name = (document.getElementById('nName').value || '').trim();
+  const dob = document.getElementById('nDob').value;
+  if (!dob) { alert('దయచేసి పుట్టిన తేదీ నమోదు చేయండి'); return; }
+  const d = new Date(dob);
+
+  // Life path = sum of all DOB digits
+  const dobDigits = dob.replace(/-/g, '').split('').map(Number).reduce((a, b) => a + b, 0);
+  const lifePath = reduceToSingle(dobDigits);
+
+  // Birthday number = day reduced
+  const birthday = reduceToSingle(d.getDate());
+
+  // Destiny / expression number from name (Pythagorean)
+  const map = { a:1,j:1,s:1,b:2,k:2,t:2,c:3,l:3,u:3,d:4,m:4,v:4,e:5,n:5,w:5,f:6,o:6,x:6,g:7,p:7,y:7,h:8,q:8,z:8,i:9,r:9 };
+  const nameVal = name.toLowerCase().split('').reduce((s, ch) => s + (map[ch] || 0), 0);
+  const destiny = reduceToSingle(nameVal) || 0;
+
+  const luckyNums = [];
+  for (let i = 0; i < 4; i++) luckyNums.push(((lifePath + birthday + i * 3) % 9) + 1);
+
+  const meanings = {
+    1: 'నాయకత్వం, స్వతంత్రత, ప్రారంభాలు',
+    2: 'భాగస్వామ్యం, సహకారం, దౌత్యం',
+    3: 'సృజనాత్మకత, వ్యక్తీకరణ, ఆనందం',
+    4: 'కష్టపడి పని చేయడం, స్థిరత్వం, క్రమశిక్షణ',
+    5: 'స్వేచ్ఛ, మార్పు, సాహసం',
+    6: 'ప్రేమ, బాధ్యత, కుటుంబం',
+    7: 'తాత్త్విక చింతన, ఆధ్యాత్మికత, విశ్లేషణ',
+    8: 'అధికారం, ఆర్థిక విజయం, ఆశయాలు',
+    9: 'మానవతావాదం, దాతృత్వం, పూర్తయ్యే భావన',
+    11: 'మాస్టర్ సంఖ్య · అంతర్ దృష్టి, ప్రేరణ',
+    22: 'మాస్టర్ నిర్మాత · గొప్ప ఆశయాలు',
+    33: 'మాస్టర్ గురువు · త్యాగం, బోధన'
+  };
+
+  const html = `
+    <div class="result-card">
+      <h3>🔢 ${name || 'మీ'} గారి సంఖ్యా శాస్త్ర నివేదిక</h3>
+      <div class="num-result">
+        <div class="num-tile">
+          <div class="big">${lifePath}</div>
+          <div class="lbl">Life Path · జీవన మార్గం</div>
+        </div>
+        <div class="num-tile">
+          <div class="big">${birthday}</div>
+          <div class="lbl">Birthday · జన్మ సంఖ్య</div>
+        </div>
+        <div class="num-tile">
+          <div class="big">${destiny || '–'}</div>
+          <div class="lbl">Destiny · విధి సంఖ్య</div>
+        </div>
+      </div>
+      <div style="margin-top:16px; padding: 14px; background: var(--cream); border-radius: 12px;">
+        <p style="margin:0 0 8px"><strong>జీవన మార్గం ${lifePath}:</strong> ${meanings[lifePath] || '—'}</p>
+        ${destiny ? `<p style="margin:0"><strong>విధి సంఖ్య ${destiny}:</strong> ${meanings[destiny] || '—'}</p>` : ''}
+      </div>
+      <p style="margin-top:12px"><strong>అదృష్ట సంఖ్యలు · Lucky Numbers:</strong> ${luckyNums.join(', ')}</p>
+    </div>
+  `;
+  document.getElementById('numResult').innerHTML = html;
+  document.getElementById('numResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ============ FESTIVALS ============ */
+function renderFestivals() {
+  const today = new Date();
+  const upcoming = FESTIVALS_2026
+    .map(f => ({ ...f, dt: new Date(f.date) }))
+    .filter(f => f.dt >= new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1))
+    .sort((a, b) => a.dt - b.dt);
+  const monthsTe = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  document.getElementById('festivalList').innerHTML = upcoming.map(f => `
+    <div class="festival-row">
+      <div class="date">
+        <div class="d">${f.dt.getDate()}</div>
+        <div class="m">${monthsTe[f.dt.getMonth()]}</div>
+      </div>
+      <div>
+        <div class="name">${f.name}</div>
+        <div class="desc">${f.en} · ${f.desc}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ============ INIT ============ */
+renderTodayStrip();
+renderRasiGrid();
+renderAllRasi();
+renderPanchangam();
+populatePorutham();
+renderFestivals();
+
+// Auto-show today's rasi reading on first load
+const today = new Date();
+const todayRasi = getRasiByDate(today.getMonth() + 1, today.getDate());
+showRasiReading(RASIS.indexOf(todayRasi));
+</script>
+
+</body>
+</html>
