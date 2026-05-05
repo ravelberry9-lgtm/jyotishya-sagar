@@ -145,6 +145,7 @@ header::before{content:'🕉';position:absolute;font-size:140px;opacity:.06;righ
 .badge{display:inline-block;padding:2px 7px;border-radius:9px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif}
 .badge.auto{background:#fff4d4;color:#7a5a1a}
 .badge.user{background:#d4f4d4;color:#1a5e1a}
+.badge.spotcheck{background:#dde9ff;color:#1a4d8a}
 .sanskrit-block{background:linear-gradient(135deg,#fdf6e3,#fef8d3);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:13px 16px;margin-bottom:12px;font-size:16px;line-height:1.95;color:var(--maroon);font-weight:500;font-family:'Tiro Telugu','Noto Sans Telugu',serif}
 .bhava-block{font-size:14.5px;line-height:1.8;color:var(--ink);margin-top:5px}
 .bhava-label{display:inline-block;color:var(--card-color,var(--saffron-deep));font-weight:700;margin-right:5px;font-size:13px}
@@ -552,8 +553,12 @@ function openChapter(textId, chNum) {
 }
 
 function renderVerseCard(textId, chNum, v, textMeta) {
-  const verifClass = v.verified === 'user' ? 'user' : 'auto';
-  const verifLabel = v.verified === 'user' ? '✓ verified' : '⏳ auto';
+  let verifClass = 'auto', verifLabel = '⏳ auto';
+  if (v.verified === 'user' || v.verified === 'hardcopy') {
+    verifClass = 'user'; verifLabel = '✓ hardcopy';
+  } else if (v.verified === 'hardcopy-spotcheck') {
+    verifClass = 'spotcheck'; verifLabel = '✓ spot-check';
+  }
   const tagsHtml = v.tags ? '<div class="tag-row">' + v.tags.map(t =>
     '<span class="tag" onclick="document.getElementById(\'globalSearch\').value=\'' + t + '\';onGlobalSearch()">#' + t + '</span>'
   ).join('') + '</div>' : '';
