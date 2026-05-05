@@ -1,0 +1,68 @@
+# Keep the build context small and predictable.
+
+# Node leftovers (we're a Python app)
+node_modules/
+package.json
+package-lock.json
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Git / editor / OS
+.git/
+.gitignore
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+
+# Source-text scans (heavy, not needed in production image)
+bphs/*.jpeg
+bphs/*.jpg
+bphs/*.JPEG
+bphs/*.JPG
+bphs/Brihat*Sastri_abbyy.gz
+bphs/brihat-jataka-source.txt
+bphs/brihat-jataka-sanskrit.txt
+bphs/brihat-jataka-sanskrit.json
+bphs/brihat-jataka-english.json
+bphs/brihat-jataka-merged.json
+bphs/brihat-jataka-data-OLD-BACKUP.js
+bphs/brihajjAtakam.pdf
+
+# Reports / planning docs not needed at runtime
+*.md
+DEPLOY*.md
+GRANTHA*.md
+BJ-VERIFICATION-REPORT.md
+
+# Logs
+*.log
+npm-debug.log*
+pip-log.txt
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Local SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Test/scratch files
+test-file-state.txt
