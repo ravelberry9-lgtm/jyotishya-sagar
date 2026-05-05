@@ -554,8 +554,10 @@ function openChapter(textId, chNum) {
 
 function renderVerseCard(textId, chNum, v, textMeta) {
   let verifClass = 'auto', verifLabel = '⏳ auto';
-  if (v.verified === 'user' || v.verified === 'hardcopy') {
-    verifClass = 'user'; verifLabel = '✓ hardcopy';
+  if (v.verified === 'user') {
+    verifClass = 'user'; verifLabel = '✓ user-verified';
+  } else if (v.verified === 'sanskrit-verbatim' || v.verified === 'hardcopy') {
+    verifClass = 'user'; verifLabel = '✓ verbatim';
   } else if (v.verified === 'hardcopy-spotcheck') {
     verifClass = 'spotcheck'; verifLabel = '✓ spot-check';
   }
