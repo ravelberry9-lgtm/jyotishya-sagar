@@ -15,11 +15,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy app code
 COPY . /app/
 
+# Strip any Windows CRLF line endings on the start script (Windows git
+# tends to insert \r which breaks /bin/sh) and make it executable.
+RUN sed -i 's/\r$//' /app/start.sh && chmod +x /app/start.sh
+
 # Default port; Railway overrides at runtime via $PORT.
 ENV PORT=8080
 EXPOSE 8080
 
-# Explicit /bin/sh -c form so $PORT actually expands at container start.
-# (Multi-line backslash + bare `CMD` was being misinterpreted, leaving gunicorn
-# with the literal string '$PORT' as the bind value.)
-CMD ["/bin/sh", "-c", "exec gunicorn app:app --bind 0.0.0.0:${PORT:-8080} --workers 1 --threads 2 --timeout 120 --graceful-timeout 30 --access-logfile - --error-logfile - --log-level info"]
+# Run via /bin/sh explicitly so the shebang line can't matter,
+# and so this works even if start.sh somehow has CRLF bytes.
+CMD ["/bin/sh", "/app/start.sh"]
