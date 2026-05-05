@@ -2,7 +2,9 @@
 <html lang="te">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#d94f00">
+<link rel="manifest" href="manifest.json">
 <title>జ్యోతిష్య సాగర్ — Telugu Vedic Astrology</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -379,12 +381,15 @@ footer{text-align:center;padding:30px 20px;color:var(--muted);font-size:11px;
 <body>
 <header>
   <div class="container">
-    <div class="brand">
-      <div class="om">🕉</div>
-      <div>
-        <h1>జ్యోతిష్య సాగర్ <span style="font-size:11px;background:rgba(255,255,255,.18);padding:2px 8px;border-radius:10px;margin-left:8px;font-family:'Poppins'">v1.0</span></h1>
-        <div class="tag">తెలుగు వైదిక జ్యోతిష్యం · BPHS-grounded · Telugu-first</div>
+    <div class="brand-row" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div class="brand">
+        <div class="om">🕉</div>
+        <div>
+          <h1>జ్యోతిష్య సాగర్ <span style="font-size:11px;background:rgba(255,255,255,.18);padding:2px 8px;border-radius:10px;margin-left:8px;font-family:'Poppins'">v1.0</span></h1>
+          <div class="tag">తెలుగు వైదిక జ్యోతిష్యం · BPHS-grounded · Telugu-first</div>
+        </div>
       </div>
+      <button id="pwaInstallBtn" type="button" aria-label="Install app" style="background:#fff;color:var(--saffron-deep);border:0;padding:9px 16px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.15);white-space:nowrap;display:inline-flex;align-items:center;gap:6px">⬇ Install App</button>
     </div>
     <nav class="tabs" id="tabs">
       <button data-view="jathakam" class="active">జాతకం</button>
@@ -3560,6 +3565,14 @@ if(formCard){const saveBtnHtml='<div id="chartLib"></div><button class="btn-seco
 function _updateSaveBtn(){const sb=document.getElementById('saveChartBtn');if(sb)sb.style.display=document.body.classList.contains('expert-mode')?'block':'none';}
 _updateSaveBtn();
 ['modeFamily','modeExpert'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('click',()=>setTimeout(_updateSaveBtn,50));});
+</script>
+<script src="pwa-install.js" defer></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
 </script>
 </body>
 </html>

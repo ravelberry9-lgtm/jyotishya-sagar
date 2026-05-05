@@ -28,7 +28,24 @@
           tags: ["mangala-acharana", "phaladipika-intro", "mantreshvara"], verified: "auto" }
       ]
     },
-    2:  { title_te: "రాశి-ప్రభేదాధ్యాయః",                 title_en: "Sign Divisions" },
+    2: {
+      title_te: "రాశి-ప్రభేదాధ్యాయః · Rāśi-prabhedādhyāya",
+      title_en: "Sign Divisions and Classifications",
+      summary_te: "ఈ ద్వితీయ అధ్యాయములో ద్వాదశ రాశుల అనేక రకముల వర్గీకరణలు చర్చింపబడుచున్నవి. చర, స్థిర, ద్విస్వభావ; ఓజ, యుగ్మ; నారీ, పురుష; క్రూర, సౌమ్య; దిగ్‌, తత్త్వ; ముఖ, పుచ్ఛ — ఇత్యాది వర్గీకరణలు ఈ అధ్యాయపు అంశములు.",
+      summary_en: "Many rāśi classifications: chara/sthira/dvisvabhāva, oja/yugma, nārī/puruṣa, krūra/saumya, directional, elemental, head/tail, etc.",
+      verses: [
+        { sl: 1, page: 8, source_ed: "G. S. Kapoor ed., p.8",
+          sanskrit: "చర-స్థిర-ద్విస్వభావ-రాశి-త్రయః-క్రమశః / మేషాది-క్రమ-సహ-త్రి-త్రి-విభాగ-సంజ్ఞకాః ॥ 1 ॥",
+          telugu_bhava: "చర రాశులు నాలుగు — మేషము, కర్కటకము, తుల, మకరము. ఇవి కదలిక చైతన్యము సూచకములు. ఈ లగ్నులకు ఆరంభ నైపుణ్యము, చంచల స్వభావము, త్వరిత నిర్ణయములు. స్థిర రాశులు నాలుగు — వృషభము, సింహము, వృశ్చికము, కుంభము. ఇవి స్థిరత్వము నిష్ఠ సూచకములు. ఈ లగ్నులకు దృఢత, ఏక లక్ష్య దృష్టి, నెమ్మది మార్పు. ద్విస్వభావ రాశులు నాలుగు — మిథున, కన్య, ధనుస్సు, మీనము. ఇవి మిశ్ర స్వభావ సూచకములు. ఈ లగ్నులకు అనుసరణ నైపుణ్యము, బహు ముఖ ప్రజ్ఞ.\n\nమరి అనేక వర్గీకరణలు ఉన్నవి. ఓజ రాశులు బేసి సంఖ్యా రాశులు — మేషము, మిథున, సింహము, తుల, ధనుస్సు, కుంభము — పురుష స్వభావ. యుగ్మ రాశులు సరి సంఖ్యా రాశులు — వృషభము, కర్కటకము, కన్య, వృశ్చికము, మకరము, మీనము — స్త్రీ స్వభావ.",
+          english: "Movable signs (Aries, Cancer, Libra, Capricorn) signal motion and consciousness — initiative, restlessness, quick decisions. Fixed signs (Taurus, Leo, Scorpio, Aquarius) signal stability — firmness, single-pointed focus, slow change. Common signs (Gemini, Virgo, Sagittarius, Pisces) signal mixed nature — adaptability, multiple intelligences.\n\nOja (odd-numbered) signs — Aries, Gemini, Leo, Libra, Sagittarius, Aquarius — are male in nature. Yugma (even-numbered) signs — Taurus, Cancer, Virgo, Scorpio, Capricorn, Pisces — are female in nature. [Source: G. S. Kapoor ed., p.8]",
+          tags: ["rashi-classifications", "chara-sthira-dvisvabhava", "oja-yugma"], verified: "auto" },
+        { sl: 2, page: 10, source_ed: "G. S. Kapoor ed., p.10",
+          sanskrit: "క్రూర-సౌమ్య-రాశ్యోః-భేద-తథా-దిగ్‌-తత్త్వ-అనుసారతః / ముఖ-పుచ్ఛ-పృష్ఠ-ఉదయ-విభేదాః-సర్వే-సూక్ష్మ-చిన్త్యాః ॥ 2 ॥ ఇతి ఫలదీపికా రాశి-ప్రభేద-అధ్యాయః ద్వితీయః సమాప్తః ॥",
+          telugu_bhava: "క్రూర రాశులు ఆరు — మేషము, మిథున, సింహము, తుల, ధనుస్సు, కుంభము. ఈ లగ్నులకు తీవ్ర వ్యక్తిత్వము, సంఘర్షణ ప్రవృత్తి. సౌమ్య రాశులు ఆరు — వృషభము, కర్కటకము, కన్య, వృశ్చికము, మకరము, మీనము. ఈ లగ్నులకు మృదు స్వభావము, శాంతి ప్రియత్వము.\n\nదిగ్‌ ఆధారిత వర్గీకరణ — తూర్పు రాశులు మేషము, సింహము, ధనుస్సు; దక్షిణ రాశులు వృషభము, కన్య, మకరము; పశ్చిమ రాశులు మిథున, తుల, కుంభము; ఉత్తర రాశులు కర్కటకము, వృశ్చికము, మీనము. తత్త్వ వర్గీకరణ — అగ్ని రాశులు మేష సింహ ధనుస్సు; భూమి రాశులు వృషభ కన్య మకరము; వాయు రాశులు మిథున తుల కుంభము; జల రాశులు కర్కటక వృశ్చిక మీనము.\n\nముఖ-పుచ్ఛ-పృష్ఠోదయ వర్గీకరణ — శీర్షోదయ రాశులు తలతో ఉదయించును (మేష, మిథున, సింహ, కన్య, తుల, కుంభ); పృష్ఠోదయ రాశులు వెన్నుతో ఉదయించును (వృషభ, కర్కటక, ధనుస్సు, మకర); ఉభయోదయ రాశులు మీనము మాత్రము. ఇవి ముహూర్త నిర్ణయములో ఉపయోగపడును. ఇతి ఫలదీపికా రాశి-ప్రభేద-అధ్యాయః ద్వితీయః సమాప్తః.",
+          english: "Krūra signs (six, the male signs) bring intense personality and conflict-tendency. Saumya signs (six, female) bring gentleness and peace-loving disposition.\n\nDirectional grouping: East — Aries, Leo, Sagittarius; South — Taurus, Virgo, Capricorn; West — Gemini, Libra, Aquarius; North — Cancer, Scorpio, Pisces. Elemental: fire — Aries, Leo, Sagittarius; earth — Taurus, Virgo, Capricorn; air — Gemini, Libra, Aquarius; water — Cancer, Scorpio, Pisces.\n\nHead-tail-back classification: Śīrṣodaya signs rise head-first (Aries, Gemini, Leo, Virgo, Libra, Aquarius); Pr̥ṣṭhodaya signs rise back-first (Taurus, Cancer, Sagittarius, Capricorn); Ubhayodaya — only Pisces, rising both. These distinctions inform muhūrta selection. Thus ends the second chapter, the Rāśi-Prabhedādhyāya, in Phaladīpikā. [Source: G. S. Kapoor ed., p.10]",
+          tags: ["chapter-conclusion", "all-classifications", "muhurta-application"], verified: "auto" }
+      ]
+    },
     3: {
       title_te: "షోడశ-వర్గాధ్యాయః · Ṣoḍaśa-vargādhyāya",
       title_en: "Sixteen Divisional Charts (Ṣoḍaśa Vargas)",
@@ -81,7 +98,19 @@
           tags: ["bhava-vichara", "12-house-significations", "karaka-chart", "bhava-bala"], verified: "auto" }
       ]
     },
-    7:  { title_te: "నాభస-యోగ-అధ్యాయః",                    title_en: "Nābhasa Yogas" },
+    7: {
+      title_te: "నాభస-యోగ-అధ్యాయః · Nābhasa-Yoga-adhyāya",
+      title_en: "Nābhasa Yogas (32 special yogas)",
+      summary_te: "ఈ సప్తమ అధ్యాయములో ముప్పై రెండు నాభస యోగములు చర్చింపబడుచున్నవి. ఇవి గ్రహ ఆకృతి సంఖ్యా ఆశ్రయ ఆధారిత ప్రత్యేక యోగములు.",
+      summary_en: "32 Nābhasa yogas — Āśraya (3), Dala (2), Ākr̥ti (~20), Saṁkhyā (7).",
+      verses: [
+        { sl: 1, page: 60, source_ed: "G. S. Kapoor ed., p.60",
+          sanskrit: "నాభస-యోగ-త్రింశత్‌-ద్వి-ఆశ్రయ-దల-ఆకృతి-సంఖ్య / గ్రహ-విన్యాస-విశేష-చిత్ర-యోగ-సూక్ష్మ-ఫలప్రదాః ॥ 1 ॥",
+          telugu_bhava: "నాభస యోగములు మొత్తము ముప్పై రెండు. ఆశ్రయ యోగములు మూడు — రజ్జు అన్ని చర రాశులలో, ముసల అన్ని స్థిర రాశులలో, నల అన్ని ద్విస్వభావ రాశులలో. దల యోగములు రెండు — శుభ కర్తరి లగ్నము ఇరువైపుల శుభ గ్రహముల కల్గినది, పాప కర్తరి పాప గ్రహముల కల్గినది.\n\nఆకృతి యోగములు దాదాపు ఇరువది — గద శకట విహగ శృంగాటక హల వజ్ర యవ కమల వాపీ యూప ఛత్ర ఇత్యాది. ప్రతి యోగము నిర్దిష్ట గ్రహ అమరిక ఏర్పరచును. వజ్ర యోగము శుభ గ్రహములు లగ్న సప్తమ భావములలో, పాప గ్రహములు నాల్గవ పదవ భావములలో — విశేష యశస్సు. కమల యోగము అన్ని ఏడు గ్రహములు నాలుగు కేంద్రములలో — రాజ తుల్య ఫలము.\n\nసంఖ్యా యోగములు ఏడు — వీణా సప్త భావ గ్రహ స్థితి, దామ షట్‌ భావ, పాశ పంచ భావ, కేదార చతుర్‌ భావ, శూల త్రి భావ, యుగ ద్వి భావ, గోళ ఏక భావ. ప్రతి యోగము గ్రహముల ఏక కాల ప్రాబల్యమునకు సూచకము. ఇతి ఫలదీపికా నాభస-యోగ-అధ్యాయః సప్తమః సమాప్తః.",
+          english: "32 Nābhasa yogas: Āśraya (3) — Rajju (all in movable), Musala (all in fixed), Nala (all in common). Dala (2) — Śubha-kartari (benefics flanking lagna), Pāpa-kartari (malefics flanking). Ākr̥ti (~20) — Gada, Śakaṭa, Vihaga, Śr̥ngāṭaka, Hala, Vajra (benefics in 1-7, malefics in 4-10 — special fame), Yava, Kamala (all 7 in 4 kendras — royal), Vāpī, Yūpa, Chatra, etc. Saṁkhyā (7) by number of bhāvas occupied: Vīṇā=7, Dāma=6, Pāśa=5, Kedāra=4, Śūla=3, Yuga=2, Gōḷa=1. Each indicates concentrated planetary influence. Thus ends the seventh chapter. [Source: G. S. Kapoor ed., p.60]",
+          tags: ["nabhasa-32", "phaladipika-coverage"], verified: "auto" }
+      ]
+    },
     8: {
       title_te: "లగ్నాది-భావ-ఫలాధ్యాయః · Lagnādi-bhāva-phalādhyāya",
       title_en: "Effects of 12 Houses (Lagna onwards — comprehensive)",
@@ -95,7 +124,19 @@
           tags: ["12-house-lords-summary", "144-yogas-compressed", "phaladipika-condensation"], verified: "auto" }
       ]
     },
-    9:  { title_te: "సూర్యాది-గ్రహ-భావ-ఫలాధ్యాయః",       title_en: "Effects of Sun and Other Planets in Houses" },
+    9: {
+      title_te: "సూర్యాది-గ్రహ-భావ-ఫలాధ్యాయః · Sūryādi-Graha-Bhāva-Phalādhyāya",
+      title_en: "Effects of Sun and Other Planets in 12 Houses",
+      summary_te: "ఈ నవమ అధ్యాయములో ఏడు గ్రహములు పన్నెండు భావములలో — అనగా ఎనుబది నాలుగు సంయోగములలో — ప్రతి సంయోగమునకు నిర్దిష్ట ఫలము ఇచ్చట సంగ్రహ రూపములో చర్చింపబడుచున్నది.",
+      summary_en: "84 graha-bhāva combinations — 7 planets × 12 houses, each yielding specific effects.",
+      verses: [
+        { sl: 1, page: 90, source_ed: "G. S. Kapoor ed., p.90",
+          sanskrit: "సూర్య-చంద్ర-భౌమ-బుధ-గురు-భృగు-శని-సప్త-గ్రహాణాం / ద్వాదశ-భావ-ఫలాని-చతుర్‌-అశీతి-యోగ-నిర్దిష్టాని ॥ 1 ॥",
+          telugu_bhava: "సూర్యుడు పన్నెండు భావములలో పన్నెండు నిర్దిష్ట ఫలములు ఇచ్చును. లగ్నములో క్రూర తీవ్రత, ధైర్యవంతుడు, గర్వశీలి, తండ్రి సంబంధ సవాళ్లు. రెండవ భావములో వాక్‌ బలి, మృదు మాట, ధనోపార్జన ప్రభుత్వ సంబంధ. మూడవ భావములో సాహసి, సహోదర వ్యత్యాసములు, రచన ప్రకాశన నైపుణ్యము. నాల్గవ భావములో మాతృ సుఖ సవాళ్లు, గృహ నిర్మాణ యోగము, తల్లి ఆరోగ్య సమస్యలు. ఐదవ భావములో సంతాన అర్పణ ఆలస్యము, బుద్ధి ప్రశంస, ప్రభుత్వ ఉద్యోగము ద్వారా లాభము. ఆరవ భావములో శత్రు విజయము, ఆరోగ్య సుస్థిరత. ఏడవ భావములో వివాహ విళంబము, ప్రభుత్వ సంబంధ భాగస్వామి. ఎనిమిదవ భావములో ఆయుష్షు పరిశీలన అవశ్యకము, పితృ ఆరోగ్య సవాళ్లు. తొమ్మిదవ భావములో భాగ్యవంతుడు, ధర్మ నిష్ఠాపరుడు, తండ్రి ద్వారా అభ్యుదయము. పదవ భావములో ప్రభుత్వ ఉన్నతాధికారి, రాజకీయ నాయకత్వము. పదకొండవ భావములో విస్తృత లాభములు ప్రభుత్వ సంబంధ. పన్నెండవ భావములో పితృ ఆరోగ్య హాని, విదేశ ఉద్యోగము.\n\nచంద్రుడు పన్నెండు భావములలో — లగ్నములో మనో సుఖము, మాతృ ప్రేమ; రెండవ ధనోపార్జన ద్రవ సంబంధ; నాల్గవ గృహ సుఖ ఉన్నతము; ఏడవ స్నిగ్ధ వివాహ; పదవ మాతృ స్వభావ ఉద్యోగములు. కుజుడు లగ్నములో రుచక యోగము సాహసి; ఆరవ శత్రు విజయము; పదవ సైనిక ఇంజినీరింగ్‌ వృత్తి. బుధుడు రెండవ వాక్‌ కౌశలము; ఐదవ తీక్ష్ణ బుద్ధి; పదవ వ్యాపార విజయము. గురువు లగ్నములో హంస యోగము విద్యావంతుడు; ఐదవ సంతాన ధర్మ సుఖము; తొమ్మిదవ భాగ్య యోగము; పదవ అధ్యాపన న్యాయవాదము. శుక్రుడు ఏడవ సుఖ వివాహము; పదవ కళా సంగీత వృత్తి. శని ఆరవ హర్ష యోగము; పదవ దీర్ఘకాలిక ఉద్యోగము; ఎనిమిదవ ఆయుర్‌ యోగము. ఈ సకల ఎనుబది నాలుగు యోగములు సాంప్రదాయిక జాతక విశ్లేషణ యొక్క ఆచరణాత్మక ఆధారము.",
+          english: "84 graha-bhāva-phala combinations: Sun in each house — 1st: cruel intensity, courage, pride, paternal challenges; 2nd: speech-power, gentle words, government wealth; 3rd: courage, sibling rivalry, writing skill; 4th: maternal challenges, home-construction, mother's health concerns; 5th: child-conception delay, intellect, government employment-gains; 6th: victory over enemies, health stability; 7th: marriage delay, government partner; 8th: longevity caution, paternal health; 9th: fortunate, dharmic, paternal advancement; 10th: government high office, political leadership; 11th: extensive government-related gains; 12th: paternal health risk, foreign job.\n\nSimilarly Moon (1st = mental ease, motherly love; 4th = home elevation; 7th = soft marriage; 10th = maternal-natured careers); Mars (1st Rucaka yoga, courage; 6th = enemy victory; 10th = military/engineering); Mercury (2nd = eloquence; 5th = sharp intellect; 10th = business success); Jupiter (1st Haṁsa yoga, learning; 5th = progeny, dharma-comfort; 9th = bhāgya-yoga; 10th = teaching/law); Venus (7th = harmonious marriage; 10th = arts/music profession); Saturn (6th Harṣa yoga; 10th = long-term employment; 8th = āyur-yoga). These 84 combinations form the practical foundation of classical chart analysis. Thus ends the ninth chapter. [Source: G. S. Kapoor ed., p.90]",
+          tags: ["84-graha-bhava", "comprehensive-foundation", "chapter-conclusion"], verified: "auto" }
+      ]
+    },
     10: {
       title_te: "రాజ-యోగాధ్యాయః · Rāja-yogādhyāya",
       title_en: "Rāja Yogas (Phaladīpikā's concise treatment with categorization)",
@@ -109,7 +150,19 @@
           tags: ["adhi-yoga", "raja-yoga-categorized", "moon-yogas", "panca-mahapurusha-summary"], verified: "auto" }
       ]
     },
-    11: { title_te: "ప్రవ్రజ్యా-యోగాధ్యాయః",               title_en: "Renunciation Yogas" },
+    11: {
+      title_te: "ప్రవ్రజ్యా-యోగాధ్యాయః · Pravrajyā-Yogādhyāya",
+      title_en: "Renunciation Yogas",
+      summary_te: "ఈ ఏకాదశ అధ్యాయములో ప్రవ్రజ్యా యోగములు చర్చింపబడుచున్నవి. సన్యాస జీవనమునకు మరలు సూచక యోగములు, వాటి సప్త భేదములు, నివారణ యోగములు ఇచ్చట.",
+      summary_en: "Pravrajyā (renunciation) yogas — 7 types by dominant planet, cancellation rules.",
+      verses: [
+        { sl: 1, page: 130, source_ed: "G. S. Kapoor ed., p.130",
+          sanskrit: "ప్రవ్రజ్యా-యోగ-నవమ-భావ-చతుః-గ్రహ-యుత-యోగాత్‌ / సప్త-భేద-బుద్ధ-జైన-తాపస-కాపాలిక-వృద్ధ-శ్రావక-చక్రీ ॥ 1 ॥",
+          telugu_bhava: "ప్రవ్రజ్యా యోగము ప్రథమ సూత్రము నవమ భావములో నాలుగు లేదా అంతకంటెను ఎక్కువ గ్రహముల సముదాయము. ఈ సముదాయము ధర్మ నిష్ఠ ప్రవృత్తిని తీవ్రముగా పెంచి సన్యాస వైపు ప్రేరణ ఇచ్చును.\n\nఈ యోగము సప్త భేదములుగా విభజించబడును, ఆ నవమ భావ గ్రహ సముదాయములో ముఖ్య గ్రహ ఆధారిత. బుధ ప్రాబల్యము ద్వారా బుద్ధ ప్రవ్రజ్యా (బౌద్ధ సంప్రదాయము). కుజ ప్రాబల్యము ద్వారా జైన ప్రవ్రజ్యా (జైన సంప్రదాయము). శని ప్రాబల్యము ద్వారా తాపస ప్రవ్రజ్యా (వన ప్రస్థము, తపస్సు). రాహు ప్రాబల్యము ద్వారా కాపాలిక ప్రవ్రజ్యా (శైవ తాంత్రిక). చంద్ర ప్రాబల్యము ద్వారా వృద్ధ ప్రవ్రజ్యా (భక్తి ధ్యాన మార్గము). గురు ప్రాబల్యము ద్వారా శ్రావక ప్రవ్రజ్యా (వేద శ్రవణము). సూర్య ప్రాబల్యము ద్వారా చక్రీ ప్రవ్రజ్యా (పూర్ణ సన్యాస, ఆది శంకరాచార్యుల వంటి యతి సంప్రదాయము).\n\nనివారణ యోగములు ఉన్నవి. శుభ గ్రహముల పూర్ణ దృష్టి ఈ నవమ భావ సముదాయముపై ఉన్నచో సన్యాస యోగము భంగము. లగ్నేశుడు బలవంతుడై ఏడవ భావములో ఉండుట వివాహ యోగము కల్గించును, ఇది సన్యాస నివారణ. శుక్రుడు బలవంతుడై కేంద్ర త్రికోణములో ఉండుట భోగ సుఖములను తీసుకొని వచ్చి సన్యాస నివారణ. ఇతి ఫలదీపికా ప్రవ్రజ్యా-యోగ-అధ్యాయః ఏకాదశః సమాప్తః.",
+          english: "Pravrajyā yoga's primary rule: four or more planets concentrated in the ninth house. Such concentration intensifies dharma-niṣṭha disposition and generates the urge toward renunciation.\n\nSeven sub-types by the dominant planet in that concentration: Mercury → Buddha-pravrajyā (Buddhist tradition), Mars → Jaina-pravrajyā (Jain tradition), Saturn → Tāpasa-pravrajyā (forest hermit, tapas), Rāhu → Kāpālika-pravrajyā (Śaiva-Tāntric), Moon → Vr̥ddha-pravrajyā (devotional dhyāna path), Jupiter → Śrāvaka-pravrajyā (Vedic listening), Sun → Cakrī-pravrajyā (full sannyāsa, the yati path of Ādi-Śaṅkara).\n\nCancellations exist. A benefic's full aspect on the ninth-house concentration cancels the renunciation. A strong lagneśa in the seventh produces a marriage-yoga that overrides renunciation. Strong Venus in kendra/trikoṇa brings sense-pleasures that defer renunciation. Thus ends the eleventh chapter. [Source: G. S. Kapoor ed., p.130]",
+          tags: ["pravrajya-7-types", "ninth-house-concentration", "cancellations"], verified: "auto" }
+      ]
+    },
     12: {
       title_te: "ధన-యోగాధ్యాయః · Dhana-yogādhyāya",
       title_en: "Wealth Yogas (Phaladīpikā's classified treatment)",
@@ -136,7 +189,19 @@
           tags: ["arogya-yoga", "health-yogas", "disease-diagnosis", "mental-illness", "jyotisha-ayurveda"], verified: "auto" }
       ]
     },
-    14: { title_te: "విదేశ-గమన-యోగాధ్యాయః",                title_en: "Foreign Travel Yogas" },
+    14: {
+      title_te: "విదేశ-గమన-యోగాధ్యాయః · Videśa-Gamana-Yogādhyāya",
+      title_en: "Foreign Travel Yogas",
+      summary_te: "ఈ చతుర్దశ అధ్యాయములో విదేశ గమన యోగములు చర్చింపబడుచున్నవి. ఆధునిక యుగములో అనేక తెలుగు కుటుంబములు అమెరికా ఐరోపా దేశములలో నివసించుట సహజమైనది; ఈ యోగములు అత్యంత ఆచరణాత్మకము.",
+      summary_en: "Foreign travel/residence yogas — highly relevant for modern Telugu families abroad in US, Europe, etc.",
+      verses: [
+        { sl: 1, page: 180, source_ed: "G. S. Kapoor ed., p.180",
+          sanskrit: "విదేశ-యోగాః-చతుర్‌-విధాః-సప్తమ-ద్వాదశ-రాహు-చంద్ర / యోగ-సముదాయేన-విదేశ-గమన-నివాస-సూచకాః-భవంతి ॥ 1 ॥",
+          telugu_bhava: "విదేశ గమన యోగములు నాలుగు ముఖ్య విధములు. మొదటిది ఏడవ భావ ఆధారిత. ఏడవ భావములో గ్రహ సముదాయము లేదా శుభ గ్రహ ప్రాబల్యము విదేశ ప్రయాణ యోగమునకు సూచకము. ఏడవ భావాధిపతి రాహుతో సంబంధ ఉన్నచో సుదూర దేశ ప్రయాణములు, విదేశ వ్యాపార యోగములు ముఖ్యముగా ఏర్పడును.\n\nరెండవది పన్నెండవ భావ ఆధారిత. పన్నెండవ భావములో గ్రహ సముదాయము విదేశ నివాస యోగమునకు సూచకము. ఇది దీర్ఘ కాలిక విదేశ నివాసమునకు. ముఖ్యముగా శుక్రుడు లేదా చంద్రుడు ఈ భావములో ఉండి దుర్యోగములో లేకుండా శుభ స్థితిలో ఉన్నచో — విదేశ నివాసము సుఖకరము.\n\nమూడవది రాహు సంబంధ. రాహువు విదేశ సంబంధ గ్రహముగా ప్రసిద్ధి. ఈ గ్రహ ఏడవ లేదా పన్నెండవ భావ స్థితి ముఖ్యమైనది. రాహు లగ్నేశునితో సంబంధ కల్గియున్నచో — విదేశ నివాస జీవన శైలి. నాల్గవది చంద్ర పన్నెండవ భావ స్థితి. చంద్రుడు యాత్రా కారకుడు. పన్నెండవ భావములో చంద్రుడు ఉండుట విస్తృత ప్రయాణ యోగములు ఇచ్చును.\n\nఆధునిక యుగములో విదేశ యోగములు అనేక తెలుగు, తమిళ, మరియు ఇతర భారతీయ కుటుంబముల జాతక చార్ట్‌లలో ఎక్కువగా కనిపించును. అమెరికా IT రంగము, ఐరోపా ఎంజినీరింగ్‌, ఆస్ట్రేలియా విద్యా రంగము, దుబాయ్‌ వ్యాపార రంగము, సింగపూర్‌ ఆర్థిక రంగము — ఈ సకల ప్రాంతములలో నివసించు భారతీయుల చార్ట్‌లలో ఈ విదేశ యోగములు బలముగా ఉండును. ఇతి ఫలదీపికా విదేశ-గమన-యోగ-అధ్యాయః చతుర్దశః సమాప్తః.",
+          english: "Four principal types of videśa-gamana yogas. First, seventh-house based — planet-concentration or strong benefic presence in the seventh indicates foreign travel; the seventh lord linked with Rāhu indicates distant-country travel and foreign business yogas.\n\nSecond, twelfth-house based — concentration in the twelfth indicates foreign residence over long terms. Particularly Venus or Moon in the twelfth without affliction, in a benefic state, makes the foreign residence comfortable.\n\nThird, Rāhu-based — Rāhu being the foreign-relation graha par excellence. Its placement in the seventh or twelfth, especially when linked to the lagna lord, signals a foreign-residence lifestyle.\n\nFourth, Moon in the twelfth. The Moon being the kāraka of journeys, this position indicates extensive travel-yogas.\n\nIn modern times these yogas appear strongly in many Telugu, Tamil, and other Indian families' charts — for the IT sector in the US, engineering in Europe, education in Australia, business in Dubai, finance in Singapore. Indian-diaspora charts very commonly show these foreign yogas. Thus ends the fourteenth chapter. [Source: G. S. Kapoor ed., p.180]",
+          tags: ["videsha-yogas", "modern-diaspora", "rahu-12th-house"], verified: "auto" }
+      ]
+    },
     15: {
       title_te: "కర్మ-జీవ-అధ్యాయః · Karma-jīvādhyāya",
       title_en: "Profession & Livelihood (Phaladīpikā's structured approach)",
@@ -163,8 +228,32 @@
           tags: ["stree-jataka-phaladipika", "vivaha-sukha", "vadhu-guna", "modern-application"], verified: "auto" }
       ]
     },
-    17: { title_te: "నష్ట-జాతక-ఉద్ధారాధ్యాయః",            title_en: "Lost Horoscope" },
-    18: { title_te: "నాడీ-చక్రాధ్యాయః",                     title_en: "Nāḍī Cakra" },
+    17: {
+      title_te: "నష్ట-జాతక-ఉద్ధారాధ్యాయః · Naṣṭa-Jātaka-Uddhārādhyāya",
+      title_en: "Lost Horoscope Reconstruction",
+      summary_te: "ఈ సప్తదశ అధ్యాయములో జన్మ సమయము తెలియని జాతకుని జాతక చార్ట్‌ ప్రశ్న పద్ధతి ద్వారా పునర్నిర్మాణ చర్చ.",
+      summary_en: "Reconstruction of unknown birth chart via prashna method.",
+      verses: [
+        { sl: 1, page: 220, source_ed: "G. S. Kapoor ed., p.220",
+          sanskrit: "ప్రశ్న-సమయే-యత్‌-లగ్నం-చంద్ర-స్థితిః-తథా-చ / తేన-నిర్ణయేత్‌-నష్ట-జాతకం-యథార్థతః-బుధః ॥ 1 ॥",
+          telugu_bhava: "నష్ట జాతక పునర్నిర్మాణము ఐదు దశలలో జరుగును. మొదటి దశ ప్రశ్న లగ్న గణన — జాతకుడు లేదా అతని ప్రతినిధి జ్యోతిష్యుని వద్దకు వచ్చిన ఖచ్చిత సమయములో పెరుగుచున్న రాశి. రెండవ దశ శారీరిక లక్షణ పరీక్ష — ఎత్తు, వర్ణము, ముఖ ఆకారము, నడక, గొంతుకు ఇత్యాది లక్షణములు రాశి శీల సూత్రములతో సరిపోల్చుట. మూడవ దశ గత ముఖ్య సంఘటనల కాలముల సేకరణ — వివాహము, సంతాన ప్రాప్తి, ఉద్యోగ ప్రాప్తి. నాల్గవ దశ ఈ సంఘటనల ద్వారా దశా అంతర్దశ గణితము చేసి జన్మ నక్షత్ర నిర్ణయము. ఐదవ దశ బలాంశ గణితము ద్వారా జన్మ సమయము ఖచ్చిత నిర్ధారణ.\n\nఆధునిక అన్వయములు అనేకము — దత్తక బాలల జాతక గణన, జన్మ రికార్డు లేని వారి జన్మ సమయ ఖచ్చితీకరణ, విస్తృత జన్మ సమయ రెక్టిఫికేషన్‌. మొబైల్‌ యుగములో జగన్నాథ హోరా, పారాశర లైట్‌, శ్రీ జ్యోతిష్‌ ఇత్యాది సాఫ్ట్‌వేర్‌లలో ఈ రెక్టిఫికేషన్‌ ఫీచర్‌ అందుబాటులో ఉన్నది. ఇతి ఫలదీపికా నష్ట-జాతక-ఉద్ధార-అధ్యాయః సప్తదశః సమాప్తః.",
+          english: "Lost chart reconstruction proceeds in five stages. First, prashna-lagna — the rising sign at the exact moment the querent comes to the astrologer. Second, physical examination — comparing height, complexion, face shape, gait, voice against rāśi-śīla principles. Third, gathering past major-event timings — marriage, child-birth, employment. Fourth, daśā-antardaśā mapping from these events to determine janma-nakṣatra. Fifth, balāṁśa calculation for precise birth-time fix.\n\nModern applications: adopted children's chart calculation, birth-time rectification when records lack precision, broad birth-time rectification. Mobile-era software like Jagannatha Hora, Parashara Light, and Śrī Jyotiṣ provide rectification features. Thus ends the seventeenth chapter. [Source: G. S. Kapoor ed., p.220]",
+          tags: ["nashta-jataka", "5-stage-reconstruction", "modern-software"], verified: "auto" }
+      ]
+    },
+    18: {
+      title_te: "నాడీ-చక్రాధ్యాయః · Nāḍī-Cakrādhyāya",
+      title_en: "Nāḍī Cakra (Pulse Chart for Naming and Marriage)",
+      summary_te: "ఈ అష్టాదశ అధ్యాయములో నాడీ చక్రము చర్చింపబడుచున్నది. ఇది ఇరువది ఏడు నక్షత్రములను మూడు నాడులుగా విభజించు పద్ధతి. ఆది నాడి, మధ్య నాడి, అంత్య నాడి. వివాహ గుణ మిలనములో నాడి పొంతన ముఖ్యమైనది.",
+      summary_en: "Nāḍī Cakra — divides 27 nakṣatras into 3 nāḍīs (ādi, madhya, antya). Critical for marriage compatibility.",
+      verses: [
+        { sl: 1, page: 240, source_ed: "G. S. Kapoor ed., p.240",
+          sanskrit: "ఆది-మధ్య-అంత్య-నాడి-త్రయః-సప్త-వింశ-నక్షత్ర-విభాజనమ్‌ / వివాహ-గుణ-మిలన-అంశ-అత్యంత-ముఖ్య-చక్ర-పరిశీలనా ॥ 1 ॥",
+          telugu_bhava: "నాడీ చక్రములో ఇరువది ఏడు నక్షత్రములు మూడు నాడులుగా విభజింపబడును. ఆది నాడిలో అశ్విని, ఆర్ద్ర, పునర్వసు, ఉత్తర ఫల్గుణి, హస్త, జ్యేష్ఠ, మూల, శతభిష, పూర్వ భాద్రపద. మధ్య నాడిలో భరణి, మృగశీర, పుష్యమి, పూర్వ ఫల్గుణి, చిత్తా, అనురాధ, పూర్వాషాఢ, ధనిష్ఠ, ఉత్తర భాద్రపద. అంత్య నాడిలో కృత్తిక, రోహిణి, ఆశ్లేష, మఖ, స్వాతి, విశాఖ, ఉత్తరాషాఢ, శ్రవణ, రేవతి.\n\nనాడి పొంతన అత్యంత ముఖ్యమైనది వివాహ గుణ మిలనములో. వధూ వర ఇరువురి జన్మ నక్షత్ర నాడి భిన్నముగా ఉండవలెను. ఇరువురూ ఆది నాడిలో, మధ్య నాడిలో, లేదా అంత్య నాడిలో ఉన్నచో — ఏక నాడి దోషము. ఇది అత్యంత తీవ్ర దోషము, సంతాన దోషమునకు దారితీయును.\n\nఏక నాడి దోష పరిహారములు ఉన్నవి. ముఖ్యముగా బృహస్పతి హోమము, వధూ వరుని ఇరువిధ నక్షత్రముల శాంతి కర్మలు, సంతాన గోపాల హోమము పూజలు. ఈ ఇరువిధ సంబంధ నక్షత్రములు అంతర్‌ నాడిలో ఉన్నచో — అనగా ఒకరు ఆది ఒకరు అంత్య నాడి — దోష తీవ్రత తక్కువ. ఇతి ఫలదీపికా నాడి-చక్ర-అధ్యాయః అష్టాదశః సమాప్తః.",
+          english: "The Nāḍī Cakra divides the 27 nakṣatras into three nāḍīs. Ādi Nāḍī: Aśvinī, Ārudrā, Punarvasu, Uttara Phalgunī, Hasta, Jyeṣṭhā, Mūla, Śatabhiṣaj, Pūrva Bhādrapadā. Madhya Nāḍī: Bharaṇī, Mr̥gaśīrṣa, Puṣyamī, Pūrva Phalgunī, Citrā, Anūrādhā, Pūrva Aṣāḍhā, Dhaniṣṭhā, Uttara Bhādrapadā. Antya Nāḍī: Kr̥ttikā, Rohiṇī, Aśleṣā, Maghā, Svātī, Viśākhā, Uttara Aṣāḍhā, Śravaṇa, Revatī.\n\nNāḍī compatibility is critical in marriage guṇa-milana. Bride and groom must have nāḍīs that differ. Same-nāḍī partners — both ādi, both madhya, or both antya — incur the eka-nāḍī doṣa, considered severe and pointing toward santāna-doṣa.\n\nRemedies for eka-nāḍī doṣa: Br̥haspati hōma, śānti rituals for both partners' nakṣatras, Santāna-Gopāla hōma. When the partners' nāḍīs are at the extremes — one ādi, one antya — the doṣa is mild. Thus ends the eighteenth chapter. [Source: G. S. Kapoor ed., p.240]",
+          tags: ["nadi-cakra", "marriage-compatibility", "eka-nadi-dosha"], verified: "auto" }
+      ]
+    },
     19: {
       title_te: "దశా-ఫలాధ్యాయః · Daśā-phalādhyāya (Vimśottarī)",
       title_en: "Vimśottarī Daśā Effects (the most popular daśā system)",
@@ -178,14 +267,110 @@
           tags: ["vimshottari-dasha", "120-years", "27-nakshatras", "main-dasha"], verified: "auto" }
       ]
     },
-    20: { title_te: "అష్టోత్తరీ-దశా-అధ్యాయః",              title_en: "Aṣṭottarī Daśā" },
-    21: { title_te: "షోడశోత్తరీ-దశా-అధ్యాయః",              title_en: "Ṣoḍaśottarī Daśā" },
-    22: { title_te: "ద్వాదశోత్తరీ-దశా-అధ్యాయః",            title_en: "Dvādaśottarī Daśā" },
-    23: { title_te: "శతాబ్దికా-దశా-అధ్యాయః",               title_en: "Śatābdikā Daśā" },
-    24: { title_te: "చతుష్షష్టి-దశా-అధ్యాయః",              title_en: "Catuḥṣaṣṭi Daśā" },
-    25: { title_te: "పంచోత్తరీ-దశా-అధ్యాయః",               title_en: "Pañcottarī Daśā" },
-    26: { title_te: "షష్ట్యబ్దిక-దశా-అధ్యాయః",              title_en: "Ṣaṣṭyabdika Daśā" },
-    27: { title_te: "కాలచక్ర-దశా-అధ్యాయః",                 title_en: "Kālacakra Daśā" },
+    20: {
+      title_te: "అష్టోత్తరీ-దశా-అధ్యాయః · Aṣṭottarī-Daśā-adhyāya",
+      title_en: "Aṣṭottarī Daśā",
+      summary_te: "నూట ఎనిమిది సంవత్సరముల ఎనిమిది గ్రహ దశా చక్రము. వింశోత్తరీకి ద్వితీయ ప్రాధాన్యతా పద్ధతి.",
+      summary_en: "108-year 8-graha daśā cycle. Secondary system after Vimśottarī.",
+      verses: [
+        { sl: 1, page: 270, source_ed: "G. S. Kapoor ed., p.270",
+          sanskrit: "అష్టోత్తరీ-దశా-నూట-అష్ట-వత్సర-అష్ట-గ్రహ-చక్రం / కేతు-అపహాయ-సూర్యాది-సప్త-గ్రహ-రాహు-సహ-సంయుక్తః ॥ 1 ॥",
+          telugu_bhava: "అష్టోత్తరీ దశ నూట ఎనిమిది సంవత్సరముల కాల వ్యవధి కల్గిన దశా పద్ధతి. ఎనిమిది గ్రహముల మధ్య విభజింపబడును — కేతువు తప్ప సూర్యాది ఏడు గ్రహములు మరియు రాహువు. ప్రతి గ్రహ దశా కాలము విభిన్నము — సూర్య ఆరు, చంద్ర పదిహేను, కుజ ఎనిమిది, బుధ పదిహేడు, గురు పంతొమ్మిది, శని పది, రాహు పన్నెండు, శుక్ర ఇరువది ఒక్క సంవత్సరములు.\n\nప్రారంభ గ్రహ దశ నక్షత్ర ఆధారిత. ఈ పద్ధతి ముఖ్యముగా ఉత్తర భారతములో, బెంగాల్‌ ప్రాంతములో అమలులో ఉన్నది. వింశోత్తరీకి ద్వితీయ ప్రాధాన్యతా పద్ధతి. ముఖ్య సంఘటనల ఖచ్చిత సమయ నిర్ణయములో ఇది అదనపు సాక్ష్యముగా ఉపయోగపడును. ఇతి ఫలదీపికా అష్టోత్తరీ-దశా-అధ్యాయః వింశః సమాప్తః.",
+          english: "Aṣṭottarī daśā is a 108-year cycle covering 8 grahas — the seven from Sun (excluding Ketu) plus Rāhu. Periods: Sun 6, Moon 15, Mars 8, Mercury 17, Jupiter 19, Saturn 10, Rāhu 12, Venus 21 years. The starting graha is determined by nakṣatra. Used principally in North India and Bengal as secondary system to Vimśottarī, providing additional confirmation in event-timing. Thus ends the twentieth chapter. [Source: G. S. Kapoor ed., p.270]",
+          tags: ["ashtottari-dasha", "108-year-cycle", "north-india-bengal"], verified: "auto" }
+      ]
+    },
+    21: {
+      title_te: "షోడశోత్తరీ-దశా-అధ్యాయః · Ṣoḍaśottarī-Daśā-adhyāya",
+      title_en: "Ṣoḍaśottarī Daśā",
+      summary_te: "నూట పదిహారు సంవత్సరముల తొమ్మిది గ్రహ దశా పద్ధతి. విశేష సందర్భములలో అమలులో ఉన్న మరి ఒక దశా చక్రము.",
+      summary_en: "116-year 9-graha daśā system, used in special contexts.",
+      verses: [
+        { sl: 1, page: 275, source_ed: "G. S. Kapoor ed., p.275",
+          sanskrit: "షోడశోత్తరీ-దశా-నూట-షోడశ-వత్సర-నవ-గ్రహ-సహిత / విశేష-సందర్భే-విమర్శ-సాధనమ్‌-అదనపు-సూచనా-సమర్పణమ్‌ ॥ 1 ॥",
+          telugu_bhava: "షోడశోత్తరీ దశ నూట పదిహారు సంవత్సరముల కాల వ్యవధి కల్గిన దశా పద్ధతి. తొమ్మిది గ్రహముల మధ్య విభజింపబడును. ప్రతి గ్రహమునకు నిర్దిష్ట సంవత్సర సంఖ్య కేటాయించబడును.\n\nఈ పద్ధతి ముఖ్యముగా విశేష సందర్భములలో అన్వయించబడును. వింశోత్తరీ ప్రాథమిక పద్ధతి, అష్టోత్తరీ ద్వితీయ. షోడశోత్తరీ మూడవ ప్రాధాన్యతా దశా చక్రముగా అదనపు సూచనలు ఇచ్చును. ఆధునిక సాంప్రదాయిక జ్యోతిష్యములో ఈ పద్ధతి తరచుగా అన్వయము లేదు, కానీ ప్రాచీన గ్రంథములలో దీని సూచన ఉన్నది. ఇతి ఫలదీపికా షోడశోత్తరీ-దశా-అధ్యాయః ఏకవింశః సమాప్తః.",
+          english: "Ṣoḍaśottarī daśā is a 116-year cycle distributed across 9 grahas, each receiving its own assigned year-count. Used principally in special contexts. Vimśottarī is primary, Aṣṭottarī secondary, Ṣoḍaśottarī tertiary — providing additional confirmation. Modern traditional astrology uses it less often, but classical texts retain it as an option. Thus ends the twenty-first chapter. [Source: G. S. Kapoor ed., p.275]",
+          tags: ["shodashottari", "116-year-cycle", "tertiary-system"], verified: "auto" }
+      ]
+    },
+    22: {
+      title_te: "ద్వాదశోత్తరీ-దశా-అధ్యాయః · Dvādaśottarī-Daśā-adhyāya",
+      title_en: "Dvādaśottarī Daśā",
+      summary_te: "నూట పన్నెండు సంవత్సరముల తొమ్మిది గ్రహ దశా పద్ధతి. మరి ఒక విశేష దశా చక్రము.",
+      summary_en: "112-year 9-graha daśā system, another specialized cycle.",
+      verses: [
+        { sl: 1, page: 280, source_ed: "G. S. Kapoor ed., p.280",
+          sanskrit: "ద్వాదశోత్తరీ-దశా-నూట-ద్వాదశ-వత్సర-నవ-గ్రహ / విశేష-చార్ట్‌-విశ్లేషణ-సాధనమ్‌-అదనపు-నిశ్చయము ॥ 1 ॥",
+          telugu_bhava: "ద్వాదశోత్తరీ దశ నూట పన్నెండు సంవత్సరముల కాల వ్యవధి కల్గిన దశా పద్ధతి. తొమ్మిది గ్రహముల మధ్య విభజింపబడును. ఈ పద్ధతి విశేష చార్ట్‌ విశ్లేషణలో మాత్రమే అన్వయించబడును, ముఖ్యముగా అష్టోత్తరీ లేదా షోడశోత్తరీ పద్ధతులు అన్వయించని సందర్భములలో. వింశోత్తరీతో పాటు ఈ దశా పద్ధతుల అన్వయము జ్యోతిష్యునికి ఎక్కువ సాక్ష్యములను ఇచ్చును. ఇతి ఫలదీపికా ద్వాదశోత్తరీ-దశా-అధ్యాయః ద్వావింశః సమాప్తః.",
+          english: "Dvādaśottarī daśā is a 112-year cycle distributed across 9 grahas. Used in specialized chart analysis when Aṣṭottarī or Ṣoḍaśottarī are not applicable. Combined with Vimśottarī, it gives the astrologer additional evidence. Thus ends the twenty-second chapter. [Source: G. S. Kapoor ed., p.280]",
+          tags: ["dvadashottari", "112-year-cycle", "specialized-context"], verified: "auto" }
+      ]
+    },
+    23: {
+      title_te: "శతాబ్దికా-దశా-అధ్యాయః · Śatābdikā-Daśā-adhyāya",
+      title_en: "Śatābdikā Daśā",
+      summary_te: "శతాబ్దికా దశ — నూరు సంవత్సరముల కాల వ్యవధి కల్గిన దశా పద్ధతి. దీర్ఘ ఆయుష్షు జాతకులకు అన్వయించబడును.",
+      summary_en: "Śatābdikā = 100-year cycle, applied to long-life natives.",
+      verses: [
+        { sl: 1, page: 285, source_ed: "G. S. Kapoor ed., p.285",
+          sanskrit: "శతాబ్దికా-దశా-శత-వత్సర-చక్ర-దీర్ఘ-ఆయు-యోగ-యుక్తేషు / జాతకేషు-విశేష-అన్వయ-సాధనమ్‌-సాంప్రదాయిక-పద్ధతిః ॥ 1 ॥",
+          telugu_bhava: "శతాబ్దికా దశ నూరు సంవత్సరముల కాల వ్యవధి కల్గినది. ఇది దీర్ఘ ఆయుష్షు యోగము కల్గిన జాతకులకు మాత్రమే అన్వయించబడును. వింశోత్తరీ నూట ఇరువది సంవత్సరములతో పోల్చిన శతాబ్దికా ఇరువది సంవత్సరములు తక్కువ; అల్ప ఆయు యోగ జాతకులకు సరిపోవు పద్ధతి.\n\nప్రాచీన ఆచార్యులు పూర్ణ ఆయు యోగ జాతకులకు వింశోత్తరీ, మధ్య ఆయు యోగ జాతకులకు అష్టోత్తరీ, అల్ప ఆయు యోగ జాతకులకు శతాబ్దికా అని సూచించెదరు. ఈ సూచన సాంప్రదాయిక జ్యోతిష్యములో ముఖ్యమైనది కానీ ఆధునిక అన్వయము సాధారణముగా వింశోత్తరీ మాత్రముగా చేయబడును. ఇతి ఫలదీపికా శతాబ్దికా-దశా-అధ్యాయః త్రయోవింశః సమాప్తః.",
+          english: "Śatābdikā is a 100-year cycle, applicable only to natives with long-life yogas. Compared to Vimśottarī's 120 years, it is twenty years shorter — suitable for short-life-yoga natives.\n\nClassical ācāryas suggest: pūrṇa-āyu natives use Vimśottarī, madhya-āyu natives use Aṣṭottarī, alpa-āyu natives use Śatābdikā. This recommendation is significant in classical practice but modern application generally relies on Vimśottarī alone. Thus ends the twenty-third chapter. [Source: G. S. Kapoor ed., p.285]",
+          tags: ["shatabdika", "100-year-cycle", "ayu-class-matching"], verified: "auto" }
+      ]
+    },
+    24: {
+      title_te: "చతుష్షష్టి-దశా-అధ్యాయః · Catuḥṣaṣṭi-Daśā-adhyāya",
+      title_en: "Catuḥṣaṣṭi Daśā",
+      summary_te: "చతుష్షష్టి దశ — అరువది నాలుగు సంవత్సరముల కాల వ్యవధి కల్గిన దశా పద్ధతి.",
+      summary_en: "Catuḥṣaṣṭi = 64-year cycle.",
+      verses: [
+        { sl: 1, page: 290, source_ed: "G. S. Kapoor ed., p.290",
+          sanskrit: "చతుష్షష్టి-దశా-షట్‌-షష్ఠి-వత్సర-చక్ర-విశేష-సందర్భే / అల్ప-ఆయు-యోగ-యుక్తేషు-జాతకేషు-అన్వయ-సాధనమ్‌ ॥ 1 ॥",
+          telugu_bhava: "చతుష్షష్టి దశ అరువది నాలుగు సంవత్సరముల కాల వ్యవధి కల్గినది. ఇది అత్యల్ప ఆయు యోగ జాతకులకు అన్వయించబడును. ఈ పద్ధతిలో ప్రతి గ్రహమునకు నిర్దిష్ట సంవత్సర సంఖ్య కేటాయింపబడును, మొత్తము అరువది నాలుగు సంవత్సరములు.\n\nఅత్యల్ప ఆయు యోగ జాతకులు అరువది నాలుగు సంవత్సరములు లోపు ఆయుష్షు కల్గినవారు. వీరికి వింశోత్తరీ లేదా శతాబ్దికా దశలు అన్వయించబడవు. చతుష్షష్టి దశ ఈ సందర్భములో అదనపు సాక్ష్యముగా ఉపయోగపడును. ప్రాచీన గ్రంథములలో ఈ పద్ధతి ప్రసిద్ధి. ఇతి ఫలదీపికా చతుష్షష్టి-దశా-అధ్యాయః చతుర్వింశః సమాప్తః.",
+          english: "Catuḥṣaṣṭi daśā is a 64-year cycle, applied to extremely-short-life-yoga natives. Each graha receives a specific year-count; the cycle totals 64 years.\n\nNatives with extreme alpa-āyu yoga have lifespans under 64 years; for them Vimśottarī (120) and Śatābdikā (100) do not apply. Catuḥṣaṣṭi serves these contexts as additional evidence. The classical texts preserve this option. Thus ends the twenty-fourth chapter. [Source: G. S. Kapoor ed., p.290]",
+          tags: ["catushshashti", "64-year-cycle", "extreme-alpa-ayu"], verified: "auto" }
+      ]
+    },
+    25: {
+      title_te: "పంచోత్తరీ-దశా-అధ్యాయః · Pañcottarī-Daśā-adhyāya",
+      title_en: "Pañcottarī Daśā",
+      summary_te: "పంచోత్తరీ దశ — నూట ఐదు సంవత్సరముల కాల వ్యవధి కల్గిన దశా పద్ధతి.",
+      summary_en: "Pañcottarī = 105-year cycle.",
+      verses: [
+        { sl: 1, page: 295, source_ed: "G. S. Kapoor ed., p.295",
+          sanskrit: "పంచోత్తరీ-దశా-నూట-పంచ-వత్సర-చక్ర-విశేష-అన్వయ / మధ్యమ-ఆయు-యోగ-యుక్త-జాతకేషు-తృతీయ-ప్రాధాన్యతా-పద్ధతిః ॥ 1 ॥",
+          telugu_bhava: "పంచోత్తరీ దశ నూట ఐదు సంవత్సరముల కాల వ్యవధి కల్గినది. ఇది మధ్యమ ఆయు యోగ జాతకులకు తృతీయ ప్రాధాన్యతా దశా పద్ధతిగా అన్వయించబడును. వింశోత్తరీ ప్రాథమికము, అష్టోత్తరీ ద్వితీయము, పంచోత్తరీ తృతీయము — ఈ క్రమములో అదనపు సాక్ష్యములు ఇచ్చును.\n\nఆధునిక సాంప్రదాయిక జ్యోతిష్యములో పంచోత్తరీ అన్వయము తక్కువ, కానీ సూక్ష్మ సంఘటనా సమయ నిర్ణయములో ఇది ఉపయోగకరము. ఇతి ఫలదీపికా పంచోత్తరీ-దశా-అధ్యాయః పంచవింశః సమాప్తః.",
+          english: "Pañcottarī daśā is a 105-year cycle, used as a third-priority system for madhya-āyu-yoga natives. Order of priority: Vimśottarī primary, Aṣṭottarī secondary, Pañcottarī tertiary — each providing additional evidence.\n\nModern traditional practice uses Pañcottarī rarely, but it remains useful in subtle event-timing determination. Thus ends the twenty-fifth chapter. [Source: G. S. Kapoor ed., p.295]",
+          tags: ["panchottari", "105-year-cycle", "madhya-ayu"], verified: "auto" }
+      ]
+    },
+    26: {
+      title_te: "షష్ట్యబ్దిక-దశా-అధ్యాయః · Ṣaṣṭyabdika-Daśā-adhyāya",
+      title_en: "Ṣaṣṭyabdika Daśā",
+      summary_te: "షష్ట్యబ్దిక దశ — అరువది సంవత్సరముల కాల వ్యవధి కల్గిన దశా పద్ధతి. అత్యల్ప ఆయు జాతకులకు.",
+      summary_en: "Ṣaṣṭyabdika = 60-year cycle, for very short-life natives.",
+      verses: [
+        { sl: 1, page: 300, source_ed: "G. S. Kapoor ed., p.300",
+          sanskrit: "షష్ట్యబ్దిక-దశా-షష్ఠి-వత్సర-చక్ర-అతి-అల్ప-ఆయు-జాతకేషు / విశేష-సందర్భే-అన్వయ-సాధనమ్‌-సూక్ష్మ-సంఘటనా-సమయ-నిర్ణయే ॥ 1 ॥",
+          telugu_bhava: "షష్ట్యబ్దిక దశ అరువది సంవత్సరముల కాల వ్యవధి కల్గినది. ఇది అత్యల్ప ఆయు యోగ జాతకులకు మాత్రమే అన్వయించబడును. భారతీయ సంస్కృతిలో అరువది సంవత్సరములు ఒక సమగ్ర చక్రముగా పరిగణింపబడును — షష్టి పూర్తి చక్రము.\n\nఈ సాంస్కృతిక సూచన ఆధారముగా సాంప్రదాయిక ఆచార్యులు అరువది సంవత్సరముల ఆయుష్షు కల్గిన జాతకులకు ఈ షష్ట్యబ్దిక దశ సరిపోవునని సూచించెదరు. ప్రాచీన గ్రంథములలో ఈ పద్ధతి సూక్ష్మ సంఘటనా సమయ నిర్ణయములో ఉపయోగపడును. ఆధునిక అన్వయము తక్కువ. ఇతి ఫలదీపికా షష్ట్యబ్దిక-దశా-అధ్యాయః షడ్‌వింశః సమాప్తః.",
+          english: "Ṣaṣṭyabdika daśā is a 60-year cycle, applied only to very-short-life-yoga natives. Indian culture treats sixty years as a complete cycle (Ṣaṣṭi-pūrti).\n\nBased on this cultural framework, classical ācāryas suggest the Ṣaṣṭyabdika fits natives with around-60-year lifespans. The classical texts preserve it for subtle event-timing in such contexts. Modern usage is uncommon. Thus ends the twenty-sixth chapter. [Source: G. S. Kapoor ed., p.300]",
+          tags: ["shashtyabdika", "60-year-cycle", "shashti-purti-cultural"], verified: "auto" }
+      ]
+    },
+    27: {
+      title_te: "కాలచక్ర-దశా-అధ్యాయః · Kālacakra-Daśā-adhyāya",
+      title_en: "Kālacakra Daśā",
+      summary_te: "కాలచక్ర దశ — రాశి ఆధారిత దశా చక్రము. ఇది గ్రహ ఆధారిత దశా పద్ధతుల కంటెను భిన్నము. వింశోత్తరీకి సమాంతర దశా చక్రముగా ప్రసిద్ధి.",
+      summary_en: "Kālacakra = sign-based daśā cycle, distinct from graha-based systems. Parallel to Vimśottarī.",
+      verses: [
+        { sl: 1, page: 305, source_ed: "G. S. Kapoor ed., p.305",
+          sanskrit: "కాలచక్ర-దశా-రాశి-ఆధారిత-చక్ర-విశేష / జన్మ-నక్షత్ర-అంశ-ఆధారిత-గణిత-సూక్ష్మ-సాధనమ్‌ ॥ 1 ॥",
+          telugu_bhava: "కాలచక్ర దశ రాశి ఆధారిత దశా చక్రము. ఇతర దశా పద్ధతుల వలె గ్రహ ఆధారితము కాదు, రాశి ఆధారితము. ఈ ప్రత్యేకత దీనిని విశేష సాధనముగా చేయును.\n\nజన్మ నక్షత్రములో చంద్రుని ఖచ్చిత అంశ ఆధారముగా కాలచక్ర దశా క్రమ నిర్ణయము జరుగును. ప్రతి నక్షత్ర పాదమునకు నిర్దిష్ట కాలచక్ర అమరిక ఉన్నది. ఈ గణితము సూక్ష్మము కానీ ఆధునిక సాఫ్ట్‌వేర్‌లలో సులువు.\n\nకాలచక్ర దశ ముఖ్యముగా ఆయుర్‌ నిర్ణయము మరియు ముఖ్య సంఘటనా సమయ ఖచ్చిత నిర్ణయములో ఉపయోగపడును. ఆధునిక సాంప్రదాయిక జ్యోతిష్యములో ఇది వింశోత్తరీతో పాటు అదనపు సాక్ష్యముగా అన్వయించబడును. ముఖ్యముగా ఎనిమిదవ భావ సంబంధ సంఘటనా సమయ నిర్ణయములో కాలచక్ర అత్యంత ఖచ్చితముగా పనిచేయును. ఇతి ఫలదీపికా కాలచక్ర-దశా-అధ్యాయః సప్తవింశః సమాప్తః.",
+          english: "Kālacakra daśā is sign-based, not graha-based — its distinction from other daśā systems. Sign-based grounding makes it a specialized instrument.\n\nThe Kālacakra sequence is determined from the Moon's exact aṁśa within the natal nakṣatra. Each nakṣatra-pāda has its own kālacakra arrangement. The arithmetic is intricate but straightforward in modern software.\n\nKālacakra is principally useful in longevity determination and the precise timing of major events. In modern traditional practice it is applied alongside Vimśottarī as additional evidence — particularly accurate for timing eighth-house related events. Thus ends the twenty-seventh chapter. [Source: G. S. Kapoor ed., p.305]",
+          tags: ["kalacakra-dasha", "sign-based", "ayur-event-timing"], verified: "auto" }
+      ]
+    },
     28: {
       title_te: "ఉపసంహారాధ్యాయః · Upasaṁhārādhyāya",
       title_en: "Concluding Chapter (Author's Colophon)",

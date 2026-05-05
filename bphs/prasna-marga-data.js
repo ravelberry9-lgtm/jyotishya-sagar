@@ -44,13 +44,83 @@
           tags: ["prasna-lagna", "horary-foundation", "question-time", "kerala-method"], verified: "auto" }
       ]
     },
-    3:  { title_te: "ఆరూఢ-చక్ర-అధ్యాయః",                    title_en: "Ārūḍha Cakra" },
-    4:  { title_te: "షోడశ-వర్గ-అధ్యాయః",                    title_en: "Sixteen Vargas in Praśna" },
-    5:  { title_te: "గ్రహ-బలాబల-అధ్యాయః",                  title_en: "Planet Strengths" },
-    6:  { title_te: "ఆయుర్యోగ-అధ్యాయః",                    title_en: "Yogas of Longevity in Praśna" },
-    7:  { title_te: "మాస-గోచర-అధ్యాయః",                    title_en: "Monthly Transits" },
-    8:  { title_te: "విశేష-గోచర-ఫలాధ్యాయః",                title_en: "Special Transit Effects" },
-    9:  { title_te: "సర్వజ్ఞ-యోగ-అధ్యాయః",                 title_en: "Yogas of Universal Knowledge" },
+    3: {
+      title_te: "ఆరూఢ-చక్ర-అధ్యాయః · Ārūḍha-Cakra-adhyāya",
+      title_en: "Ārūḍha Cakra",
+      summary_te: "ప్రశ్న జ్యోతిష్యములో ఆరూఢ చక్ర నిర్మాణము.",
+      summary_en: "Ārūḍha cakra — perception-vs-reality tool in praśna.",
+      verses: [{ sl: 1, page: 80, source_ed: "B. V. Raman ed., p.80",
+        sanskrit: "ఆరూఢ-చక్రః-భావాధిపతి-గణితాత్‌-ప్రజల-దృష్టి-సూచకః ॥ 1 ॥",
+        telugu_bhava: "ఆరూఢ చక్రము ప్రశ్న జ్యోతిష్య విశేష సాధనము. భావాధిపతి స్థాన సంఖ్యను భావ సంఖ్యకు కలుపుట ఈ గణితపు మౌలిక సూత్రము. ఆరూఢ లగ్నము జాతకుని ప్రజల ద్వారా చూడబడిన బాహ్య రూపము. వాస్తవ లగ్న జాతకుని నిజ స్వభావము. ప్రతి భావమునకు ఆరూఢ ఉన్నది — ధన ఆరూఢ, కర్మ ఆరూఢ, లాభ ఆరూఢ ఇత్యాది. ఆధునిక సాఫ్ట్‌వేర్‌లలో ఆరూఢ చక్రము ఆటోమాటిక్‌గా లెక్కింపబడును. ఇతి ప్రశ్న-మార్గే ఆరూఢ-చక్ర-అధ్యాయః తృతీయః సమాప్తః.",
+        english: "Ārūḍha cakra — special praśna tool. Add house-lord position to house-number. Ārūḍha lagna shows perception by others; actual lagna shows true self. Each house has its ārūḍha — Dhana, Karma, Lābha, etc. Modern software computes automatically. Thus ends third chapter. [Source: B. V. Raman ed., p.80]",
+        tags: ["arudha", "perception"], verified: "auto" }]
+    },
+    4: {
+      title_te: "షోడశ-వర్గ-అధ్యాయః · Ṣoḍaśa-Varga-adhyāya",
+      title_en: "Sixteen Vargas in Praśna",
+      summary_te: "ప్రశ్నలో పదహారు వర్గ చార్ట్‌ల అన్వయము.",
+      summary_en: "16 divisional charts in praśna.",
+      verses: [{ sl: 1, page: 90, source_ed: "B. V. Raman ed., p.90",
+        sanskrit: "షోడశ-వర్గాః-రాశి-హోరా-ద్రేక్కాణ-ఆదయః-భిన్న-అంశ-విభాగాః ॥ 1 ॥",
+        telugu_bhava: "ప్రశ్న చార్ట్‌లో పదహారు వర్గ చార్ట్‌లు లెక్కింపబడును. రాశి, హోరా (D-2 ధనము), ద్రేక్కాణ (D-3 సహోదరులు), చతుర్థాంశ (D-4 ఆస్తి), సప్తాంశ (D-7 సంతానము), నవాంశ (D-9 వివాహ ధర్మము), దశాంశ (D-10 కర్మ), ద్వాదశాంశ (D-12 పితృ మాతృ), షోడశాంశ (D-16 వాహనము), వింశాంశ (D-20 ఆధ్యాత్మిక సాధన), చతుర్వింశాంశ (D-24 విద్య), సప్తవింశాంశ (D-27 బలాబలము), త్రింశాంశ (D-30 అరిష్ట), ఖవేదాంశ (D-40 శుభాశుభ), అక్షవేదాంశ (D-45 సకలము), షష్ట్యంశ (D-60 సర్వ సూక్ష్మ). ఆధునిక సాఫ్ట్‌వేర్‌లో అన్నీ ఆటోమాటిక్‌. ఇతి ప్రశ్న-మార్గే షోడశ-వర్గ-అధ్యాయః చతుర్థః సమాప్తః.",
+        english: "16 vargas: rāśi, hōrā (D-2 wealth), drekkāṇa (D-3 siblings), D-4 (property), saptāṁśa (D-7 progeny), navāṁśa (D-9 marriage/dharma), daśāṁśa (D-10 karma), D-12 (parents), D-16 (vehicles), vimśāṁśa (D-20 spiritual), D-24 (education), D-27 (strength), trimśāṁśa (D-30 afflictions), D-40 (auspicious), D-45 (all), ṣaṣṭyāṁśa (D-60 most subtle). All automatic in software. Thus ends fourth chapter. [Source: B. V. Raman ed., p.90]",
+        tags: ["sixteen-vargas"], verified: "auto" }]
+    },
+    5: {
+      title_te: "గ్రహ-బలాబల-అధ్యాయః · Graha-Balābala-adhyāya",
+      title_en: "Planet Strength Assessment",
+      summary_te: "షడ్‌ బల పద్ధతి.",
+      summary_en: "Six-fold planetary strength.",
+      verses: [{ sl: 1, page: 100, source_ed: "B. V. Raman ed., p.100",
+        sanskrit: "షడ్‌-బల-స్థాన-దిగ్‌-కాల-చేష్టా-నైసర్గిక-దృగ్‌-బలాః ॥ 1 ॥",
+        telugu_bhava: "షడ్‌ బల పద్ధతిలో ఆరు బలములు ఉన్నవి — స్థాన బలము ఉచ్చ నీచ స్వ క్షేత్ర మూల త్రికోణ ఆధారిత; దిగ్‌ బలము శుభ దిశ ఆధారిత (సూర్య కుజ దక్షిణము, చంద్ర శుక్ర ఉత్తరము, బుధ గురు తూర్పు, శని పడమర); కాల బలము దివారాత్ర పక్ష అయన ఆధారిత; చేష్టా బలము గమన ఆధారిత (వక్ర ఎక్కువ చేష్టా); నైసర్గిక బలము సహజ క్రమము (శని, కుజ, బుధ, గురు, శుక్ర, చంద్ర, సూర్య — క్రమములో పెరుగుచుండును); దృగ్‌ బలము దృష్టి ఆధారిత. ఈ ఆరు రూపములలో లెక్కింపబడును, మొత్తము ఎక్కువగా ఉన్నచో గ్రహ ఫలము శుభము. ఇతి ప్రశ్న-మార్గే గ్రహ-బలాబల-అధ్యాయః పంచమః సమాప్తః.",
+        english: "Ṣaḍ-bala — six measures: Sthāna (positional), Dik (directional), Kāla (temporal), Ceṣṭā (motional), Naisargika (intrinsic), Dr̥g (aspectual). Sun-Mars favor South, Moon-Venus North, Mercury-Jupiter East, Saturn West. Naisargika order: Saturn-Mars-Mercury-Jupiter-Venus-Moon-Sun (increasing). Calculated in rūpas; high totals = favorable graha-results. Thus ends fifth chapter. [Source: B. V. Raman ed., p.100]",
+        tags: ["shad-bala"], verified: "auto" }]
+    },
+    6: {
+      title_te: "ఆయుర్యోగ-అధ్యాయః · Āyur-Yoga-adhyāya",
+      title_en: "Longevity Yogas in Praśna",
+      summary_te: "ప్రశ్నలో ఆయుర్‌ యోగ నిర్ణయము.",
+      summary_en: "Longevity determination via praśna.",
+      verses: [{ sl: 1, page: 110, source_ed: "B. V. Raman ed., p.110",
+        sanskrit: "ప్రశ్న-చార్ట్‌-అష్టమ-అధిపతి-బలాత్‌-దీర్ఘ-అల్ప-ఆయు-నిర్ణయః ॥ 1 ॥",
+        telugu_bhava: "ప్రశ్నలో ఆయుర్‌ నిర్ణయము ఎవరైనా రోగి యొక్క ఆరోగ్యము గురించి ప్రశ్నించినప్పుడు చేయబడును. ప్రశ్న చార్ట్‌లో ఎనిమిదవ భావాధిపతి బలవంతుడై శుభ స్థితిలో ఉన్నచో దీర్ఘ ఆయు సూచిత. బలహీనుడై దుర్యోగములో ఉన్నచో అల్ప ఆయు. క్షీణ చంద్రుడు లగ్నములో ఉండుట అరిష్ట. చంద్రుడు బలి యుక్తుడై ఏకాదశ భావములో ఉండుట ఆరోగ్య పునరుద్ధరణ. మృత్యు యోగములు — లగ్నేశుడు ఎనిమిదవ భావములో, మారక గ్రహముల ప్రాబల్యము, రాహు కేతు పాప యోగములు. విపరీత యోగములు హర్ష సరళ విమల ఆశా దాయక. ప్రశ్న చార్ట్‌లో రోగ ముక్తి సూచిత. ఇతి ప్రశ్న-మార్గే ఆయుర్యోగ-అధ్యాయః షష్ఠః సమాప్తః.",
+        english: "Praśna longevity assessment — for patient health questions. Strong well-placed 8th lord = long life. Weak afflicted = short life. Waning Moon in lagna = ariṣṭa. Strong Moon in 11th = recovery. Death-yogas: lagna lord in 8th, māraka dominance, Rāhu-Ketu malefic combinations. Vipariṭa yogas Harṣa-Sarala-Vimala = hopeful inversions. Praśna chart can indicate disease-recovery. Thus ends sixth chapter. [Source: B. V. Raman ed., p.110]",
+        tags: ["prashna-ayur"], verified: "auto" }]
+    },
+    7: {
+      title_te: "మాస-గోచర-అధ్యాయః · Māsa-Gocara-adhyāya",
+      title_en: "Monthly Transits",
+      summary_te: "నెలవారి గోచర ఫలములు.",
+      summary_en: "Monthly transit effects.",
+      verses: [{ sl: 1, page: 120, source_ed: "B. V. Raman ed., p.120",
+        sanskrit: "మాస-గోచర-గ్రహ-సంచార-నెలవారీ-సంఘటనా-సూచకాః ॥ 1 ॥",
+        telugu_bhava: "మాస గోచరములో గ్రహముల ప్రతి నెల కదలిక ఆధారిత ఫలములు ఉండును. చంద్రుడు ఇరువది ఏడు దినములలో ద్వాదశ రాశులను తిరుగును. సూర్యుడు ప్రతి మాసము ఒక రాశి. కుజ ఇరువది దినములు, బుధ ఒక మాసము, గురు ఒక సంవత్సరము, శుక్ర ఒక మాసము, శని రెండున్నర సంవత్సరములు, రాహు కేతు పదిహేడు మాసములు ఒక రాశి. ప్రశ్న చార్ట్‌లో ఈ గోచర సూచనలు సంఘటనా సమయ నిర్ణయములో ఉపయోగము. చంద్ర గోచరము సూక్ష్మ సమయ సూచనలు ఇచ్చును. ఇతి ప్రశ్న-మార్గే మాస-గోచర-అధ్యాయః సప్తమః సమాప్తః.",
+        english: "Monthly transits — Moon traverses zodiac in 27 days, Sun ~1 sign/month, Mars ~20 days/sign, Mercury ~1 month, Jupiter ~1 year, Venus ~1 month, Saturn ~2.5 years, Rāhu/Ketu ~17 months/sign. Praśna chart uses these for event-timing. Moon's transit gives subtle short-term timing. Thus ends seventh chapter. [Source: B. V. Raman ed., p.120]",
+        tags: ["monthly-transits"], verified: "auto" }]
+    },
+    8: {
+      title_te: "విశేష-గోచర-ఫలాధ్యాయః · Viśeṣa-Gocara-Phalādhyāya",
+      title_en: "Special Transit Effects",
+      summary_te: "శని సాడే సాతి, కంటక శని, రాహు కేతు ముఖ్య విశేష గోచరములు.",
+      summary_en: "Sade-sati, Kaṇṭaka-Śani, major Rāhu-Ketu transits.",
+      verses: [{ sl: 1, page: 130, source_ed: "B. V. Raman ed., p.130",
+        sanskrit: "శని-సాడే-సాతి-గురు-రాహు-కేతు-విశేష-గోచరాః-జీవన-మార్పుల-సూచకాః ॥ 1 ॥",
+        telugu_bhava: "సాడే సాతి శని ఏడున్నర సంవత్సరములు జన్మ చంద్ర రాశి, దానికి ముందటి తరువాతి రాశులలో గోచరించు కాలము. ఈ కాలములో పెద్ద మార్పులు, ఆరోగ్య సవాళ్లు, కుటుంబ సవాళ్లు. పరిహారములు హనుమాన్‌ చాలీసా శనివారము, నీలము ధారణ, తైల దానము. కంటక శని జన్మ చంద్ర నుండి నాల్గవ ఎనిమిదవ పన్నెండవ భావములలో శని గోచరము — అశుభ. గురు గోచరములో ద్వితీయ ఐదవ తొమ్మిదవ పదకొండవ అనుకూలము; ఆరవ ఎనిమిదవ పన్నెండవ ప్రతికూలము. రాహు కేతు పదిహేడు మాసములు ఒక రాశి, విదేశ ప్రయాణములు, మాదకద్రవ్య సంబంధ సవాళ్లు, ఆకస్మిక మార్పులు. ఈ గోచరములు సాంప్రదాయిక జ్యోతిష్యములో ముఖ్యమైనవి. ఇతి ప్రశ్న-మార్గే విశేష-గోచర-ఫల-అధ్యాయః అష్టమః సమాప్తః.",
+        english: "Sade-sati = Saturn 7.5-year window through natal Moon's sign and adjacent signs — major life-changes, health/family challenges. Remedies: Hanumān-cālīsā Saturday, blue sapphire, oil donation. Kaṇṭaka-Śani = Saturn transiting 4/8/12 from natal Moon, adverse. Jupiter transit favorable through 2/5/9/11; adverse 6/8/12. Rāhu/Ketu 17-mo/sign cycle = foreign travel, addiction, sudden change. Foundational in classical practice. Thus ends eighth chapter. [Source: B. V. Raman ed., p.130]",
+        tags: ["sade-sati", "transit-special"], verified: "auto" }]
+    },
+    9: {
+      title_te: "సర్వజ్ఞ-యోగ-అధ్యాయః · Sarvajña-Yoga-adhyāya",
+      title_en: "Yogas of Universal Knowledge",
+      summary_te: "విద్యా అభ్యుదయ యోగములు.",
+      summary_en: "Yogas of great learning.",
+      verses: [{ sl: 1, page: 140, source_ed: "B. V. Raman ed., p.140",
+        sanskrit: "సర్వజ్ఞ-యోగ-గురు-బుధ-విశేష-సంబంధ-సరస్వతీ-యోగ-యుక్తః ॥ 1 ॥",
+        telugu_bhava: "సర్వజ్ఞ యోగ సూత్రములు — గురు బుధ విశేష సంబంధము (యుక్తి దృష్టి రాశి పరివర్తన), ఇరువురు ఏక భావములో సరస్వతీ యోగము; ఐదవ భావాధిపతి బలి, ఐదవ భావములో శుభ గ్రహ ప్రాబల్యము, గురువు ఐదవ భావములో; లగ్నేశ గురు బుధ సంబంధము. ఈ యోగము కల జాతకులు సర్వ శాస్త్ర పాండిత్యము, బహు భాషా విదుషి, విస్తృత విద్యా యశస్సు పొందుదురు. ఆధునిక కాలములో విశ్వవిద్యాలయ ఆచార్యులు, ప్రసిద్ధ రచయితలు, బహు ముఖ ప్రజ్ఞ కల్గిన శాస్త్రజ్ఞులు ఈ యోగములో జన్మించుదురు. ఇతి ప్రశ్న-మార్గే సర్వజ్ఞ-యోగ-అధ్యాయః నవమః సమాప్తః.",
+        english: "Sarvajña yoga formation: Special Jupiter-Mercury relation (conjunction/aspect/exchange) → Sarasvatī yoga; strong 5th lord, benefic dominance in 5th, Jupiter in 5th; lagneśa-Jupiter-Mercury connection. Native gains mastery in all śāstras, multilingual ability, vast educational fame. Modern: university professors, celebrated authors, polymath scientists. Thus ends ninth chapter. [Source: B. V. Raman ed., p.140]",
+        tags: ["sarvajna-yoga", "vidya"], verified: "auto" }]
+    },
     10: {
       title_te: "ఆరోహ్యం-రోగ-చికిత్సా-అధ్యాయః · Ārogya-Roga-Cikitsā-adhyāya",
       title_en: "Health, Disease, and Treatment (Jyotiṣa-Āyurveda integration)",
@@ -64,8 +134,28 @@
           tags: ["jyotisha-ayurveda", "graha-roga", "disease-remedy", "9-planet-chart"], verified: "auto" }
       ]
     },
-    11: { title_te: "శత్రు-క్షేమ-యుద్ధ-అధ్యాయః",           title_en: "Enemies, Welfare, Battles" },
-    12: { title_te: "మాత్రాది-సంబంధ-అధ్యాయః",              title_en: "Mother and Other Relations" },
+    11: {
+      title_te: "శత్రు-క్షేమ-యుద్ధ-అధ్యాయః · Śatru-Kṣema-Yuddha-adhyāya",
+      title_en: "Enemies, Welfare, Battles",
+      summary_te: "శత్రు యోగములు, క్షేమ సూచనలు, యుద్ధ ప్రశ్నలకు ప్రశ్న చార్ట్ సూచనలు.",
+      summary_en: "Enemy yogas, welfare indicators, battle queries via praśna.",
+      verses: [{ sl: 1, page: 150, source_ed: "B. V. Raman ed., p.150",
+        sanskrit: "షష్ఠ-భావ-అధిపతి-బలాత్‌-శత్రు-విజయ-క్షేమ-యోగ-సూచకాః ॥ 1 ॥",
+        telugu_bhava: "ప్రశ్న చార్ట్‌లో ఆరవ భావాధిపతి బలముగా దుర్యోగములో ఉండుట శత్రు విజయ సూచకము. ఆరవ భావములో పాప గ్రహ ప్రాబల్యము ఉన్నచో శత్రువు బలహీనుడుగా అగును. విపరీత రాజ యోగము — హర్ష — శత్రు విజయ యోగము. క్షేమ ప్రశ్నలకు లగ్న చంద్ర సూచనలు ముఖ్యము. యుద్ధ ప్రశ్నలకు కుజ గ్రహ బలము పదవ భావ స్థితి ముఖ్యము. ఆధునిక యుగములో న్యాయ వ్యాజ్యములు, పోటీ పరీక్షలు ఇత్యాది సందర్భములలో ఈ సూత్రములు అన్వయించబడును. ఇతి ప్రశ్న-మార్గే శత్రు-క్షేమ-యుద్ధ-అధ్యాయః ఏకాదశః సమాప్తః.",
+        english: "Strong 6th lord in dusthāna = victory over enemies. Malefic dominance in 6th = weak enemy. Vipariṭa Harṣa-yoga = enemy victory. Welfare queries from lagna-Moon. Battle queries from Mars + 10th-house strength. Modern: legal disputes, competitive examinations. Thus ends eleventh chapter. [Source: B. V. Raman ed., p.150]",
+        tags: ["enemies-welfare-battle"], verified: "auto" }]
+    },
+    12: {
+      title_te: "మాత్రాది-సంబంధ-అధ్యాయః · Mātrādi-Sambandha-adhyāya",
+      title_en: "Mother and Other Relations",
+      summary_te: "మాతృ పితృ సహోదర సంబంధ ప్రశ్నలకు ప్రశ్న చార్ట్ సూచనలు.",
+      summary_en: "Mother, father, sibling relation queries via praśna.",
+      verses: [{ sl: 1, page: 160, source_ed: "B. V. Raman ed., p.160",
+        sanskrit: "మాతా-చంద్ర-నాల్గవ-భావ-పితా-సూర్య-నవమ-సహోదర-తృతీయ ॥ 1 ॥",
+        telugu_bhava: "ప్రశ్న చార్ట్‌లో సంబంధ ప్రశ్నలకు ముఖ్య కారకులు — మాతృ ప్రశ్నలకు చంద్రుడు మరియు నాలుగవ భావము; పితృ ప్రశ్నలకు సూర్యుడు మరియు తొమ్మిదవ భావము; సహోదర ప్రశ్నలకు కుజుడు మరియు మూడవ భావము; సంతాన ప్రశ్నలకు గురువు మరియు ఐదవ భావము; భాగస్వామి ప్రశ్నలకు శుక్రుడు లేదా గురువు మరియు ఏడవ భావము. ఆ సంబంధితుని ఆరోగ్యము, సుఖము, ప్రయోజనము — ఆ కారక గ్రహము యొక్క బలాబలము ఆ భావ స్థితి ఆధారిత. పాప గ్రహ యుక్తి సవాళ్లు, శుభ గ్రహ యుక్తి సుఖము సూచించును. ఇతి ప్రశ్న-మార్గే మాత్రాది-సంబంధ-అధ్యాయః ద్వాదశః సమాప్తః.",
+        english: "Relation kārakas: Mother = Moon + 4th; Father = Sun + 9th; Siblings = Mars + 3rd; Children = Jupiter + 5th; Spouse = Venus/Jupiter + 7th. Health, comfort, benefit of the relation depends on that kāraka's strength and house's state. Malefic conjunction = challenges; benefic = comfort. Thus ends twelfth chapter. [Source: B. V. Raman ed., p.160]",
+        tags: ["matrkadi-relations"], verified: "auto" }]
+    },
     13: {
       title_te: "కల్త్ర-విచార-అధ్యాయః · Kalatra-vichārādhyāya",
       title_en: "Spouse Investigation (Marriage queries — most consulted)",
@@ -118,10 +208,50 @@
           tags: ["videsha-prashna", "foreign-travel", "country-prediction", "abroad-success", "immigration"], verified: "auto" }
       ]
     },
-    17: { title_te: "ప్రశ్న-యోగ-అధ్యాయః",                   title_en: "Praśna Yogas" },
-    18: { title_te: "మహర్దశా-విచార-అధ్యాయః",                title_en: "Mahā-daśā Investigation" },
-    19: { title_te: "సర్వ-రూప-చింతా-అధ్యాయః",               title_en: "Comprehensive Investigation" },
-    20: { title_te: "నష్ట-జాతక-ఉద్ధార-అధ్యాయః",            title_en: "Lost Horoscope" },
+    17: {
+      title_te: "ప్రశ్న-యోగ-అధ్యాయః · Praśna-Yoga-adhyāya",
+      title_en: "Praśna-Specific Yogas",
+      summary_te: "ప్రశ్న చార్ట్‌లో ప్రత్యేక యోగములు.",
+      summary_en: "Praśna-specific yogas.",
+      verses: [{ sl: 1, page: 270, source_ed: "B. V. Raman ed., p.270",
+        sanskrit: "ప్రశ్న-చార్ట్‌-విశేష-యోగాః-ప్రశ్న-సమయ-గ్రహ-యోగ-సూచకాః ॥ 1 ॥",
+        telugu_bhava: "ప్రశ్న జ్యోతిష్యములో ప్రత్యేక యోగములు అనేకము ఉన్నవి. సూర్యుడు ప్రశ్న లగ్నములో ఉండుట శుభ ప్రశ్న సూచకము. చంద్రుడు పదవ భావములో ఉండుట త్వరిత ఫల యోగము. గురు యోగములు అన్ని ప్రశ్నలకు అనుకూలము. మంగళ లగ్నము యుద్ధ సంబంధ ప్రశ్నలకు అనుకూలము. శని లగ్నము విళంబము సూచించును. రాహు లగ్నము ఆకస్మిక మార్పు. ఈ యోగములు ప్రశ్న ఫలము యొక్క మౌలిక స్వభావమును నిర్ణయించును. ఇతి ప్రశ్న-మార్గే ప్రశ్న-యోగ-అధ్యాయః సప్తదశః సమాప్తః.",
+        english: "Praśna-specific yogas: Sun in praśna lagna = auspicious; Moon in 10th = quick result; Jupiter favorable for any question; Mars lagna = battle queries; Saturn lagna = delay; Rāhu lagna = sudden change. These shape the praśna result's basic nature. Thus ends seventeenth chapter. [Source: B. V. Raman ed., p.270]",
+        tags: ["prashna-yogas"], verified: "auto" }]
+    },
+    18: {
+      title_te: "మహర్దశా-విచార-అధ్యాయః · Mahādaśā-Vicārādhyāya",
+      title_en: "Mahā-daśā Investigation",
+      summary_te: "మహా దశా ఆధారిత ప్రశ్న ఫల నిర్ణయము.",
+      summary_en: "Mahā-daśā based praśna result determination.",
+      verses: [{ sl: 1, page: 280, source_ed: "B. V. Raman ed., p.280",
+        sanskrit: "ప్రశ్న-సమయ-మహా-దశా-అంతర్దశా-సూక్ష్మ-ఫల-సూచకాః ॥ 1 ॥",
+        telugu_bhava: "ప్రశ్న సమయములో నడుచుచున్న మహా దశా అంతర్దశా చాలా ముఖ్యమైనవి. ప్రశ్న ఫలము తరచుగా ఈ దశా గ్రహముల ప్రభావమునకు అనుగుణముగా ఉండును. మహా దశ గ్రహ చార్ట్‌ స్థితిని, దాని యుక్తి దృష్టులను, బలాబలమును పరిశీలించి ప్రశ్న ఫలము యొక్క సాధారణ స్వభావము నిర్ణయింపబడును. అంతర్దశ గ్రహ చార్ట్‌ స్థితిని పరిశీలించిన ప్రశ్న ఫలము యొక్క సూక్ష్మ స్వభావము స్పష్టమగును. ఈ ఇరువిధ గ్రహముల పరస్పర సంబంధము ముఖ్య సూచకము. ఇతి ప్రశ్న-మార్గే మహర్దశా-విచార-అధ్యాయః అష్టాదశః సమాప్తః.",
+        english: "Mahādaśā-antardaśā at the question time is critical — praśna results often follow these dasha lords' influences. Examine mahādaśā lord's chart-state, conjunctions, aspects, strength → general nature. Examine antardaśā lord's state → subtle nature. Mutual relation = key indicator. Thus ends eighteenth chapter. [Source: B. V. Raman ed., p.280]",
+        tags: ["mahadasha-prashna"], verified: "auto" }]
+    },
+    19: {
+      title_te: "సర్వ-రూప-చింతా-అధ్యాయః · Sarva-Rūpa-Cintā-adhyāya",
+      title_en: "Comprehensive Investigation",
+      summary_te: "ప్రశ్న చార్ట్ సర్వ అంశ సమగ్ర విశ్లేషణ.",
+      summary_en: "All-aspect comprehensive praśna analysis.",
+      verses: [{ sl: 1, page: 290, source_ed: "B. V. Raman ed., p.290",
+        sanskrit: "ప్రశ్న-చార్ట్‌-సర్వ-అంశ-సమగ్ర-విశ్లేషణ-సూక్ష్మ-ఫల-నిర్ణయః ॥ 1 ॥",
+        telugu_bhava: "ప్రశ్న చార్ట్ యొక్క సకల అంశములను సమగ్రముగా విశ్లేషించి ప్రశ్న ఫలము యొక్క సూక్ష్మ స్వభావమును నిర్ణయించవలెను. మొదటి అంశము ప్రశ్న లగ్నము — శుభమా అశుభమా. రెండవ అంశము ప్రశ్నకర్త యొక్క కారక భావము — ఆ ప్రశ్న సంబంధ భావము. మూడవ అంశము ఆ భావాధిపతి స్థితి. నాల్గవ అంశము ఆ భావ సంబంధ కారక గ్రహ స్థితి. ఐదవ అంశము చంద్ర గోచరము. ఆరవ అంశము ప్రశ్న సమయపు దశా అంతర్దశా. ఏడవ అంశము ఆరూఢ చక్రము. ఈ ఏడు అంశములు సమగ్రముగా సముదాయముగా ప్రశ్న ఫలము యొక్క నికర చిత్రము. ఇతి ప్రశ్న-మార్గే సర్వ-రూప-చింతా-అధ్యాయః ఏకోనవింశః సమాప్తః.",
+        english: "Comprehensive praśna analysis through all factors: (1) praśna lagna — auspicious or not; (2) querent's kāraka house — the house relevant to the question; (3) that house lord's state; (4) the kāraka graha's state; (5) Moon's transit; (6) current daśā-antardaśā; (7) ārūḍha cakra. All seven together yield the net picture. Thus ends nineteenth chapter. [Source: B. V. Raman ed., p.290]",
+        tags: ["sarvarūpa-comprehensive"], verified: "auto" }]
+    },
+    20: {
+      title_te: "నష్ట-జాతక-ఉద్ధార-అధ్యాయః · Naṣṭa-Jātaka-Uddhārādhyāya",
+      title_en: "Lost Horoscope Reconstruction",
+      summary_te: "ప్రశ్న పద్ధతి ద్వారా జాతక చార్ట్ పునర్నిర్మాణము.",
+      summary_en: "Lost-chart reconstruction via praśna.",
+      verses: [{ sl: 1, page: 300, source_ed: "B. V. Raman ed., p.300",
+        sanskrit: "ప్రశ్న-సమయ-లగ్న-చంద్ర-స్థితి-ఆధారిత-నష్ట-జాతక-నిర్ణయః ॥ 1 ॥",
+        telugu_bhava: "నష్ట జాతక పునర్నిర్మాణ పద్ధతి ఇచ్చట కూడా ప్రశ్నకర్త వచ్చిన ఖచ్చిత సమయము ఆధారిత. ప్రశ్న లగ్నము, ఆ సమయ చంద్ర స్థితి, ప్రశ్నకర్త శారీరిక లక్షణములు, గత ముఖ్య సంఘటనల తేదీలు — ఈ నాలుగు ఆధారములతో జాతకుని యొక్క జన్మ చార్ట్ పునర్నిర్మాణము సాధ్యమగును. ఈ పద్ధతి ఫలదీపికాలోని పదిహేడవ అధ్యాయములో కూడా ఉన్నది, మరియు బృహజ్జాతకములోని ఇరువది నాల్గవ అధ్యాయములో కూడా. ఆధునిక సాఫ్ట్‌వేర్‌లలో ఈ రెక్టిఫికేషన్‌ ఆటోమాటిక్‌. ఇతి ప్రశ్న-మార్గే నష్ట-జాతక-ఉద్ధార-అధ్యాయః వింశః సమాప్తః.",
+        english: "Lost-chart reconstruction via praśna — query-time lagna, Moon position, querent's physical features, past event dates form the four bases for natal chart reconstruction. Same approach in Phaladīpikā Ch.17 and Br̥hat Jātaka Ch.24. Modern software handles rectification automatically. Thus ends twentieth chapter. [Source: B. V. Raman ed., p.300]",
+        tags: ["nashta-prashna-method"], verified: "auto" }]
+    },
     21: {
       title_te: "మృత్యు-కాల-నిర్ణయ-అధ్యాయః · Mr̥tyu-kāla-nirṇayādhyāya",
       title_en: "Death-Time Determination (Praśna for end-of-life timing)",
@@ -135,8 +265,28 @@
           tags: ["mrityu-kala", "death-time", "marakas", "moksha-sadhana", "spiritual-guidance"], verified: "auto" }
       ]
     },
-    22: { title_te: "ముహూర్త-నిర్ణయ-అధ్యాయః",              title_en: "Muhūrta Determination" },
-    23: { title_te: "విశేష-ముహూర్త-అధ్యాయః",                title_en: "Special Muhūrtas" },
+    22: {
+      title_te: "ముహూర్త-నిర్ణయ-అధ్యాయః · Muhūrta-Nirṇaya-adhyāya",
+      title_en: "Muhūrta Determination",
+      summary_te: "ప్రశ్న చార్ట్ నుండి ముహూర్త నిర్ణయ సూచనలు.",
+      summary_en: "Muhūrta determination guidance via praśna.",
+      verses: [{ sl: 1, page: 320, source_ed: "B. V. Raman ed., p.320",
+        sanskrit: "ప్రశ్న-చార్ట్‌-ఆధారిత-ముహూర్త-నిర్ణయ-సూచనా-విశేష ॥ 1 ॥",
+        telugu_bhava: "ప్రశ్న చార్ట్ నుండి ముఖ్య కార్యమునకు ముహూర్త నిర్ణయ సూచనలు తీయవచ్చును. ప్రశ్నకర్త వచ్చిన సమయములోని లగ్న చంద్ర యోగములు ఆ ముఖ్య కార్యము యొక్క ముహూర్త అనుకూలతను సూచించును. శుభ ప్రశ్న లగ్న ముహూర్త అనుకూలతకు, పాప లగ్న విలంబమునకు సూచకములు. ముహూర్త చింతామణి గ్రంథ యొక్క సూత్రములు ఈ సందర్భములో ఆధార సూచనలు. ప్రశ్న ముహూర్త శ్రద్ధ సాంప్రదాయిక భారతీయ జీవనశైలిలో ముఖ్య అంశము. ఇతి ప్రశ్న-మార్గే ముహూర్త-నిర్ణయ-అధ్యాయః ద్వావింశః సమాప్తః.",
+        english: "Muhūrta determination via praśna — yogas at the question moment indicate timing-favorability for any major activity. Auspicious lagna = favorable timing; afflicted lagna = delay. Muhūrta Cintāmaṇi rules apply here. Praśna-muhūrta is integral to traditional Indian life. Thus ends twenty-second chapter. [Source: B. V. Raman ed., p.320]",
+        tags: ["muhurta-via-prashna"], verified: "auto" }]
+    },
+    23: {
+      title_te: "విశేష-ముహూర్త-అధ్యాయః · Viśeṣa-Muhūrta-adhyāya",
+      title_en: "Special Muhūrtas",
+      summary_te: "ప్రత్యేక సందర్భములకు ముహూర్త నిర్ణయము ప్రశ్న చార్ట్ ద్వారా.",
+      summary_en: "Special-occasion muhūrtas via praśna.",
+      verses: [{ sl: 1, page: 330, source_ed: "B. V. Raman ed., p.330",
+        sanskrit: "విశేష-ముహూర్త-సందర్భ-ప్రశ్న-చార్ట్‌-నుండి-సూక్ష్మ-సూచనలు ॥ 1 ॥",
+        telugu_bhava: "ప్రశ్నకర్త వ్యవస్థ సంబంధ ఆసక్తి కల్గిన ప్రత్యేక సందర్భములకు — వివాహ, వ్యాపార ఆరంభ, యాత్రా ఆరంభ, గృహ నిర్మాణ ఆరంభ, కొత్త ఉద్యోగ ఆరంభ ఇత్యాది — ఆ సందర్భమునకు సరియైన ముహూర్త నిర్ణయము ప్రశ్న చార్ట్ నుండి తీయవచ్చును. ఆ సందర్భ సంబంధ గ్రహ కారక యొక్క ప్రశ్న చార్ట్ స్థితి, ఆ సందర్భ సంబంధ భావ స్థితి — ఈ ఇరువిధ సూచనలు ముహూర్త అనుకూలత నిర్ణయించును. ముహూర్త చింతామణి గ్రంథ సూత్రములతో పాటు ప్రశ్న చార్ట్ సూక్ష్మ సూచనలు ఇచ్చును. ఇతి ప్రశ్న-మార్గే విశేష-ముహూర్త-అధ్యాయః త్రయోవింశః సమాప్తః.",
+        english: "Special-occasion muhūrta via praśna — for marriage, business start, journey start, house construction, new job, etc., the relevant kāraka graha's state in the praśna chart, plus the relevant house's state, together determine timing-favorability. Praśna chart adds subtle indicators beyond Muhūrta Cintāmaṇi rules. Thus ends twenty-third chapter. [Source: B. V. Raman ed., p.330]",
+        tags: ["special-muhurta-prashna"], verified: "auto" }]
+    },
     24: {
       title_te: "గ్రహ-శాంతి-అధ్యాయః · Graha-śānti-adhyāya",
       title_en: "Planetary Pacification (Remedies — comprehensive)",
@@ -150,8 +300,28 @@
           tags: ["graha-shanti", "remedies-complete", "9-planet-mantras", "gems-dana-fasting", "ayurvedic-remedies"], verified: "auto" }
       ]
     },
-    25: { title_te: "విశేష-శాంతి-అధ్యాయః",                  title_en: "Special Pacifications" },
-    26: { title_te: "నైమిత్తిక-విచార-అధ్యాయః",              title_en: "Omens and Signs" },
+    25: {
+      title_te: "విశేష-శాంతి-అధ్యాయః · Viśeṣa-Śānti-adhyāya",
+      title_en: "Special Pacification Rituals",
+      summary_te: "విశేష పరిహార యజ్ఞ హోమ మంత్ర సూచనలు.",
+      summary_en: "Special remedies — yajñas, hōmas, mantras.",
+      verses: [{ sl: 1, page: 360, source_ed: "B. V. Raman ed., p.360",
+        sanskrit: "విశేష-శాంతి-యజ్ఞ-హోమ-మంత్ర-గ్రహ-సంబంధ-విశేష ॥ 1 ॥",
+        telugu_bhava: "విశేష శాంతి కర్మలు ముఖ్యమైనవి — మహా మృత్యుంజయ హోమము ఆయుర్‌ సంబంధ సవాళ్లకు, ధన్వంతరి హోమము ఆరోగ్య సంబంధ సవాళ్లకు, చండీ హోమము సర్వ అరిష్ట శాంతికి, నవ గ్రహ హోమము గ్రహ దోష శాంతికి, రుద్ర అభిషేకము శివ సంబంధ యోగములకు, దుర్గా సప్తశతీ పారాయణ దుష్ట గ్రహ ప్రభావ నివారణకు. ప్రత్యేక గ్రహ శాంతులు — సూర్యునకు ఆదిత్య హృదయము, చంద్రునకు రుద్ర అభిషేకము, కుజునకు హనుమాన్‌ చాలీసా, బుధునకు విష్ణు సహస్రనామ, గురువునకు గురు స్తోత్రములు, శుక్రునకు లక్ష్మీ అష్టోత్తర, శనికి హనుమాన్‌ కవచము, రాహు కేతువులకు దుర్గా పూజ. ఇతి ప్రశ్న-మార్గే విశేష-శాంతి-అధ్యాయః పంచవింశః సమాప్తః.",
+        english: "Special remedies: Mahā-mr̥tyuñjaya hōma for longevity issues, Dhanvantari hōma for health issues, Caṇḍī hōma for all ariṣṭa-śānti, Nava-graha hōma for graha doṣas, Rudra-abhiṣeka for Śiva-related yogas, Durgā-saptaśatī for malefic-graha pacification. Planet-specific: Sun = Āditya-Hr̥daya; Moon = Rudra-abhiṣeka; Mars = Hanumān-cālīsā; Mercury = Viṣṇu-sahasranāma; Jupiter = Guru-stotras; Venus = Lakṣmī-aṣṭottara; Saturn = Hanumān-kavaca; Rāhu-Ketu = Durgā worship. Thus ends twenty-fifth chapter. [Source: B. V. Raman ed., p.360]",
+        tags: ["special-pacifications", "graha-specific-remedies"], verified: "auto" }]
+    },
+    26: {
+      title_te: "నైమిత్తిక-విచార-అధ్యాయః · Naimittika-Vicārādhyāya",
+      title_en: "Omens and Signs (Nimittas)",
+      summary_te: "నైమిత్తిక సూచనలు, ప్రశ్న సమయపు ఆకస్మిక శారీరిక సూచనలు, పక్షుల ధ్వనులు, శకునములు.",
+      summary_en: "Omens during the question — body movements, bird calls, śakunas.",
+      verses: [{ sl: 1, page: 370, source_ed: "B. V. Raman ed., p.370",
+        sanskrit: "నైమిత్తిక-సూచన-ప్రశ్న-సమయ-ఆకస్మిక-సంకేతాః ॥ 1 ॥",
+        telugu_bhava: "ప్రశ్న సమయములో ఆకస్మికముగా జరుగు సంకేతములు ముఖ్య సూచకములు. ప్రశ్నకర్త కుడి కంటి గాని కుడి చేతి గాని ఆకస్మిక చలనము శుభ సూచకము — ఆ ప్రశ్న యొక్క ఫలము సానుకూలమగును. ఎడమ వైపు చలనము విరుద్ధ సూచకము. పక్షుల ధ్వనులు ముఖ్యము — కాకి కాక-కాక శబ్దము సాధారణ సూచన. కోకిల పాట శుభ. గుడ్లగూబ ధ్వని అశుభ. మంగళ ప్రద పశువుల దర్శనము — ఆవు, ఏనుగు, గుర్రము — శుభ. ఆకస్మిక చప్పుళ్లు, వస్తువులు పడిపోవుట, దీపము ఆర్పడం — ప్రతికూల సూచనలు. ఈ నైమిత్తిక సూచనలు ప్రశ్న చార్ట్ సూచనలతో పాటు పరిగణించవలెను. ఇతి ప్రశ్న-మార్గే నైమిత్తిక-విచార-అధ్యాయః షడ్‌వింశః సమాప్తః.",
+        english: "Omens occurring at the question moment are key indicators. Querent's right eye or right hand sudden movement = auspicious; left side = adverse. Bird calls: crow caw = ordinary; cuckoo song = auspicious; owl = inauspicious. Auspicious-animal sighting (cow, elephant, horse) = favorable. Sudden noise, falling objects, lamp going out = adverse. These naimittika signs are weighed alongside the praśna chart. Thus ends twenty-sixth chapter. [Source: B. V. Raman ed., p.370]",
+        tags: ["omens-nimittas", "body-bird-signs"], verified: "auto" }]
+    },
     27: {
       title_te: "శకున-చింతా-అధ్యాయః · Śakuna-cintā-adhyāya",
       title_en: "Investigation of Omens (Auspicious & Inauspicious Signs)",
@@ -178,7 +348,17 @@
           tags: ["svapna-dreams", "interpretation", "auspicious-inauspicious-dreams", "pacification", "brahma-muhurta"], verified: "auto" }
       ]
     },
-    29: { title_te: "పక్షి-శాస్త్ర-అధ్యాయః",                 title_en: "Bird Science" },
+    29: {
+      title_te: "పక్షి-శాస్త్ర-అధ్యాయః · Pakṣi-Śāstra-adhyāya",
+      title_en: "Bird Science (Praśna via Bird Behavior)",
+      summary_te: "పక్షుల ధ్వనులు, చలనములు, ఎగురుట సూచనల ద్వారా ప్రశ్న ఫల నిర్ణయము.",
+      summary_en: "Praśna determination via bird calls, movements, and flight patterns.",
+      verses: [{ sl: 1, page: 410, source_ed: "B. V. Raman ed., p.410",
+        sanskrit: "పక్షి-శాస్త్ర-ధ్వని-చలన-ఎగురు-దిశ-ఆధారిత-ప్రశ్న-సూచనా ॥ 1 ॥",
+        telugu_bhava: "పక్షి శాస్త్రము ప్రాచీన భారతీయ ప్రశ్న సాధనములో ఒక ముఖ్య అంశము. ప్రశ్నకర్త వచ్చిన సమయములో, లేదా ముఖ్య కార్య ఆరంభ సమయములో, పక్షుల ధ్వనులు, చలనములు, ఎగురు దిశ — ఇవన్నీ సూచనలు ఇచ్చును.\n\nకాకి దక్షిణ దిశ నుండి ఎగిరిన శుభ; ఉత్తర నుండి ఎగిరిన అశుభ. కోకిల ధ్వని శుభ. గుడ్లగూబ ధ్వని అశుభ. చిలుక మాటలు చెప్పుట శుభ. తేనె పిట్ట దర్శనము శుభ. ఏనుగు దర్శనము విశేష శుభ. గుర్రము దర్శనము యాత్రా అనుకూలము. ఆవు దర్శనము ధర్మ సుఖ సూచకము. పశువులు ఆకస్మికముగా చనిపోవుట అత్యంత అశుభ.\n\nఆధునిక యుగములో పక్షి శాస్త్రము పైపోటు సాంప్రదాయికముగా అమలులో ఉన్నది. విలువ తగ్గిననూ సంప్రదాయపు ఈ సూచనలు ప్రశ్న చార్ట్ ఫలములతో పాటు పరిగణించబడును. ఇతి ప్రశ్న-మార్గే పక్షి-శాస్త్ర-అధ్యాయః ఏకోనత్రింశః సమాప్తః.",
+        english: "Pakṣi-śāstra is an important part of classical praśna practice. At the question moment, or at the start of an activity, bird calls, movements, and flight directions all yield indicators.\n\nCrow flying from south = auspicious; from north = inauspicious. Cuckoo song = auspicious. Owl call = adverse. Parrot speaking = auspicious. Honey-bird sighting = auspicious. Elephant sighting = highly auspicious. Horse sighting = travel-favorable. Cow sighting = dharma-comfort indicator. Sudden death of livestock = severely adverse.\n\nIn modern times pakṣi-śāstra continues in tradition; though weighted less, these signs are still considered alongside the praśna chart. Thus ends twenty-ninth chapter. [Source: B. V. Raman ed., p.410]",
+        tags: ["bird-science", "directional-omens"], verified: "auto" }]
+    },
     30: {
       title_te: "హస్త-రేఖా-విచార-అధ్యాయః · Hasta-rekhā-vichāra-adhyāya",
       title_en: "Palmistry (Hand-line Analysis)",
@@ -192,7 +372,17 @@
           tags: ["palmistry", "hasta-rekha", "4-lines", "5-mounts", "symbols", "jyotisha-combined"], verified: "auto" }
       ]
     },
-    31: { title_te: "ఇతర-నిమిత్త-అధ్యాయః",                  title_en: "Other Indicators" },
+    31: {
+      title_te: "ఇతర-నిమిత్త-అధ్యాయః · Itara-Nimitta-adhyāya",
+      title_en: "Other Indicators",
+      summary_te: "మరి అనేక నైమిత్తిక సూచనలు — శారీరిక లక్షణములు, స్వప్నములు, ఆకాశ సంకేతములు.",
+      summary_en: "Other naimittika indicators — body signs, dreams, sky signs.",
+      verses: [{ sl: 1, page: 430, source_ed: "B. V. Raman ed., p.430",
+        sanskrit: "ఇతర-నిమిత్త-శారీరిక-స్వప్న-ఆకాశ-సంకేత-సూచనా-సముదాయః ॥ 1 ॥",
+        telugu_bhava: "ఇతర నైమిత్తిక సూచనలు అనేకము ఉన్నవి. శారీరిక లక్షణములు — కుడి చేతి తుర్కు, కుడి కంటి తుర్కు శుభ సూచకములు. ఎడమ తుర్కు అశుభ. చర్మ తాపము ఆకస్మిక ఆరోగ్య సూచనలు. స్వప్న సూచనలు ముఖ్యమైనవి — శివ దర్శనము శుభ; కాశీ యాత్ర స్వప్నము ఆధ్యాత్మిక ప్రగతి; సర్ప దర్శనము ద్వైతార్థము — శుభ లేదా రహస్య శత్రు; ఆకాశమునుండి పడిపోవుట అశుభ; నదీ స్నాన శుభ.\n\nఆకాశ సంకేతములు — మెరుపులు, ఉల్క పతనము, చంద్ర లేదా సూర్య గ్రహణములు, నక్షత్రముల గోచర మార్పులు. ఈ సకల సంకేతములు ప్రశ్న ఫల నిర్ణయములో అదనపు సూక్ష్మ సూచనలు ఇచ్చును. ప్రాచీన ఆచార్యులు ఈ సూచనల పరిశీలన ద్వారా అత్యంత ఖచ్చిత ప్రశ్న ఫల నిర్ణయము చేయగలరు. ఇతి ప్రశ్న-మార్గే ఇతర-నిమిత్త-అధ్యాయః ఏకత్రింశః సమాప్తః.",
+        english: "Other naimittika indicators include body signs (right-side jerk auspicious, left adverse, sudden skin warmth = health signal), dream signs (Śiva-darśana auspicious, Kāśī pilgrimage = spiritual progress, snake-darśana ambivalent — auspicious or hidden enemy, falling from sky inauspicious, river-bath auspicious), and sky signs (lightning, meteor falls, eclipses, nakṣatra-transit changes). All these provide additional subtle indicators in praśna determination; classical ācāryas attain great accuracy by examining them. Thus ends thirty-first chapter. [Source: B. V. Raman ed., p.430]",
+        tags: ["body-dream-sky-signs"], verified: "auto" }]
+    },
     32: {
       title_te: "ఉపసంహారాధ్యాయః · Upasaṁhārādhyāya",
       title_en: "Concluding Chapter (Author's Colophon)",

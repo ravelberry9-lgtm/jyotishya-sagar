@@ -2,7 +2,9 @@
 <html lang="te">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#d94f00">
+<link rel="manifest" href="manifest.json">
 <title>జ్యోతిష్య సాగర్ — తెలుగు వైదిక జ్యోతిష్య యాప్</title>
 <meta name="description" content="తెలుగు మాతృభాషలో పూర్తి వైదిక జ్యోతిష్యం — జాతకం, పంచాంగం, జాతక పొంతన, ఉచిత పరిహారాలు. BPHS శాస్త్రం ఆధారం.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -158,6 +160,7 @@ footer .footer-copyright{font-size:11px;opacity:.5;margin-top:30px;width:100%;te
         <a href="#features">ఫీచర్లు</a>
         <a href="#audience">ఎవరికోసం</a>
         <a href="#remedies">పరిహారాలు</a>
+        <button id="pwaInstallBtn" type="button" aria-label="Install app" style="background:rgba(255,255,255,.92);color:var(--saffron-deep);border:0;padding:8px 16px;border-radius:999px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;display:none;align-items:center;gap:5px">⬇ Install</button>
         <a href="app.html" class="cta-nav">యాప్ తెరవండి →</a>
       </div>
     </nav>
@@ -431,5 +434,13 @@ footer .footer-copyright{font-size:11px;opacity:.5;margin-top:30px;width:100%;te
     </div>
   </div>
 </footer>
+<script src="pwa-install.js" defer></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
+</script>
 </body>
 </html>

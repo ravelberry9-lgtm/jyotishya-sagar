@@ -110,3 +110,33 @@ python app.py
 ## Health check
 
 `GET /healthz` returns `{"status": "ok"}` — Railway uses this to confirm the container started.
+
+---
+
+## Troubleshooting — `pip: command not found` build failure
+
+If the first Railway build fails with:
+
+```
+RUN pip install --upgrade pip
+/bin/bash: line 1: pip: command not found
+exit code: 127
+```
+
+It's because an earlier `nixpacks.toml` overrode Nixpacks' default Python setup phase. The fix is already in this repo — `nixpacks.toml` is now minimal:
+
+```toml
+providers = ["python"]
+```
+
+That single line forces the Python provider but lets Nixpacks' default phases install pip and run `pip install -r requirements.txt` automatically.
+
+**To apply the fix on a previously-deployed repo:**
+
+```powershell
+git add nixpacks.toml
+git commit -m "Fix nixpacks: let default Python provider handle install"
+git push
+```
+
+Railway will auto-redeploy on the new commit.

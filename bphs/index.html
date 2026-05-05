@@ -2,7 +2,9 @@
 <html lang="te">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#d94f00">
+<link rel="manifest" href="../manifest.json">
 <title>జ్యోతిష్య గ్రంథాలయము · Jyotiṣa Granthālaya</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,28 +19,54 @@
 body{font-family:'Noto Sans Telugu','Poppins',system-ui,sans-serif;background:linear-gradient(180deg,#fff7ec 0%,#fdeed3 100%);color:var(--ink);min-height:100vh;line-height:1.65}
 
 /* ===== Header (sticky) ===== */
-header{background:linear-gradient(135deg,var(--saffron) 0%,var(--saffron-deep) 60%,var(--maroon) 100%);color:#fff;padding:14px 20px;position:sticky;top:0;z-index:100;box-shadow:0 4px 14px rgba(107,29,29,.18)}
+header{background:linear-gradient(135deg,var(--saffron) 0%,var(--saffron-deep) 60%,var(--maroon) 100%);color:#fff;padding:10px 16px;position:sticky;top:0;z-index:100;box-shadow:0 4px 14px rgba(107,29,29,.18)}
 header::before{content:'🕉';position:absolute;font-size:140px;opacity:.06;right:24px;top:-40px;pointer-events:none}
-.htop{display:flex;align-items:center;gap:14px;max-width:1320px;margin:0 auto;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
-.brand .om{font-size:30px;background:rgba(255,255,255,.18);width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.4)}
-.brand-text h1{margin:0;font-size:19px;font-weight:800;line-height:1.15}
-.brand-text .tag{font-size:11px;opacity:.92;font-family:'Poppins',sans-serif;margin-top:1px}
-.htop nav{display:flex;gap:6px;flex:1;justify-content:center;flex-wrap:wrap}
-.htop nav button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);padding:7px 14px;border-radius:7px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .12s;display:flex;align-items:center;gap:6px}
+.htop{display:flex;align-items:center;gap:10px;max-width:1320px;margin:0 auto;flex-wrap:wrap;row-gap:8px}
+.brand{display:flex;align-items:center;gap:10px;cursor:pointer;min-width:0;flex:1}
+.brand .om{font-size:26px;background:rgba(255,255,255,.18);width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.4);flex-shrink:0}
+.brand-text{min-width:0;overflow:hidden}
+.brand-text h1{margin:0;font-size:17px;font-weight:800;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-text .tag{font-size:10.5px;opacity:.92;font-family:'Poppins',sans-serif;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.htop nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.htop nav button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);padding:7px 12px;border-radius:7px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .12s;display:flex;align-items:center;gap:6px;white-space:nowrap}
 .htop nav button:hover{background:rgba(255,255,255,.28)}
 .htop nav button.active{background:#fff;color:var(--saffron-deep);box-shadow:0 2px 6px rgba(0,0,0,.15)}
 .htop nav button .lbl-en{font-size:10px;opacity:.85;font-family:'Poppins',sans-serif;font-weight:500;margin-left:4px}
 .htop nav button.active .lbl-en{color:var(--maroon);opacity:.9}
-#globalSearch{flex-basis:280px;max-width:380px;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:7px;background:rgba(255,255,255,.96);color:var(--ink);font-family:inherit;font-size:13px}
+#globalSearch{flex:1 1 240px;min-width:0;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:7px;background:rgba(255,255,255,.96);color:var(--ink);font-family:inherit;font-size:13px}
 #globalSearch:focus{outline:2px solid var(--gold);border-color:var(--gold)}
-.back-link{color:#fff;font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;background:rgba(255,255,255,.16);padding:7px 12px;border-radius:7px;border:1px solid rgba(255,255,255,.3);white-space:nowrap}
-.back-link:hover{background:rgba(255,255,255,.28)}
+.back-link,#pwaInstallBtn{color:#fff;font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;background:rgba(255,255,255,.16);padding:7px 12px;border-radius:7px;border:1px solid rgba(255,255,255,.3);white-space:nowrap;cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-weight:600;line-height:1}
+.back-link:hover,#pwaInstallBtn:hover{background:rgba(255,255,255,.28)}
+#pwaInstallBtn{background:#fff;color:var(--saffron-deep);border-color:#fff;font-weight:700}
+#pwaInstallBtn:hover{background:#ffeed3;color:var(--maroon)}
+@media (max-width:880px){
+  header{padding:8px 12px}
+  .htop{gap:8px}
+  .brand{flex:1 1 auto}
+  .brand .om{width:38px;height:38px;font-size:22px}
+  .brand-text h1{font-size:15px}
+  .brand-text .tag{display:none}
+  .htop nav{order:3;width:100%;justify-content:flex-start}
+  .htop nav button{flex:1;justify-content:center;padding:7px 8px;font-size:12px}
+  #globalSearch{order:4;flex-basis:100%;max-width:none;font-size:14px}
+  .back-link{padding:7px 9px;font-size:11px}
+  #pwaInstallBtn{padding:7px 10px;font-size:11px}
+}
 
 /* ===== Layout ===== */
 .layout{display:grid;grid-template-columns:280px 1fr;gap:0;max-width:1320px;margin:0 auto;min-height:calc(100vh - 76px)}
-@media (max-width:880px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto;max-height:none;display:none}.sidebar.show{display:block}}
-.sidebar{background:rgba(255,253,246,.85);border-right:1px solid var(--line);padding:14px 12px;position:sticky;top:76px;height:calc(100vh - 76px);overflow-y:auto}
+.sidebar{background:rgba(255,253,246,.95);border-right:1px solid var(--line);padding:14px 12px;position:sticky;top:76px;height:calc(100vh - 76px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.sb-close{display:none;position:sticky;top:0;float:right;background:var(--maroon);color:#fff;border:0;width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.18);z-index:5}
+.sb-backdrop{display:none;position:fixed;inset:0;background:rgba(43,24,16,.55);z-index:150;backdrop-filter:blur(2px)}
+.sb-backdrop.show{display:block}
+@media (max-width:880px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:fixed;top:0;left:0;bottom:0;width:84vw;max-width:340px;height:100vh;z-index:200;
+           transform:translateX(-105%);transition:transform .25s ease-out;
+           box-shadow:6px 0 24px rgba(0,0,0,.2);background:#fffdf6;padding:16px 14px 80px}
+  .sidebar.show{transform:translateX(0)}
+  .sb-close{display:flex;align-items:center;justify-content:center}
+}
 .sidebar h3{margin:14px 0 8px;font-size:12px;color:var(--maroon);letter-spacing:.3px;font-family:'Noto Sans Telugu',sans-serif;font-weight:700;line-height:1.3}
 .sidebar h3:first-child{margin-top:0}
 .sidebar h3 .sb-en{display:block;font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-top:1px}
@@ -140,8 +168,19 @@ header::before{content:'🕉';position:absolute;font-size:140px;opacity:.06;righ
 .research-block-en p{margin:0 0 9px;font-size:13.5px;line-height:1.7;font-family:'Poppins',sans-serif}
 
 /* ===== Mode toggle (mobile sidebar) ===== */
-.toc-toggle{display:none;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:14px;cursor:pointer;padding:6px 12px;border-radius:6px;font-family:inherit;font-weight:600}
-@media (max-width:880px){.toc-toggle{display:block}}
+.toc-toggle{display:none;background:#fff;border:0;color:var(--saffron-deep);font-size:15px;cursor:pointer;padding:8px 12px;border-radius:8px;font-family:inherit;font-weight:700;align-items:center;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.toc-toggle .ic{font-size:18px;line-height:1}
+@media (max-width:880px){.toc-toggle{display:inline-flex;order:1;flex-shrink:0}}
+
+/* Floating "Chapters" FAB — shows on mobile when reading a text */
+.chapters-fab{display:none;position:fixed;bottom:20px;right:18px;background:linear-gradient(135deg,var(--saffron),var(--saffron-deep));color:#fff;border:0;padding:14px 22px;border-radius:999px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 6px 22px rgba(217,79,0,.45);z-index:90;align-items:center;gap:8px}
+.chapters-fab .ic{font-size:18px}
+@media (max-width:880px){body.has-text-context .chapters-fab{display:inline-flex}}
+
+/* Big inline "Open chapter list" CTA on text landing — mobile only */
+.mobile-chapters-cta{display:none;background:linear-gradient(135deg,var(--saffron),var(--saffron-deep));color:#fff;border:0;width:100%;padding:16px 20px;border-radius:14px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;margin:14px 0;box-shadow:0 6px 18px rgba(217,79,0,.3);align-items:center;justify-content:center;gap:10px}
+.mobile-chapters-cta .ic{font-size:22px}
+@media (max-width:880px){.mobile-chapters-cta{display:inline-flex}}
 
 footer.bookfoot{background:var(--maroon);color:#fff;padding:14px;text-align:center;font-size:11px;font-family:'Poppins',sans-serif;opacity:.92}
 footer.bookfoot a{color:#ffd58a;text-decoration:none}
@@ -161,7 +200,7 @@ footer.bookfoot a{color:#ffd58a;text-decoration:none}
 
 <header>
   <div class="htop">
-    <button class="toc-toggle" id="tocToggle" onclick="document.querySelector('.sidebar').classList.toggle('show')">☰</button>
+    <button class="toc-toggle" id="tocToggle" aria-label="Open chapter list" onclick="toggleSidebar(true)"><span class="ic">☰</span><span>అధ్యాయములు</span></button>
     <div class="brand" onclick="goHome()">
       <div class="om">🕉</div>
       <div class="brand-text">
@@ -174,12 +213,16 @@ footer.bookfoot a{color:#ffd58a;text-decoration:none}
       <button data-mode="research" onclick="setMode('research')">📚 పరిశోధన<span class="lbl-en">Research</span></button>
     </nav>
     <input type="text" id="globalSearch" placeholder="🔍 వెదకండి · Search..." oninput="onGlobalSearch()">
+    <button id="pwaInstallBtn" type="button" aria-label="Install app">⬇ Install</button>
     <a href="../app.html" class="back-link">← App</a>
   </div>
 </header>
 
+<div class="sb-backdrop" id="sbBackdrop" onclick="toggleSidebar(false)"></div>
+
 <div class="layout">
   <aside class="sidebar" id="sidebar">
+    <button class="sb-close" aria-label="Close chapter list" onclick="toggleSidebar(false)">✕</button>
     <!-- Sidebar content rendered dynamically based on mode -->
   </aside>
   <main class="reader" id="reader">
@@ -191,11 +234,22 @@ footer.bookfoot a{color:#ffd58a;text-decoration:none}
   </main>
 </div>
 
+<button class="chapters-fab" aria-label="Open chapter list" onclick="toggleSidebar(true)"><span class="ic">📖</span>అధ్యాయములు · Chapters</button>
+
 <footer class="bookfoot">
   జ్యోతిష్య గ్రంథాలయము · Jyotiṣa Granthālaya v1.0 ·
   <a href="../app.html">జ్యోతిష్య సాగర్ Application</a>
 </footer>
 
+<script src="../pwa-install.js" defer></script>
+<script>
+/* Register service worker (required for installability on Chrome/Edge) */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('../sw.js').catch(function(){});
+  });
+}
+</script>
 <script src="granthas.js"></script>
 <script src="bphs-data.js"></script>
 <script src="brihat-jataka-data.js"></script>
@@ -225,6 +279,25 @@ let state = {
 };
 
 /* ============================================================ */
+/* === MOBILE SIDEBAR DRAWER === */
+function isMobile(){ return window.matchMedia('(max-width:880px)').matches; }
+function toggleSidebar(force){
+  const sb = document.getElementById('sidebar');
+  const bd = document.getElementById('sbBackdrop');
+  const open = (typeof force === 'boolean') ? force : !sb.classList.contains('show');
+  sb.classList.toggle('show', open);
+  bd.classList.toggle('show', open && isMobile());
+  document.body.style.overflow = (open && isMobile()) ? 'hidden' : '';
+}
+function closeSidebarOnMobile(){
+  if (isMobile()) toggleSidebar(false);
+}
+/* Toggle body class so FAB shows only when reading a specific text */
+function setTextContext(on){
+  document.body.classList.toggle('has-text-context', !!on);
+}
+
+/* ============================================================ */
 /* === MODE SWITCHING === */
 function setMode(mode) {
   state.mode = mode;
@@ -239,6 +312,8 @@ function setMode(mode) {
     renderResearchSidebar();
     if (research && research.sections.length) loadResearch(research.sections[0].id);
   }
+  setTextContext(false);
+  closeSidebarOnMobile();
   if (history && history.replaceState) history.replaceState(null, '', '#' + mode);
 }
 
@@ -341,6 +416,8 @@ function openText(textId) {
   document.querySelectorAll('header nav button').forEach(b => b.classList.remove('active'));
   renderTextSidebar(textId);
   renderTextLanding(text);
+  setTextContext(true);
+  closeSidebarOnMobile();
   if (history && history.replaceState) history.replaceState(null, '', '#text-' + textId);
 }
 
@@ -422,9 +499,10 @@ function renderTextLanding(text) {
 
   // Chapter list call-out
   if (extracted_chapters > 0) {
+    h += '<button class="mobile-chapters-cta" onclick="toggleSidebar(true)"><span class="ic">📖</span>' + extracted_chapters + ' అధ్యాయములు తెరువు · Open ' + extracted_chapters + ' chapters</button>';
     h += '<div style="background:linear-gradient(135deg,' + m.color + ',' + m.color_dark + ');color:#fff;border-radius:10px;padding:14px 18px;text-align:center">' +
       '<strong style="font-size:14px">📖 ' + extracted_chapters + ' అధ్యాయములు అందుబాటులో ఉన్నవి</strong><br>' +
-      '<span style="font-size:11.5px;opacity:.92;font-family:Poppins">Choose a chapter from the sidebar to begin reading</span>' +
+      '<span style="font-size:11.5px;opacity:.92;font-family:Poppins">Tap the orange button above (or 📖 floating button) to choose a chapter</span>' +
       '</div>';
   } else {
     h += '<div style="background:#fff8e1;border:1px dashed var(--gold);border-radius:10px;padding:18px;text-align:center;color:var(--muted)">' +
@@ -446,6 +524,7 @@ function openChapter(textId, chNum) {
   const ch = text.chapters[chNum];
   if (!ch) {
     document.getElementById('reader').innerHTML = '<div class="empty"><div class="icon">⏳</div><h2>అధ్యాయం ' + chNum + '</h2><p>This chapter has not yet been extracted. Coming in a future session.</p></div>';
+    closeSidebarOnMobile();
     return;
   }
   // Update sidebar active state
@@ -467,6 +546,8 @@ function openChapter(textId, chNum) {
 
   document.getElementById('reader').innerHTML = h;
   document.getElementById('reader').scrollTop = 0;
+  setTextContext(true);
+  closeSidebarOnMobile();
   if (history && history.replaceState) history.replaceState(null, '', '#text-' + textId + '-ch-' + chNum);
 }
 
@@ -538,6 +619,7 @@ function loadResearch(sectionId) {
   }
   reader.innerHTML = h;
   reader.scrollTop = 0;
+  closeSidebarOnMobile();
   if (history && history.replaceState) history.replaceState(null, '', '#research-' + sectionId);
 }
 
@@ -597,6 +679,21 @@ function onGlobalSearch() {
 }
 
 /* ============================================================ */
+/* === GLOBAL EVENT HANDLERS === */
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape' && document.getElementById('sidebar').classList.contains('show')) {
+    toggleSidebar(false);
+  }
+});
+window.addEventListener('resize', function(){
+  // If we cross from mobile -> desktop while drawer is open, clean up backdrop & body lock
+  if (!isMobile()) {
+    document.getElementById('sbBackdrop').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+});
+
+/* ============================================================ */
 /* === INIT (deep-link routing) === */
 const hash = location.hash || '';
 if (hash.startsWith('#text-')) {
@@ -618,6 +715,8 @@ if (hash.startsWith('#text-')) {
 } else {
   setMode('library');
 }
+/* On initial load, drawer is closed; backdrop is hidden by default. Make sure body scroll is unlocked. */
+document.body.style.overflow = '';
 </script>
 </body>
 </html>
