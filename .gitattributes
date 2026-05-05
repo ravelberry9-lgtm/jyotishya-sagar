@@ -1,0 +1,5 @@
+# Force LF line endings on shell scripts and Dockerfile so Linux containers
+# don't choke on CRLF when the repo is checked out on Windows.
+*.sh         text eol=lf
+Dockerfile   text eol=lf
+.dockerignore text eol=lf
