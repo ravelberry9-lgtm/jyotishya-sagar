@@ -1,4 +1,0 @@
-# Force Railway/Nixpacks to use the Python provider, ignoring the leftover
-# package.json. The default Python provider handles pip install + Procfile;
-# we don't override its phases (the previous version did, which broke pip).
-providers = ["python"]
