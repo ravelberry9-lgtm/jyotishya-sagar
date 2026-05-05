@@ -306,6 +306,13 @@ table.dasha tr.current td:first-child{border-left:3px solid var(--saffron)}
             font-weight:600;cursor:pointer}
 .toggle-btn.active{background:var(--saffron);color:#fff;border-color:var(--saffron)}
 section.view{display:none}section.view.active{display:block}
+section.view#view-bphs{padding:0}
+@media (max-width:900px){
+  section.view#view-bphs #granthalayaFrame{height:calc(100vh - 240px);min-height:500px}
+}
+@media (max-width:600px){
+  section.view#view-bphs #granthalayaFrame{height:calc(100vh - 220px);min-height:480px}
+}
 
 /* Result tabs (groom/bride/match) */
 .rtab-row{display:flex;gap:6px;margin:14px 0;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:0}
@@ -522,7 +529,16 @@ footer{text-align:center;padding:30px 20px;color:var(--muted);font-size:11px;
       <div id="learnResult"></div>
     </section>
     <section class="view" id="view-bphs">
-      <div id="bphsViewResult"></div>
+      <div id="bphsViewResult" style="padding:0;margin:0">
+        <div style="background:linear-gradient(135deg,#1a3d6b,#0c2447);color:#fff;padding:14px 18px;border-radius:14px 14px 0 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+          <div>
+            <strong style="font-size:15px">🏛 జ్యోతిష్య గ్రంథాలయము · Jyotiṣa Granthālaya</strong>
+            <div style="font-size:11.5px;opacity:.88;font-family:Poppins;margin-top:2px">9 classical texts · 28-chapter Br̥hat Jātaka · BPHS · Pañcaratna · Specialized works</div>
+          </div>
+          <a href="bphs/index.html" target="_blank" rel="noopener" style="background:#fff;color:#1a3d6b;padding:8px 16px;border-radius:8px;font-family:Poppins;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">↗ కొత్త టాబ్‌లో తెరువు · New tab</a>
+        </div>
+        <iframe id="granthalayaFrame" src="bphs/index.html" style="width:100%;height:calc(100vh - 200px);min-height:600px;border:1px solid var(--line);border-top:0;border-radius:0 0 14px 14px;background:#fff" title="Jyotiṣa Granthālaya — Library of Classical Texts"></iframe>
+      </div>
     </section>
   </div>
 </div>
@@ -1207,8 +1223,8 @@ document.getElementById('tabs').addEventListener('click',e=>{
     if(typeof showPanchangam==='function')showPanchangam();
   }
   if(btn.dataset.view==='bphs'){
-    document.getElementById('bphsViewResult').innerHTML=renderBPHSReference();
-    setTimeout(()=>{if(typeof bphsRenderChapter==='function')bphsRenderChapter();},80);
+    /* The view-bphs section now embeds bphs/index.html (the granthālaya viewer)
+       as an iframe — no JS rendering needed. The iframe loads on tab activation. */
   }
 });
 // Auto-refresh panchangam when date changes
