@@ -220,9 +220,74 @@ body.embedded .text-card .tc-title-te{font-size:16px;padding-right:0}
 body.embedded .text-card .tc-summary{font-size:11.5px;min-height:42px;line-height:1.5}
 body.embedded .text-card .auth-badge{font-size:9.5px;padding:2px 8px;margin-bottom:6px;letter-spacing:.2px}
 
-/* Embedded: tighter sidebar typography to match new compact hero */
-body.embedded .sidebar h3{font-size:11px;margin:10px 0 6px}
-body.embedded .ch-list a{padding:6px 9px;font-size:12px}
+/* Embedded: redesigned sidebar — clean, professional, single-line items where possible.
+   Drops the redundant decorative color dot, demotes the medal emoji, removes the italic on the
+   English secondary line, and tightens spacing for proper visual rhythm. */
+body.embedded .sidebar{padding:12px 8px}
+body.embedded .sidebar h3{
+  font-size:13px;
+  margin:16px 8px 8px;
+  color:var(--maroon);
+  font-weight:700;
+  font-family:'Noto Sans Telugu','Poppins',sans-serif;
+  line-height:1.3;
+  letter-spacing:0;
+}
+body.embedded .sidebar h3:first-child{margin-top:6px}
+body.embedded .sidebar h3 .sb-en{
+  display:block;
+  font-size:9.5px;
+  color:var(--muted);
+  font-weight:600;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  font-family:'Poppins',sans-serif;
+  margin-top:2px;
+}
+body.embedded .ch-list{margin-bottom:4px}
+body.embedded .ch-list a{
+  padding:7px 10px;
+  border-radius:7px;
+  border-left:3px solid transparent;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:1px;
+}
+body.embedded .ch-list a .text-link-color{display:none}
+body.embedded .ch-list a .lbl-te{
+  display:inline;
+  font-size:13px;
+  font-weight:600;
+  color:var(--maroon);
+  line-height:1.3;
+  flex:1 1 auto;
+  min-width:0;
+}
+body.embedded .ch-list a .lbl-en{
+  display:block;
+  font-size:10.5px;
+  font-style:normal;
+  font-weight:400;
+  font-family:'Poppins',sans-serif;
+  color:var(--muted);
+  margin-top:1px;
+  line-height:1.25;
+  flex-basis:100%;
+}
+body.embedded .ch-list a.active{
+  background:linear-gradient(135deg,var(--saffron),var(--saffron-deep));
+  border-left-color:var(--gold);
+}
+body.embedded .ch-list a.active .lbl-te,
+body.embedded .ch-list a.active .lbl-en{color:#fff}
+body.embedded .ch-list a.active .lbl-en{color:rgba(255,255,255,.85)}
+body.embedded .ch-list a:not(.active):hover{
+  background:rgba(217,79,0,.06);
+  border-left-color:var(--saffron);
+}
+body.embedded .ch-list a.unavailable{opacity:.55}
 
 /* Embedded: when the granthālaya footer is showing as a strip, slim it out (already hidden) */
 
