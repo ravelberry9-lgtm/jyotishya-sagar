@@ -313,9 +313,13 @@ section.view#view-bphs{padding:0}
 @media (max-width:600px){
   section.view#view-bphs #granthalayaFrame{height:calc(100vh - 220px);min-height:480px}
 }
-/* Granthālaya view — hide birth-details form, mode-bar, and stretch the library to full browser width */
+/* Granthālaya view — hide birth-details form, mode-bar, and stretch the library to full browser width.
+   `body.expert-mode .layout` appears LATER in the cascade and was overriding our column rule,
+   leaving a 340px ghost column where the hidden form-card used to sit. Chain both classes for higher specificity. */
 body.granthalaya-mode .form-card{display:none}
-body.granthalaya-mode .layout{grid-template-columns:1fr;margin-top:0}
+body.granthalaya-mode.expert-mode .layout,
+body.granthalaya-mode.family-mode .layout,
+body.granthalaya-mode .layout{grid-template-columns:1fr!important;margin-top:0;max-width:none}
 body.granthalaya-mode .mode-bar{display:none}
 /* Break the main content container out of its max-width so the iframe spans edge-to-edge. */
 body.granthalaya-mode > .container{max-width:none;padding:0}
