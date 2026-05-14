@@ -168,6 +168,20 @@ header::before{content:'🕉';position:absolute;font-size:140px;opacity:.06;righ
 .research-block-en .lang-tag{font-size:10.5px;color:#4a73c8;font-weight:700;font-family:'Poppins',sans-serif;letter-spacing:1px;margin-bottom:8px}
 .research-block-en p{margin:0 0 9px;font-size:13.5px;line-height:1.7;font-family:'Poppins',sans-serif}
 
+/* ===== Embedded mode (inside app.html iframe) — strip redundant chrome ===== */
+body.embedded .back-link,
+body.embedded #pwaInstallBtn,
+body.embedded footer.bookfoot{display:none!important}
+body.embedded .brand-text{display:none}
+body.embedded .brand .om{font-size:24px;width:38px;height:38px}
+body.embedded header{padding:8px 14px}
+body.embedded .htop{gap:8px}
+body.embedded .layout{min-height:calc(100vh - 56px)}
+body.embedded .sidebar{top:56px;height:calc(100vh - 56px)}
+@media (max-width:880px){
+  body.embedded .sidebar{top:0;height:100vh}
+}
+
 /* ===== Mode toggle (mobile sidebar) ===== */
 .toc-toggle{display:none;background:#fff;border:0;color:var(--saffron-deep);font-size:15px;cursor:pointer;padding:8px 12px;border-radius:8px;font-family:inherit;font-weight:700;align-items:center;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
 .toc-toggle .ic{font-size:18px;line-height:1}
@@ -264,6 +278,16 @@ if ('serviceWorker' in navigator) {
 <script src="research-notes.js"></script>
 <script>
 "use strict";
+
+/* Detect embedded mode — when loaded inside the parent app's iframe, strip the
+   redundant brand text, install button, "← App" link, and footer. */
+(function(){
+  const params = new URLSearchParams(location.search);
+  const inIframe = (function(){ try { return window.self !== window.top; } catch(e){ return true; } })();
+  if (params.get('embedded') === '1' || inIframe) {
+    document.body.classList.add('embedded');
+  }
+})();
 
 /* Re-link BPHS data into GRANTHAS structure (in case of load order) */
 if (window.__linkBPHSToGranthas) window.__linkBPHSToGranthas();
