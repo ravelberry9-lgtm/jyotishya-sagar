@@ -313,6 +313,14 @@ section.view#view-bphs{padding:0}
 @media (max-width:600px){
   section.view#view-bphs #granthalayaFrame{height:calc(100vh - 220px);min-height:480px}
 }
+/* Granthālaya view — hide birth-details form and let the library use full width */
+body.granthalaya-mode .form-card{display:none}
+body.granthalaya-mode .layout{grid-template-columns:1fr}
+body.granthalaya-mode .mode-bar{display:none}
+body.granthalaya-mode #granthalayaFrame{height:calc(100vh - 140px);min-height:540px}
+@media (max-width:900px){
+  body.granthalaya-mode #granthalayaFrame{height:calc(100vh - 200px);min-height:520px}
+}
 
 /* Result tabs (groom/bride/match) */
 .rtab-row{display:flex;gap:6px;margin:14px 0;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:0}
@@ -1222,6 +1230,8 @@ document.getElementById('tabs').addEventListener('click',e=>{
     if(!dd.value)dd.valueAsDate=new Date();
     if(typeof showPanchangam==='function')showPanchangam();
   }
+  // Toggle granthālaya mode — hides birth-details form and mode-bar, gives library full width
+  document.body.classList.toggle('granthalaya-mode', btn.dataset.view==='bphs');
   if(btn.dataset.view==='bphs'){
     /* The view-bphs section now embeds bphs/index.html (the granthālaya viewer)
        as an iframe — no JS rendering needed. The iframe loads on tab activation. */
