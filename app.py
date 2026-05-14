@@ -25,6 +25,13 @@ def healthz():
 
 @app.route('/')
 def index():
+    # Skip the marketing landing page — open the app directly.
+    return send_from_directory(ROOT, 'app.html')
+
+
+@app.route('/landing')
+def landing():
+    # Marketing landing page still available at /landing for sharing.
     return send_from_directory(ROOT, 'index.html')
 
 
