@@ -43,7 +43,10 @@ bphs/*.jpg
 bphs/*.JPEG
 bphs/*.JPG
 
-# ─── Local SQLite (if added later) ───
+# ─── Local SQLite ───
+# Exclude all .db / .sqlite by default, but explicitly whitelist the
+# granthālaya content store so it ships with the deploy.
 *.db
 *.sqlite
 *.sqlite3
+!bphs/astrology.db
