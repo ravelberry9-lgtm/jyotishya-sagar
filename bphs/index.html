@@ -457,17 +457,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="granthas.js"></script>
-<script src="bphs-data.js"></script>
-<script src="brihat-jataka-data.js"></script>
-<script src="saravali-data.js"></script>
-<script src="phaladipika-data.js"></script>
-<script src="sarvartha-cintamani-data.js"></script>
-<script src="jataka-parijata-data.js"></script>
-<script src="prasna-marga-data.js"></script>
-<script src="tajika-nilakanthi-data.js"></script>
-<script src="muhurta-cintamani-data.js"></script>
-<script src="research-notes.js"></script>
 <script>
 "use strict";
 
@@ -481,12 +470,71 @@ if ('serviceWorker' in navigator) {
   }
 })();
 
-/* Re-link BPHS data into GRANTHAS structure (in case of load order) */
-if (window.__linkBPHSToGranthas) window.__linkBPHSToGranthas();
-
-const G = window.GRANTHAS;
-const H = window.GRANTHAS_HELPERS;
-const research = window.JYOTISHA_RESEARCH;
+/* ============================================================ */
+/* === API CLIENT — fetches data from /api/*, caches in memory === */
+const api = (function(){
+  const cache = { library: null, text: {}, chapter: {}, research: null };
+  async function get(url){
+    const r = await fetch(url);
+    if (!r.ok) throw new Error('HTTP ' + r.status + ' on ' + url);
+    return r.json();
+  }
+  return {
+    async library(){
+      if (!cache.library) cache.library = await get('/api/library');
+      return cache.library;
+    },
+    async text(id){
+      if (!cache.text[id]) cache.text[id] = await get('/api/text/' + encodeURIComponent(id));
+      return cache.text[id];
+    },
+    async chapter(textId, chNum){
+      const key = textId + '/' + chNum;
+      if (!cache.chapter[key]) cache.chapter[key] = await get('/api/text/' + encodeURIComponent(textId) + '/chapter/' + chNum);
+      return cache.chapter[key];
+    },
+    async research(){
+      if (!cache.research) cache.research = await get('/api/research');
+      return cache.research;
+    },
+    async search(q){
+      return get('/api/search?q=' + encodeURIComponent(q));
+    },
+    /* Reach into cached library to find a single text's meta by id */
+    findText(id){
+      if (!cache.library) return null;
+      return (cache.library.texts || []).find(function(t){ return t.id === id; });
+    },
+    /* Get cached categories with member_ids resolved to actual text rows */
+    categoriesWithTexts(){
+      if (!cache.library) return [];
+      const tIdx = {};
+      (cache.library.texts || []).forEach(function(t){ tIdx[t.id] = t; });
+      return (cache.library.categories || []).map(function(c){
+        return Object.assign({}, c, { texts: (c.member_ids || []).map(function(id){ return tIdx[id]; }).filter(Boolean) });
+      });
+    },
+    /* Cached authority levels (id → {label_te, label_en, color}) */
+    authority(level){
+      if (!cache.library || !cache.library.authority_levels) return {label_te: '', label_en: ''};
+      return cache.library.authority_levels[level] || {label_te: '', label_en: ''};
+    },
+    /* Cached library-level meta (titles, taglines) */
+    libMeta(){
+      return (cache.library && cache.library.meta) || {};
+    },
+    /* Stats summed across cached library */
+    stats(){
+      const t = (cache.library && cache.library.texts) || [];
+      const verses = t.reduce(function(s, x){ return s + (x.verse_count || 0); }, 0);
+      const chapters = t.reduce(function(s, x){ return s + (x.extracted_chapters || 0); }, 0);
+      return {texts: t.length, chapters: chapters, verses: verses};
+    },
+    clearCache(){
+      cache.library = null; cache.text = {}; cache.chapter = {}; cache.research = null;
+    }
+  };
+})();
 
 let state = {
   mode: 'library',           // 'library' | 'research' | 'text-reader'
@@ -516,18 +564,19 @@ function setTextContext(on){
 
 /* ============================================================ */
 /* === MODE SWITCHING === */
-function setMode(mode) {
+async function setMode(mode) {
   state.mode = mode;
   state.currentTextId = null;
   state.currentChapter = null;
   state.currentResearchId = null;
   document.querySelectorAll('header nav button').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
   if (mode === 'library') {
-    renderLibraryLanding();
+    await renderLibraryLanding();
     renderLibrarySidebar();
   } else if (mode === 'research') {
-    renderResearchSidebar();
-    if (research && research.sections.length) loadResearch(research.sections[0].id);
+    const r = await api.research();
+    renderResearchSidebar(r);
+    if (r && r.sections && r.sections.length) loadResearch(r.sections[0].id);
   }
   setTextContext(false);
   closeSidebarOnMobile();
@@ -536,110 +585,111 @@ function setMode(mode) {
 
 function goHome() { setMode('library'); }
 
+function showLoading(msg){
+  msg = msg || 'లోడ్ అవుచున్నది... · Loading...';
+  document.getElementById('reader').innerHTML =
+    '<div class="empty"><div class="icon">⏳</div><h2>' + msg + '</h2></div>';
+}
+
+function showError(msg){
+  document.getElementById('reader').innerHTML =
+    '<div class="empty"><div class="icon">⚠️</div><h2>లోపము · Error</h2><p>' + msg + '</p></div>';
+}
+
 /* ============================================================ */
 /* === LIBRARY LANDING === */
-function renderLibraryLanding() {
+async function renderLibraryLanding() {
   const reader = document.getElementById('reader');
-  const total_v = H.totalExtractedVerses();
-  const total_c = H.totalExtractedChapters();
-  const total_t = Object.keys(G.texts).length;
-
+  showLoading('గ్రంథశాల లోడ్ అవుచున్నది... · Loading library...');
+  await api.library();
+  const stats = api.stats();
+  const meta = api.libMeta();
   const isEmbedded = document.body.classList.contains('embedded');
   const statsHtml = isEmbedded
     ? '<div class="lh-stats">' +
-      '<span class="stat-pill">📚 <strong>' + total_t + '</strong> texts</span>' +
-      '<span class="stat-pill">📖 <strong>' + total_c + '</strong> chapters</span>' +
-      '<span class="stat-pill">📜 <strong>' + total_v + '</strong> verses</span>' +
+      '<span class="stat-pill">📚 <strong>' + stats.texts + '</strong> texts</span>' +
+      '<span class="stat-pill">📖 <strong>' + stats.chapters + '</strong> chapters</span>' +
+      '<span class="stat-pill">📜 <strong>' + stats.verses + '</strong> verses</span>' +
       '</div>'
     : '<div class="lh-stats">' +
-      '<strong>' + total_t + '</strong> texts cataloged<br>' +
-      '<strong>' + total_c + '</strong> chapters extracted<br>' +
-      '<strong>' + total_v + '</strong> verses with bhāva<br>' +
+      '<strong>' + stats.texts + '</strong> texts cataloged<br>' +
+      '<strong>' + stats.chapters + '</strong> chapters extracted<br>' +
+      '<strong>' + stats.verses + '</strong> verses with bhāva<br>' +
       '</div>';
   let h = '<div class="lib-hero">' +
     '<div>' +
-    '<h1 class="lh-title">' + G.meta.library_title_te + ' <span style="font-size:14px;color:var(--muted);font-family:Poppins;font-weight:600">· ' + G.meta.library_title_en + '</span></h1>' +
-    '<div class="lh-sub">' + G.meta.tagline_te + '<br><em>' + G.meta.tagline_en + '</em></div>' +
+    '<h1 class="lh-title">' + (meta.library_title_te || '') + ' <span style="font-size:14px;color:var(--muted);font-family:Poppins;font-weight:600">· ' + (meta.library_title_en || '') + '</span></h1>' +
+    '<div class="lh-sub">' + (meta.tagline_te || '') + '<br><em>' + (meta.tagline_en || '') + '</em></div>' +
     '</div>' +
     statsHtml +
     '</div>';
-
-  // Render each category
-  for (const [catId, cat] of Object.entries(G.categories)) {
+  const cats = api.categoriesWithTexts();
+  for (const cat of cats) {
     h += '<div class="cat-section">' +
       '<div class="cat-header"><h2>' + cat.title_te + '</h2><span class="cat-en">' + cat.title_en + '</span></div>' +
-      '<div class="cat-desc">' + cat.desc_te + '<span class="en">' + cat.desc_en + '</span></div>' +
+      '<div class="cat-desc">' + (cat.desc_te || '') + '<span class="en">' + (cat.desc_en || '') + '</span></div>' +
       '<div class="text-grid">';
-    for (const id of cat.member_ids) {
-      const text = G.texts[id];
-      if (!text) continue;
+    for (const text of cat.texts) {
       h += renderTextCard(text);
     }
     h += '</div></div>';
   }
-
   reader.innerHTML = h;
   reader.scrollTop = 0;
 }
 
-function renderTextCard(text) {
-  const m = text.meta;
-  const extracted_chapters = (m.extracted_chapters || Object.keys(text.chapters).map(Number)).filter(c => text.chapters[c]).length;
-  const total_v = Object.values(text.chapters || {}).reduce((s, ch) => s + (ch.verses || []).length, 0);
-  const isAvailable = extracted_chapters > 0;
-  const auth = G.authority_levels[m.authority] || {te: '', en: ''};
+function renderTextCard(t) {
+  // t is the flat row from /api/library — already has verse_count, extracted_chapters
+  const isAvailable = (t.extracted_chapters || 0) > 0;
+  const auth = api.authority(t.authority);
   const isEmbedded = document.body.classList.contains('embedded');
-  // Compact card layout when embedded — combined byline, cleaner typography, no italic English title
   if (isEmbedded) {
-    const summaryTe = (m.summary_te || '').substring(0, 140) + (m.summary_te && m.summary_te.length > 140 ? '…' : '');
+    const summaryTe = (t.summary_te || '').substring(0, 140) + (t.summary_te && t.summary_te.length > 140 ? '…' : '');
     return '<div class="text-card' + (isAvailable ? '' : ' unavailable') + '" ' +
-      'style="--card-color:' + m.color + ';--card-color-dark:' + (m.color_dark || m.color) + ';--card-color-bg:' + (m.color_bg || '#fff8e1') + '" ' +
-      'onclick="openText(\'' + m.id + '\')">' +
-      '<div class="auth-badge">' + auth.te + '</div>' +
-      '<div class="tc-title-te">' + m.title_te + ' <span class="tc-title-en-inline">' + m.title_en + '</span></div>' +
-      '<div class="tc-byline">✍ ' + m.author_te + ' <span class="tc-byline-meta">· ' + m.author_en + ' · ' + m.date + '</span></div>' +
+      'style="--card-color:' + (t.color || '') + ';--card-color-dark:' + (t.color_dark || t.color || '') + ';--card-color-bg:' + (t.color_bg || '#fff8e1') + '" ' +
+      'onclick="openText(\'' + t.id + '\')">' +
+      '<div class="auth-badge">' + (auth.label_te || '') + '</div>' +
+      '<div class="tc-title-te">' + t.title_te + ' <span class="tc-title-en-inline">' + (t.title_en || '') + '</span></div>' +
+      '<div class="tc-byline">✍ ' + (t.author_te || '') + ' <span class="tc-byline-meta">· ' + (t.author_en || '') + ' · ' + (t.date_en || t.date_te || '') + '</span></div>' +
       '<div class="tc-summary">' + summaryTe + '</div>' +
       '<div class="tc-meta">' +
-      '<div class="tc-progress"><strong>' + extracted_chapters + '</strong>/' + (m.total_chapters || '?') + ' chapters · <strong>' + total_v + '</strong> verses</div>' +
+      '<div class="tc-progress"><strong>' + (t.extracted_chapters || 0) + '</strong>/' + (t.total_chapters || '?') + ' chapters · <strong>' + (t.verse_count || 0) + '</strong> verses</div>' +
       '<div class="tc-cta">' + (isAvailable ? 'Open →' : 'Pending') + '</div>' +
       '</div></div>';
   }
   return '<div class="text-card' + (isAvailable ? '' : ' unavailable') + '" ' +
-    'style="--card-color:' + m.color + ';--card-color-dark:' + (m.color_dark || m.color) + ';--card-color-bg:' + (m.color_bg || '#fff8e1') + '" ' +
-    'onclick="openText(\'' + m.id + '\')">' +
-    '<span class="tc-icon">' + (m.icon || '📖') + '</span>' +
-    '<div class="auth-badge">' + auth.te + '</div>' +
-    '<div class="tc-title-te">' + m.title_te + '</div>' +
-    '<div class="tc-title-en">' + m.title_en + '</div>' +
-    '<div class="tc-author"><strong>రచయిత:</strong> ' + m.author_te + '</div>' +
-    '<div class="tc-author-en">Author: ' + m.author_en + '</div>' +
-    '<div class="tc-date">' + (m.date_te || m.date) + ' · ' + m.date + '</div>' +
-    '<div class="tc-summary">' + (m.summary_te || '').substring(0, 180) + (m.summary_te && m.summary_te.length > 180 ? '...' : '') + '</div>' +
+    'style="--card-color:' + (t.color || '') + ';--card-color-dark:' + (t.color_dark || t.color || '') + ';--card-color-bg:' + (t.color_bg || '#fff8e1') + '" ' +
+    'onclick="openText(\'' + t.id + '\')">' +
+    '<span class="tc-icon">' + (t.icon || '📖') + '</span>' +
+    '<div class="auth-badge">' + (auth.label_te || '') + '</div>' +
+    '<div class="tc-title-te">' + t.title_te + '</div>' +
+    '<div class="tc-title-en">' + (t.title_en || '') + '</div>' +
+    '<div class="tc-author"><strong>రచయిత:</strong> ' + (t.author_te || '') + '</div>' +
+    '<div class="tc-author-en">Author: ' + (t.author_en || '') + '</div>' +
+    '<div class="tc-date">' + (t.date_te || t.date_en || '') + ' · ' + (t.date_en || '') + '</div>' +
+    '<div class="tc-summary">' + (t.summary_te || '').substring(0, 180) + (t.summary_te && t.summary_te.length > 180 ? '...' : '') + '</div>' +
     '<div class="tc-meta">' +
-    '<div class="tc-progress"><strong>' + extracted_chapters + '</strong> / ' + (m.total_chapters || '?') + ' chapters · <strong>' + total_v + '</strong> verses</div>' +
+    '<div class="tc-progress"><strong>' + (t.extracted_chapters || 0) + '</strong> / ' + (t.total_chapters || '?') + ' chapters · <strong>' + (t.verse_count || 0) + '</strong> verses</div>' +
     '<div class="tc-cta">' + (isAvailable ? 'Open →' : 'Pending') + '</div>' +
     '</div></div>';
 }
 
 /* ============================================================ */
-/* === LIBRARY SIDEBAR (text list) === */
+/* === LIBRARY SIDEBAR (text list) — needs library data === */
 function renderLibrarySidebar() {
   const sb = document.getElementById('sidebar');
+  const cats = api.categoriesWithTexts();
   let h = '';
-  for (const [catId, cat] of Object.entries(G.categories)) {
-    h += '<h3>' + cat.title_te + '<span class="sb-en">' + cat.title_en + '</span></h3><ul class="ch-list">';
-    for (const id of cat.member_ids) {
-      const text = G.texts[id];
-      if (!text) continue;
-      const m = text.meta;
-      const extracted_chapters = Object.keys(text.chapters).filter(c => text.chapters[c]).length;
-      const isAvailable = extracted_chapters > 0;
-      const isActive = state.currentTextId === id;
+  for (const cat of cats) {
+    h += '<h3>' + cat.title_te + '<span class="sb-en">' + (cat.title_en || '') + '</span></h3><ul class="ch-list">';
+    for (const t of cat.texts) {
+      const isAvailable = (t.extracted_chapters || 0) > 0;
+      const isActive = state.currentTextId === t.id;
       h += '<li><a class="' + (isAvailable ? '' : 'unavailable') + (isActive ? ' active' : '') + '" ' +
-        'onclick="openText(\'' + id + '\');return false" href="#text-' + id + '">' +
-        '<span class="text-link-color" style="background:' + m.color + '"></span>' +
-        '<span class="lbl-te">' + (m.icon || '📖') + ' ' + m.title_te + '</span>' +
-        '<span class="lbl-en">' + m.title_en + '</span>' +
+        'onclick="openText(\'' + t.id + '\');return false" href="#text-' + t.id + '">' +
+        '<span class="text-link-color" style="background:' + (t.color || '') + '"></span>' +
+        '<span class="lbl-te">' + (t.icon || '📖') + ' ' + t.title_te + '</span>' +
+        '<span class="lbl-en">' + (t.title_en || '') + '</span>' +
         '</a></li>';
     }
     h += '</ul>';
@@ -649,40 +699,46 @@ function renderLibrarySidebar() {
 
 /* ============================================================ */
 /* === TEXT READER (per-text chapter view) === */
-function openText(textId) {
-  const text = G.texts[textId];
-  if (!text) return;
+async function openText(textId) {
   state.mode = 'text-reader';
   state.currentTextId = textId;
   state.currentChapter = null;
   document.querySelectorAll('header nav button').forEach(b => b.classList.remove('active'));
-  renderTextSidebar(textId);
-  renderTextLanding(text);
-  setTextContext(true);
-  closeSidebarOnMobile();
-  if (history && history.replaceState) history.replaceState(null, '', '#text-' + textId);
+  showLoading('గ్రంథము లోడ్ అవుచున్నది... · Loading text...');
+  try {
+    const data = await api.text(textId);  // {text, chapters}
+    renderTextSidebar(data);
+    renderTextLanding(data);
+    setTextContext(true);
+    closeSidebarOnMobile();
+    if (history && history.replaceState) history.replaceState(null, '', '#text-' + textId);
+  } catch(e){
+    showError('Text could not be loaded: ' + (e.message || e));
+  }
 }
 
-function renderTextSidebar(textId) {
+function renderTextSidebar(data) {
   const sb = document.getElementById('sidebar');
-  const text = G.texts[textId];
-  const m = text.meta;
+  const t = data.text;
+  const chs = data.chapters || [];
+  const haveCh = new Set();
+  const chMap = {};
+  chs.forEach(function(c){ haveCh.add(c.chapter_num); chMap[c.chapter_num] = c; });
+  const totalCh = t.total_chapters || Math.max.apply(null, [1].concat(Array.from(haveCh))) || 1;
   let h = '<div style="margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line)">' +
     '<a onclick="setMode(\'library\');return false" href="#library" style="font-size:11.5px;color:var(--muted);font-family:Poppins;font-weight:600;text-decoration:none">← గ్రంథశాల · Library</a>' +
     '</div>' +
-    '<h3 style="color:' + m.color_dark + '">' + (m.icon || '📖') + ' ' + m.title_te + '<span class="sb-en">' + m.title_en + '</span></h3>';
+    '<h3 style="color:' + (t.color_dark || '') + '">' + (t.icon || '📖') + ' ' + t.title_te + '<span class="sb-en">' + (t.title_en || '') + '</span></h3>';
   h += '<ul class="ch-list">';
-  const haveCh = new Set(Object.keys(text.chapters).map(Number));
-  const totalCh = m.total_chapters || Math.max(...haveCh, 1);
   for (let i = 1; i <= totalCh; i++) {
-    const ch = text.chapters[i];
-    const haveIt = haveCh.has(i);
-    const titleTe = haveIt ? ch.title_te : '(extraction pending)';
-    const titleEn = haveIt ? (ch.title_en || '') : '';
+    const ch = chMap[i];
+    const haveIt = !!ch && (ch.verse_count || 0) > 0;
+    const titleTe = ch ? ch.title_te : '(extraction pending)';
+    const titleEn = ch ? (ch.title_en || '') : '';
     const cls = haveIt ? '' : 'unavailable';
     const isActive = state.currentChapter === i;
     h += '<li><a class="' + cls + (isActive ? ' active' : '') + '" ' +
-      'onclick="openChapter(\'' + textId + '\',' + i + ');return false" href="#text-' + textId + '-ch-' + i + '">' +
+      'onclick="openChapter(\'' + t.id + '\',' + i + ');return false" href="#text-' + t.id + '-ch-' + i + '">' +
       '<span class="lbl-te"><span class="ch-num">' + i + '.</span>' + titleTe + '</span>' +
       (titleEn ? '<span class="lbl-en">Ch. ' + i + ' · ' + titleEn + '</span>' : '') +
       '</a></li>';
@@ -691,58 +747,51 @@ function renderTextSidebar(textId) {
   sb.innerHTML = h;
 }
 
-function renderTextLanding(text) {
+function renderTextLanding(data) {
   const reader = document.getElementById('reader');
-  const m = text.meta;
-  const auth = G.authority_levels[m.authority] || {};
-  const extracted_chapters = Object.keys(text.chapters).filter(c => text.chapters[c]).length;
-  const total_v = Object.values(text.chapters || {}).reduce((s, ch) => s + (ch.verses || []).length, 0);
-  let h = '<div class="text-header" style="--card-color:' + m.color + ';--card-color-dark:' + m.color_dark + ';--card-color-bg:' + m.color_bg + '">' +
-    '<div class="th-eyebrow">' + (m.icon || '📖') + ' ' + auth.te + ' · ' + auth.en + '</div>' +
-    '<h1>' + m.title_te + '</h1>' +
-    '<div class="th-en">' + m.title_en + ' · by ' + m.author_en + ' · ' + m.date + '</div>' +
+  const t = data.text;
+  const chs = data.chapters || [];
+  const extracted_chapters = chs.filter(function(c){ return (c.verse_count || 0) > 0; }).length;
+  const total_v = chs.reduce(function(s, c){ return s + (c.verse_count || 0); }, 0);
+  const auth = api.authority(t.authority);
+  const editions = (t.editions && Array.isArray(t.editions)) ? t.editions : [];
+  let h = '<div class="text-header" style="--card-color:' + (t.color || '') + ';--card-color-dark:' + (t.color_dark || '') + ';--card-color-bg:' + (t.color_bg || '#fff8e1') + '">' +
+    '<div class="th-eyebrow">' + (t.icon || '📖') + ' ' + (auth.label_te || '') + ' · ' + (auth.label_en || '') + '</div>' +
+    '<h1>' + t.title_te + '</h1>' +
+    '<div class="th-en">' + (t.title_en || '') + ' · by ' + (t.author_en || '') + ' · ' + (t.date_en || '') + '</div>' +
     '<div class="th-meta">' +
-    '<span><strong>రచయిత:</strong> ' + m.author_te + '</span>' +
-    '<span><strong>రచనా కాలము:</strong> ' + (m.date_te || m.date) + '</span>' +
-    '<span><strong>మొత్తం అధ్యాయములు:</strong> ' + (m.total_chapters || '?') + '</span>' +
-    '<span><strong>సేకరితము:</strong> ' + extracted_chapters + ' / ' + (m.total_chapters || '?') + ' అధ్యాయములు, ' + total_v + ' శ్లోకములు</span>' +
+    '<span><strong>రచయిత:</strong> ' + (t.author_te || '') + '</span>' +
+    '<span><strong>రచనా కాలము:</strong> ' + (t.date_te || t.date_en || '') + '</span>' +
+    '<span><strong>మొత్తం అధ్యాయములు:</strong> ' + (t.total_chapters || '?') + '</span>' +
+    '<span><strong>సేకరితము:</strong> ' + extracted_chapters + ' / ' + (t.total_chapters || '?') + ' అధ్యాయములు, ' + total_v + ' శ్లోకములు</span>' +
     '</div></div>';
-
-  if (m.summary_te) {
-    h += '<div class="ch-summary">' + m.summary_te + '<br><br><em style="font-family:Poppins;font-size:12px">' + (m.summary_en || '') + '</em></div>';
+  if (t.summary_te) {
+    h += '<div class="ch-summary">' + t.summary_te + '<br><br><em style="font-family:Poppins;font-size:12px">' + (t.summary_en || '') + '</em></div>';
   }
-
-  // Manuscript provenance
-  if (m.manuscript_te) {
+  if (t.manuscript_te) {
     h += '<div style="background:var(--cream);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:14px">' +
       '<div style="font-size:11px;color:var(--saffron-deep);font-family:Poppins;font-weight:700;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase">📜 హస్తలిఖిత ప్రతి సాక్ష్యము · Manuscript Provenance</div>' +
-      '<div style="font-size:13.5px;line-height:1.65">' + m.manuscript_te + '</div>' +
-      (m.manuscript_en ? '<div style="font-size:11.5px;color:var(--muted);font-family:Poppins;line-height:1.55;margin-top:5px;font-style:italic">' + m.manuscript_en + '</div>' : '') +
+      '<div style="font-size:13.5px;line-height:1.65">' + t.manuscript_te + '</div>' +
+      (t.manuscript_en ? '<div style="font-size:11.5px;color:var(--muted);font-family:Poppins;line-height:1.55;margin-top:5px;font-style:italic">' + t.manuscript_en + '</div>' : '') +
       '</div>';
   }
-
-  // Recommended use
-  if (m.recommend_for_te) {
+  if (t.recommend_for_te) {
     h += '<div style="background:#f6fdf8;border-left:4px solid var(--good);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:14px">' +
       '<div style="font-size:11px;color:var(--good);font-family:Poppins;font-weight:700;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase">💡 ప్రయోజనము · Recommended For</div>' +
-      '<div style="font-size:13.5px;line-height:1.65">' + m.recommend_for_te + '</div>' +
-      (m.recommend_for_en ? '<div style="font-size:11.5px;color:var(--muted);font-family:Poppins;line-height:1.55;margin-top:5px;font-style:italic">' + m.recommend_for_en + '</div>' : '') +
+      '<div style="font-size:13.5px;line-height:1.65">' + t.recommend_for_te + '</div>' +
+      (t.recommend_for_en ? '<div style="font-size:11.5px;color:var(--muted);font-family:Poppins;line-height:1.55;margin-top:5px;font-style:italic">' + t.recommend_for_en + '</div>' : '') +
       '</div>';
   }
-
-  // Editions if available
-  if (m.editions_te && m.editions_te.length) {
+  if (editions.length) {
     h += '<div style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px 18px;margin-bottom:14px">' +
       '<div style="font-size:11px;color:var(--maroon);font-family:Poppins;font-weight:700;letter-spacing:1px;margin-bottom:8px;text-transform:uppercase">📚 ముద్రణలు · Editions</div>' +
       '<ul style="margin:0;padding-left:20px;font-size:12.5px;line-height:1.7">';
-    for (const ed of m.editions_te) h += '<li>' + ed + '</li>';
+    for (const ed of editions) h += '<li>' + ed + '</li>';
     h += '</ul></div>';
   }
-
-  // Chapter list call-out
   if (extracted_chapters > 0) {
     h += '<button class="mobile-chapters-cta" onclick="toggleSidebar(true)"><span class="ic">📖</span>' + extracted_chapters + ' అధ్యాయములు తెరువు · Open ' + extracted_chapters + ' chapters</button>';
-    h += '<div style="background:linear-gradient(135deg,' + m.color + ',' + m.color_dark + ');color:#fff;border-radius:10px;padding:14px 18px;text-align:center">' +
+    h += '<div style="background:linear-gradient(135deg,' + (t.color || '') + ',' + (t.color_dark || '') + ');color:#fff;border-radius:10px;padding:14px 18px;text-align:center">' +
       '<strong style="font-size:14px">📖 ' + extracted_chapters + ' అధ్యాయములు అందుబాటులో ఉన్నవి</strong><br>' +
       '<span style="font-size:11.5px;opacity:.92;font-family:Poppins">Tap the orange button above (or 📖 floating button) to choose a chapter</span>' +
       '</div>';
@@ -752,45 +801,46 @@ function renderTextLanding(text) {
       '<span style="font-size:12px;font-family:Poppins">This text\'s chapter extraction has not yet started. Coming in a future session.</span>' +
       '</div>';
   }
-
   reader.innerHTML = h;
   reader.scrollTop = 0;
 }
 
-function openChapter(textId, chNum) {
+async function openChapter(textId, chNum) {
   state.mode = 'text-reader';
   state.currentTextId = textId;
   state.currentChapter = chNum;
-  const text = G.texts[textId];
-  if (!text) return;
-  const ch = text.chapters[chNum];
-  if (!ch) {
-    document.getElementById('reader').innerHTML = '<div class="empty"><div class="icon">⏳</div><h2>అధ్యాయం ' + chNum + '</h2><p>This chapter has not yet been extracted. Coming in a future session.</p></div>';
+  showLoading('అధ్యాయం ' + chNum + ' లోడ్ అవుచున్నది... · Loading chapter ' + chNum + '...');
+  try {
+    const td = await api.text(textId);       // need text metadata for header
+    const cd = await api.chapter(textId, chNum);
+    const t = td.text;
+    const ch = cd.chapter;
+    const verses = cd.verses || [];
+    document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+    const link = document.querySelector('.sidebar a[href="#text-' + textId + '-ch-' + chNum + '"]');
+    if (link) link.classList.add('active');
+    let h = '<div class="ch-header" style="--card-color:' + (t.color || '') + ';--card-color-dark:' + (t.color_dark || '') + '">' +
+      '<div class="ch-eyebrow">' + (t.icon || '📖') + ' ' + t.title_te + ' · అధ్యాయం ' + chNum + '</div>' +
+      '<h1>' + ch.title_te + '</h1>';
+    if (ch.title_en) h += '<div class="ch-en">' + (t.title_en || '') + ' · Chapter ' + chNum + ' · ' + ch.title_en + '</div>';
+    h += '</div>';
+    if (ch.summary_te) h += '<div class="ch-summary" style="border-left-color:' + (t.color || '') + '">' + ch.summary_te + '</div>';
+    for (const v of verses) {
+      h += renderVerseCard(textId, chNum, v, t);
+    }
+    document.getElementById('reader').innerHTML = h;
+    document.getElementById('reader').scrollTop = 0;
+    setTextContext(true);
     closeSidebarOnMobile();
-    return;
+    if (history && history.replaceState) history.replaceState(null, '', '#text-' + textId + '-ch-' + chNum);
+  } catch(e){
+    if (String(e).indexOf('404') >= 0) {
+      document.getElementById('reader').innerHTML = '<div class="empty"><div class="icon">⏳</div><h2>అధ్యాయం ' + chNum + '</h2><p>This chapter has not yet been extracted.</p></div>';
+    } else {
+      showError(e.message || e);
+    }
+    closeSidebarOnMobile();
   }
-  // Update sidebar active state
-  document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-  const link = document.querySelector('.sidebar a[href="#text-' + textId + '-ch-' + chNum + '"]');
-  if (link) link.classList.add('active');
-
-  const m = text.meta;
-  let h = '<div class="ch-header" style="--card-color:' + m.color + ';--card-color-dark:' + m.color_dark + '">' +
-    '<div class="ch-eyebrow">' + (m.icon || '📖') + ' ' + m.title_te + ' · అధ్యాయం ' + chNum + '</div>' +
-    '<h1>' + ch.title_te + '</h1>';
-  if (ch.title_en) h += '<div class="ch-en">' + m.title_en + ' · Chapter ' + chNum + ' · ' + ch.title_en + '</div>';
-  h += '</div>';
-  if (ch.summary_te) h += '<div class="ch-summary" style="border-left-color:' + m.color + '">' + ch.summary_te + '</div>';
-
-  for (const v of (ch.verses || [])) {
-    h += renderVerseCard(textId, chNum, v, m);
-  }
-
-  document.getElementById('reader').innerHTML = h;
-  document.getElementById('reader').scrollTop = 0;
-  setTextContext(true);
-  closeSidebarOnMobile();
-  if (history && history.replaceState) history.replaceState(null, '', '#text-' + textId + '-ch-' + chNum);
 }
 
 function renderVerseCard(textId, chNum, v, textMeta) {
@@ -802,16 +852,22 @@ function renderVerseCard(textId, chNum, v, textMeta) {
   } else if (v.verified === 'hardcopy-spotcheck') {
     verifClass = 'spotcheck'; verifLabel = '✓ spot-check';
   }
-  const tagsHtml = v.tags ? '<div class="tag-row">' + v.tags.map(t =>
+  // tags may come as a JSON-parsed array (from /api/text/.../chapter or search) or remain raw
+  let tagsArr = v.tags;
+  if (!Array.isArray(tagsArr) && typeof v.tags_json === 'string') {
+    try { tagsArr = JSON.parse(v.tags_json); } catch(e){ tagsArr = []; }
+  }
+  if (!Array.isArray(tagsArr)) tagsArr = [];
+  const tagsHtml = tagsArr.length ? '<div class="tag-row">' + tagsArr.map(t =>
     '<span class="tag" onclick="document.getElementById(\'globalSearch\').value=\'' + t + '\';onGlobalSearch()">#' + t + '</span>'
   ).join('') + '</div>' : '';
-  return '<article class="verse" style="--card-color:' + textMeta.color + ';--card-color-dark:' + textMeta.color_dark + '">' +
+  return '<article class="verse" style="--card-color:' + (textMeta.color || '') + ';--card-color-dark:' + (textMeta.color_dark || '') + '">' +
     '<div class="verse-head">' +
-    '<span class="verse-cite">' + textMeta.title_en + ' · Ch. ' + chNum + ' · శ్లోకము ' + v.sl + '</span>' +
+    '<span class="verse-cite">' + (textMeta.title_en || '') + ' · Ch. ' + chNum + ' · శ్లోకము ' + v.sloka_num + '</span>' +
     '<span class="verse-meta"><span class="badge ' + verifClass + '">' + verifLabel + '</span>' + (v.page ? '<span>p. ' + v.page + '</span>' : '') + '</span>' +
     '</div>' +
-    '<div class="sanskrit-block">' + v.sanskrit + '</div>' +
-    '<div class="bhava-block"><span class="bhava-label">భావము:</span>' + v.telugu_bhava + '</div>' +
+    '<div class="sanskrit-block">' + (v.sanskrit || '') + '</div>' +
+    '<div class="bhava-block"><span class="bhava-label">భావము:</span>' + (v.telugu_bhava || '') + '</div>' +
     (v.english ? '<div class="english-block">' + v.english + '</div>' : '') +
     tagsHtml +
     '</article>';
@@ -819,7 +875,7 @@ function renderVerseCard(textId, chNum, v, textMeta) {
 
 /* ============================================================ */
 /* === RESEARCH SIDEBAR + LOADER === */
-function renderResearchSidebar() {
+function renderResearchSidebar(research) {
   const sb = document.getElementById('sidebar');
   if (!research || !research.sections) {
     sb.innerHTML = '<p style="color:var(--muted);font-size:13px">Research notes not loaded.</p>';
@@ -837,38 +893,47 @@ function renderResearchSidebar() {
   sb.innerHTML = h;
 }
 
-function loadResearch(sectionId) {
+async function loadResearch(sectionId) {
   state.mode = 'research';
   state.currentResearchId = sectionId;
   document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
   const link = document.querySelector('.sidebar a[href="#research-' + sectionId + '"]');
   if (link) link.classList.add('active');
-  const sec = research.sections.find(s => s.id === sectionId);
-  if (!sec) return;
-  const reader = document.getElementById('reader');
-  let h = '<div class="ch-header"><div class="ch-eyebrow">📚 పరిశోధన గమనిక · Research Note</div>' +
-    '<h1>' + (sec.icon || '') + ' ' + (sec.title_te || sec.title_en || '') + '</h1>';
-  if (sec.title_en && sec.title_te) h += '<div class="ch-en">' + sec.title_en + '</div>';
-  h += '</div>';
-  if (sec.content_te && sec.content_te.length) {
-    h += '<div class="research-block-te"><div class="lang-tag">తెలుగు</div>';
-    for (const para of sec.content_te) h += '<p>' + formatBoldStars(para) + '</p>';
+  showLoading('Loading research note...');
+  try {
+    const r = await api.research();
+    let sec = (r.sections || []).find(function(s){ return s.id === sectionId; });
+    if (!sec) { showError('Research section not found: ' + sectionId); return; }
+    // content_te / content_en may be JSON strings or already parsed
+    const ct = Array.isArray(sec.content_te) ? sec.content_te : (typeof sec.content_te_json === 'string' ? JSON.parse(sec.content_te_json || '[]') : []);
+    const ce = Array.isArray(sec.content_en) ? sec.content_en : (typeof sec.content_en_json === 'string' ? JSON.parse(sec.content_en_json || '[]') : []);
+    const reader = document.getElementById('reader');
+    let h = '<div class="ch-header"><div class="ch-eyebrow">📚 పరిశోధన గమనిక · Research Note</div>' +
+      '<h1>' + (sec.icon || '') + ' ' + (sec.title_te || sec.title_en || '') + '</h1>';
+    if (sec.title_en && sec.title_te) h += '<div class="ch-en">' + sec.title_en + '</div>';
     h += '</div>';
+    if (ct.length) {
+      h += '<div class="research-block-te"><div class="lang-tag">తెలుగు</div>';
+      for (const para of ct) h += '<p>' + formatBoldStars(para) + '</p>';
+      h += '</div>';
+    }
+    if (ce.length) {
+      h += '<div class="research-block-en"><div class="lang-tag">ENGLISH</div>';
+      for (const para of ce) h += '<p>' + formatBoldStars(para) + '</p>';
+      h += '</div>';
+    }
+    if (sec.status) {
+      const bg = sec.status === 'verified' ? '#d4f4d4' : '#fff4d4';
+      const txt = sec.status === 'verified' ? '✓ ' + sec.status : '⏳ ' + sec.status;
+      h += '<div style="text-align:right;margin-top:12px"><span style="background:' + bg + ';padding:4px 10px;border-radius:12px;font-size:11px;font-family:Poppins;color:var(--muted)">' + txt + '</span></div>';
+    }
+    reader.innerHTML = h;
+    reader.scrollTop = 0;
+    closeSidebarOnMobile();
+    if (history && history.replaceState) history.replaceState(null, '', '#research-' + sectionId);
+  } catch(e){
+    showError(e.message || e);
   }
-  if (sec.content_en && sec.content_en.length) {
-    h += '<div class="research-block-en"><div class="lang-tag">ENGLISH</div>';
-    for (const para of sec.content_en) h += '<p>' + formatBoldStars(para) + '</p>';
-    h += '</div>';
-  }
-  if (sec.status) {
-    const bg = sec.status === 'verified' ? '#d4f4d4' : '#fff4d4';
-    const txt = sec.status === 'verified' ? '✓ ' + sec.status : '⏳ ' + sec.status;
-    h += '<div style="text-align:right;margin-top:12px"><span style="background:' + bg + ';padding:4px 10px;border-radius:12px;font-size:11px;font-family:Poppins;color:var(--muted)">' + txt + '</span></div>';
-  }
-  reader.innerHTML = h;
-  reader.scrollTop = 0;
-  closeSidebarOnMobile();
-  if (history && history.replaceState) history.replaceState(null, '', '#research-' + sectionId);
 }
 
 function formatBoldStars(text) {
@@ -876,54 +941,51 @@ function formatBoldStars(text) {
 }
 
 /* ============================================================ */
-/* === GLOBAL SEARCH === */
-function onGlobalSearch() {
-  const q = document.getElementById('globalSearch').value.trim().toLowerCase();
+/* === GLOBAL SEARCH (debounced, server-side via /api/search) === */
+let _searchTimer = null;
+async function onGlobalSearch() {
+  const q = document.getElementById('globalSearch').value.trim();
+  if (_searchTimer) clearTimeout(_searchTimer);
   if (!q) {
     if (state.mode === 'library') renderLibraryLanding();
     else if (state.mode === 'research' && state.currentResearchId) loadResearch(state.currentResearchId);
     else if (state.currentTextId && state.currentChapter) openChapter(state.currentTextId, state.currentChapter);
     return;
   }
-  // Search across all texts' verses
-  const hits = [];
-  for (const [textId, text] of Object.entries(G.texts)) {
-    for (const [chNum, ch] of Object.entries(text.chapters || {})) {
-      for (const v of (ch.verses || [])) {
-        const blob = (v.sanskrit + ' ' + v.telugu_bhava + ' ' + (v.english || '') + ' ' + (v.tags || []).join(' ') + ' ' + (ch.title_te || '')).toLowerCase();
-        if (blob.includes(q)) hits.push({textId, ch: +chNum, v, textMeta: text.meta, chTitle: ch.title_te});
+  if (q.length < 2) return;
+  _searchTimer = setTimeout(async function(){
+    try {
+      const res = await api.search(q);
+      await api.library();  // ensure text metadata is cached for icon/color lookups
+      const verses = res.verse_hits || [];
+      const researchHits = res.research_hits || [];
+      let h = '<div class="ch-header"><div class="ch-eyebrow">🔍 అన్వేషణ ఫలితములు · Search Results</div><h1>"' + q + '"</h1>' +
+        '<div class="ch-en">' + verses.length + ' verses · ' + researchHits.length + ' research notes</div></div>';
+      if (researchHits.length) {
+        h += '<h3 style="color:var(--maroon);margin:18px 0 10px">📚 Research Notes (' + researchHits.length + ')</h3>';
+        for (const sec of researchHits) {
+          h += '<div style="background:#fff;border:1px solid var(--line);border-left:4px solid #5e3aa8;border-radius:8px;padding:12px 16px;margin-bottom:10px;cursor:pointer" onclick="loadResearch(\'' + sec.id + '\')">' +
+            '<strong>' + (sec.icon || '') + ' ' + (sec.title_te || '') + '</strong><br>' +
+            '<small style="color:var(--muted);font-family:Poppins">' + (sec.title_en || '') + '</small></div>';
+        }
       }
+      if (verses.length) {
+        h += '<h3 style="color:var(--maroon);margin:18px 0 10px">📜 Verses (' + verses.length + ')</h3>';
+        for (const v of verses) {
+          const textMeta = api.findText(v.text_id) || {};
+          h += '<div onclick="openChapter(\'' + v.text_id + '\',' + v.chapter_num + ')" style="cursor:pointer">' +
+            renderVerseCard(v.text_id, v.chapter_num, v, textMeta) + '</div>';
+        }
+      }
+      if (!verses.length && !researchHits.length) {
+        h += '<div class="empty"><div class="icon">🔍</div><h2>ఫలితము లేదు · No matches</h2><p>Try a different word or try Telugu/English/Sanskrit transliteration.</p></div>';
+      }
+      document.getElementById('reader').innerHTML = h;
+      document.getElementById('reader').scrollTop = 0;
+    } catch(e){
+      showError(e.message || e);
     }
-  }
-  // Also search research notes
-  const researchHits = [];
-  if (research && research.sections) {
-    for (const sec of research.sections) {
-      const blob = ((sec.content_te || []).join(' ') + ' ' + (sec.content_en || []).join(' ') + ' ' + sec.title_te + ' ' + sec.title_en).toLowerCase();
-      if (blob.includes(q)) researchHits.push(sec);
-    }
-  }
-  let h = '<div class="ch-header"><div class="ch-eyebrow">🔍 అన్వేషణ ఫలితములు · Search Results</div><h1>"' + q + '"</h1>' +
-    '<div class="ch-en">' + hits.length + ' verses · ' + researchHits.length + ' research notes</div></div>';
-  if (researchHits.length) {
-    h += '<h3 style="color:var(--maroon);margin:18px 0 10px">📚 Research Notes (' + researchHits.length + ')</h3>';
-    for (const sec of researchHits) {
-      h += '<div style="background:#fff;border:1px solid var(--line);border-left:4px solid #5e3aa8;border-radius:8px;padding:12px 16px;margin-bottom:10px;cursor:pointer" onclick="loadResearch(\'' + sec.id + '\')">' +
-        '<strong>' + (sec.icon || '') + ' ' + sec.title_te + '</strong><br>' +
-        '<small style="color:var(--muted);font-family:Poppins">' + sec.title_en + '</small></div>';
-    }
-  }
-  if (hits.length) {
-    h += '<h3 style="color:var(--maroon);margin:18px 0 10px">📜 Verses (' + hits.length + ')</h3>';
-    for (const {textId, ch, v, textMeta, chTitle} of hits) {
-      h += '<div onclick="openChapter(\'' + textId + '\',' + ch + ')" style="cursor:pointer">' + renderVerseCard(textId, ch, v, textMeta) + '</div>';
-    }
-  }
-  if (!hits.length && !researchHits.length) {
-    h += '<div class="empty"><div class="icon">🔍</div><h2>ఫలితము లేదు · No matches</h2><p>Try a different word or try Telugu/English/Sanskrit transliteration.</p></div>';
-  }
-  document.getElementById('reader').innerHTML = h;
-  document.getElementById('reader').scrollTop = 0;
+  }, 250);
 }
 
 /* ============================================================ */
@@ -943,28 +1005,36 @@ window.addEventListener('resize', function(){
 
 /* ============================================================ */
 /* === INIT (deep-link routing) === */
-const hash = location.hash || '';
-if (hash.startsWith('#text-')) {
-  const parts = hash.replace('#text-', '').split('-ch-');
-  const textId = parts[0];
-  if (G.texts[textId]) {
-    if (parts[1]) {
-      openText(textId);
-      openChapter(textId, parseInt(parts[1]));
+(async function init(){
+  try {
+    await api.library();  // populate cache so findText() etc work
+  } catch(e){
+    showError('Library could not be loaded. Check that /api/library is reachable.');
+    return;
+  }
+  const hash = location.hash || '';
+  if (hash.startsWith('#text-')) {
+    const parts = hash.replace('#text-', '').split('-ch-');
+    const textId = parts[0];
+    if (api.findText(textId)) {
+      if (parts[1]) {
+        await openText(textId);
+        await openChapter(textId, parseInt(parts[1]));
+      } else {
+        await openText(textId);
+      }
     } else {
-      openText(textId);
+      setMode('library');
     }
+  } else if (hash.startsWith('#research-')) {
+    await setMode('research');
+    loadResearch(hash.replace('#research-', ''));
   } else {
     setMode('library');
   }
-} else if (hash.startsWith('#research-')) {
-  setMode('research');
-  loadResearch(hash.replace('#research-', ''));
-} else {
-  setMode('library');
-}
-/* On initial load, drawer is closed; backdrop is hidden by default. Make sure body scroll is unlocked. */
-document.body.style.overflow = '';
+  /* drawer closed, backdrop hidden, body scroll unlocked */
+  document.body.style.overflow = '';
+})();
 </script>
 </body>
 </html>

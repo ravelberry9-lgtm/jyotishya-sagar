@@ -59,10 +59,10 @@ pip-log.txt
 .env.local
 .env.*.local
 
-# Local SQLite
-*.db
+# Local SQLite — keep astrology.db (granthālaya content), exclude others
 *.sqlite
 *.sqlite3
+# Note: bphs/astrology.db IS included; it ships as the library content store
 
 # Test/scratch files
 test-file-state.txt
