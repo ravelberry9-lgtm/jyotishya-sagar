@@ -182,20 +182,49 @@ body.embedded .sidebar{top:56px;height:calc(100vh - 56px)}
   body.embedded .sidebar{top:0;height:100vh}
 }
 
-/* Embedded: compact the library landing hero — stats inline pills, tighter padding */
-body.embedded .lib-hero{padding:12px 18px;margin-bottom:14px;border-radius:0 10px 10px 0;border-left-width:4px;gap:10px}
-body.embedded .lib-hero .lh-title{font-size:17px;margin:0}
-body.embedded .lib-hero .lh-sub{font-size:11.5px;line-height:1.4;margin-top:2px}
-body.embedded .lib-hero .lh-stats{font-size:11px;text-align:left;display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+/* Embedded: redesigned library landing hero — clean banner with proper hierarchy */
+body.embedded .lib-hero{padding:18px 22px;margin:14px 22px 18px;border-radius:14px;border-left:5px solid var(--gold);background:linear-gradient(135deg,#fff8e1,var(--cream));box-shadow:0 2px 8px rgba(107,29,29,.06);display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+body.embedded .lib-hero > div:first-child{flex:1;min-width:240px}
+body.embedded .lib-hero .lh-title{font-size:20px;margin:0;color:var(--maroon);font-weight:800;line-height:1.25}
+body.embedded .lib-hero .lh-title span{font-size:13px!important;color:var(--muted)!important;font-weight:600!important}
+body.embedded .lib-hero .lh-sub{font-size:12.5px;line-height:1.55;margin-top:4px;color:var(--ink);font-family:'Poppins',sans-serif}
+body.embedded .lib-hero .lh-sub em{font-style:normal;color:var(--muted);font-size:11.5px}
+body.embedded .lib-hero .lh-stats{font-size:11px;text-align:left;display:flex;flex-wrap:wrap;gap:6px;min-width:0;align-self:center}
 body.embedded .lib-hero .lh-stats strong{display:inline;font-size:11px;margin:0}
 body.embedded .lib-hero .lh-stats br{display:none}
-body.embedded .lib-hero .lh-stats span.stat-pill{display:inline-flex;align-items:center;gap:4px;background:rgba(217,79,0,.1);color:var(--maroon);padding:3px 9px;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:600;font-size:11px}
-body.embedded .lib-hero .lh-stats span.stat-pill strong{color:var(--saffron-deep);font-weight:800}
+body.embedded .lib-hero .lh-stats span.stat-pill{display:inline-flex;align-items:center;gap:5px;background:#fff;color:var(--maroon);padding:5px 11px;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:600;font-size:11px;border:1px solid var(--line);box-shadow:0 1px 3px rgba(107,29,29,.04)}
+body.embedded .lib-hero .lh-stats span.stat-pill strong{color:var(--saffron-deep);font-weight:800;font-size:13px}
+
+/* Embedded: reader padding — give content room without feeling cramped */
+body.embedded .reader{padding:0}
+body.embedded .reader > *:not(.lib-hero){margin-left:22px;margin-right:22px}
 
 /* Embedded: subtle అధ్యాయములు toggle — match the saffron header instead of competing as a CTA */
 body.embedded .toc-toggle{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.3);box-shadow:none;font-weight:600;padding:6px 11px;font-size:13px}
 body.embedded .toc-toggle:hover{background:rgba(255,255,255,.28)}
 body.embedded .toc-toggle .ic{font-size:15px}
+
+/* Embedded: tighter category sections, cleaner typography */
+body.embedded .cat-section{margin-bottom:22px}
+body.embedded .cat-header{border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:10px}
+body.embedded .cat-header h2{font-size:16px}
+body.embedded .cat-header .cat-en{font-size:10.5px;letter-spacing:1.4px}
+body.embedded .cat-desc{font-size:12px;font-style:normal;color:var(--muted);line-height:1.5;margin-bottom:14px}
+body.embedded .cat-desc .en{font-size:11px;margin-top:2px}
+
+/* Embedded: refined text-card — remove ribbon-style icon, balance the badge with title */
+body.embedded .text-card{padding:14px 16px;border-radius:12px}
+body.embedded .text-card::before{height:3px;border-radius:12px 12px 0 0}
+body.embedded .text-card .tc-icon{display:none}
+body.embedded .text-card .tc-title-te{font-size:16px;padding-right:0}
+body.embedded .text-card .tc-summary{font-size:11.5px;min-height:42px;line-height:1.5}
+body.embedded .text-card .auth-badge{font-size:9.5px;padding:2px 8px;margin-bottom:6px;letter-spacing:.2px}
+
+/* Embedded: tighter sidebar typography to match new compact hero */
+body.embedded .sidebar h3{font-size:11px;margin:10px 0 6px}
+body.embedded .ch-list a{padding:6px 9px;font-size:12px}
+
+/* Embedded: when the granthālaya footer is showing as a strip, slim it out (already hidden) */
 
 /* ===== Mode toggle (mobile sidebar) ===== */
 .toc-toggle{display:none;background:#fff;border:0;color:var(--saffron-deep);font-size:15px;cursor:pointer;padding:8px 12px;border-radius:8px;font-family:inherit;font-weight:700;align-items:center;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.15)}

@@ -317,14 +317,19 @@ section.view#view-bphs{padding:0}
 body.granthalaya-mode .form-card{display:none}
 body.granthalaya-mode .layout{grid-template-columns:1fr;margin-top:0}
 body.granthalaya-mode .mode-bar{display:none}
-/* Break the main content container out of its max-width so the iframe spans edge-to-edge.
-   Targets only the body's direct .container child — the header's container (inside <header>)
-   is unaffected and keeps its centering. */
+/* Break the main content container out of its max-width so the iframe spans edge-to-edge. */
 body.granthalaya-mode > .container{max-width:none;padding:0}
-body.granthalaya-mode #granthalayaFrame{height:calc(100vh - 110px);min-height:540px}
+body.granthalaya-mode #granthalayaFrame{height:calc(100vh - 100px);min-height:540px}
 @media (max-width:900px){
-  body.granthalaya-mode #granthalayaFrame{height:calc(100vh - 180px);min-height:520px}
+  body.granthalaya-mode #granthalayaFrame{height:calc(100vh - 170px);min-height:520px}
 }
+/* Compact the app header on granthālaya tab — slim brand row, no tagline, tabs stay */
+body.granthalaya-mode header{padding:8px 0}
+body.granthalaya-mode header .brand .om{width:42px;height:42px;font-size:28px}
+body.granthalaya-mode header .brand h1{font-size:19px}
+body.granthalaya-mode header .brand .tag{display:none}
+body.granthalaya-mode header nav.tabs{margin-top:8px}
+body.granthalaya-mode header nav.tabs button{padding:6px 12px;font-size:12px}
 
 /* Result tabs (groom/bride/match) */
 .rtab-row{display:flex;gap:6px;margin:14px 0;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:0}
