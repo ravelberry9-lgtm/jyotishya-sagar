@@ -212,13 +212,96 @@ body.embedded .cat-header .cat-en{font-size:10.5px;letter-spacing:1.4px}
 body.embedded .cat-desc{font-size:12px;font-style:normal;color:var(--muted);line-height:1.5;margin-bottom:14px}
 body.embedded .cat-desc .en{font-size:11px;margin-top:2px}
 
-/* Embedded: refined text-card — remove ribbon-style icon, balance the badge with title */
-body.embedded .text-card{padding:14px 16px;border-radius:12px}
+/* Embedded: redesigned text-card — single byline, no italic English, balanced hierarchy */
+body.embedded .text-card{padding:16px 18px;border-radius:12px}
 body.embedded .text-card::before{height:3px;border-radius:12px 12px 0 0}
 body.embedded .text-card .tc-icon{display:none}
-body.embedded .text-card .tc-title-te{font-size:16px;padding-right:0}
-body.embedded .text-card .tc-summary{font-size:11.5px;min-height:42px;line-height:1.5}
-body.embedded .text-card .auth-badge{font-size:9.5px;padding:2px 8px;margin-bottom:6px;letter-spacing:.2px}
+body.embedded .text-card .auth-badge{
+  font-size:10px;
+  padding:3px 10px;
+  margin-bottom:10px;
+  letter-spacing:.3px;
+  font-weight:700;
+}
+body.embedded .text-card .tc-title-te{
+  font-size:17px;
+  font-weight:800;
+  color:var(--card-color-dark,var(--maroon));
+  margin:0 0 4px;
+  padding-right:0;
+  line-height:1.25;
+}
+body.embedded .text-card .tc-title-en-inline{
+  font-size:12px;
+  font-weight:500;
+  color:var(--muted);
+  font-family:'Poppins',sans-serif;
+  font-style:normal;
+  letter-spacing:.2px;
+  margin-left:4px;
+}
+body.embedded .text-card .tc-byline{
+  font-size:12px;
+  color:var(--ink);
+  margin:0 0 10px;
+  line-height:1.4;
+  font-weight:500;
+}
+body.embedded .text-card .tc-byline-meta{
+  color:var(--muted);
+  font-family:'Poppins',sans-serif;
+  font-size:11px;
+  font-weight:400;
+}
+body.embedded .text-card .tc-summary{
+  font-size:12px;
+  min-height:auto;
+  line-height:1.55;
+  color:var(--ink);
+  margin-bottom:12px;
+}
+body.embedded .text-card .tc-meta{
+  margin-top:8px;
+  padding-top:10px;
+  border-top:1px dashed var(--line);
+}
+body.embedded .text-card .tc-progress{
+  font-size:11px;
+  color:var(--muted);
+  font-family:'Poppins',sans-serif;
+}
+body.embedded .text-card .tc-progress strong{
+  color:var(--card-color-dark,var(--maroon));
+  font-size:12px;
+  font-weight:700;
+}
+body.embedded .text-card .tc-cta{
+  font-size:11px;
+  padding:5px 11px;
+  font-weight:700;
+}
+body.embedded .text-card:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(107,29,29,.1)}
+
+/* Embedded: clean section description (was italic) */
+body.embedded .cat-desc{
+  font-size:12.5px;
+  font-style:normal;
+  color:var(--ink);
+  line-height:1.55;
+  margin-bottom:14px;
+  font-weight:400;
+}
+body.embedded .cat-desc .en{
+  display:block;
+  font-size:11.5px;
+  color:var(--muted);
+  font-family:'Poppins',sans-serif;
+  margin-top:3px;
+  font-style:normal;
+}
+
+/* Embedded: hero subtitle — no italic on English line */
+body.embedded .lib-hero .lh-sub em{font-style:normal!important;color:var(--muted)!important;font-family:'Poppins',sans-serif;font-size:11.5px}
 
 /* Embedded: redesigned sidebar — clean, professional, single-line items where possible.
    Drops the redundant decorative color dot, demotes the medal emoji, removes the italic on the
@@ -505,6 +588,22 @@ function renderTextCard(text) {
   const total_v = Object.values(text.chapters || {}).reduce((s, ch) => s + (ch.verses || []).length, 0);
   const isAvailable = extracted_chapters > 0;
   const auth = G.authority_levels[m.authority] || {te: '', en: ''};
+  const isEmbedded = document.body.classList.contains('embedded');
+  // Compact card layout when embedded — combined byline, cleaner typography, no italic English title
+  if (isEmbedded) {
+    const summaryTe = (m.summary_te || '').substring(0, 140) + (m.summary_te && m.summary_te.length > 140 ? '…' : '');
+    return '<div class="text-card' + (isAvailable ? '' : ' unavailable') + '" ' +
+      'style="--card-color:' + m.color + ';--card-color-dark:' + (m.color_dark || m.color) + ';--card-color-bg:' + (m.color_bg || '#fff8e1') + '" ' +
+      'onclick="openText(\'' + m.id + '\')">' +
+      '<div class="auth-badge">' + auth.te + '</div>' +
+      '<div class="tc-title-te">' + m.title_te + ' <span class="tc-title-en-inline">' + m.title_en + '</span></div>' +
+      '<div class="tc-byline">✍ ' + m.author_te + ' <span class="tc-byline-meta">· ' + m.author_en + ' · ' + m.date + '</span></div>' +
+      '<div class="tc-summary">' + summaryTe + '</div>' +
+      '<div class="tc-meta">' +
+      '<div class="tc-progress"><strong>' + extracted_chapters + '</strong>/' + (m.total_chapters || '?') + ' chapters · <strong>' + total_v + '</strong> verses</div>' +
+      '<div class="tc-cta">' + (isAvailable ? 'Open →' : 'Pending') + '</div>' +
+      '</div></div>';
+  }
   return '<div class="text-card' + (isAvailable ? '' : ' unavailable') + '" ' +
     'style="--card-color:' + m.color + ';--card-color-dark:' + (m.color_dark || m.color) + ';--card-color-bg:' + (m.color_bg || '#fff8e1') + '" ' +
     'onclick="openText(\'' + m.id + '\')">' +
