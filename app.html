@@ -313,13 +313,17 @@ section.view#view-bphs{padding:0}
 @media (max-width:600px){
   section.view#view-bphs #granthalayaFrame{height:calc(100vh - 220px);min-height:480px}
 }
-/* Granthālaya view — hide birth-details form and let the library use full width */
+/* Granthālaya view — hide birth-details form, mode-bar, and stretch the library to full browser width */
 body.granthalaya-mode .form-card{display:none}
-body.granthalaya-mode .layout{grid-template-columns:1fr}
+body.granthalaya-mode .layout{grid-template-columns:1fr;margin-top:0}
 body.granthalaya-mode .mode-bar{display:none}
-body.granthalaya-mode #granthalayaFrame{height:calc(100vh - 140px);min-height:540px}
+/* Break the main content container out of its max-width so the iframe spans edge-to-edge.
+   Targets only the body's direct .container child — the header's container (inside <header>)
+   is unaffected and keeps its centering. */
+body.granthalaya-mode > .container{max-width:none;padding:0}
+body.granthalaya-mode #granthalayaFrame{height:calc(100vh - 110px);min-height:540px}
 @media (max-width:900px){
-  body.granthalaya-mode #granthalayaFrame{height:calc(100vh - 200px);min-height:520px}
+  body.granthalaya-mode #granthalayaFrame{height:calc(100vh - 180px);min-height:520px}
 }
 
 /* Result tabs (groom/bride/match) */

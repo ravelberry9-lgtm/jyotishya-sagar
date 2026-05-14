@@ -182,6 +182,21 @@ body.embedded .sidebar{top:56px;height:calc(100vh - 56px)}
   body.embedded .sidebar{top:0;height:100vh}
 }
 
+/* Embedded: compact the library landing hero — stats inline pills, tighter padding */
+body.embedded .lib-hero{padding:12px 18px;margin-bottom:14px;border-radius:0 10px 10px 0;border-left-width:4px;gap:10px}
+body.embedded .lib-hero .lh-title{font-size:17px;margin:0}
+body.embedded .lib-hero .lh-sub{font-size:11.5px;line-height:1.4;margin-top:2px}
+body.embedded .lib-hero .lh-stats{font-size:11px;text-align:left;display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+body.embedded .lib-hero .lh-stats strong{display:inline;font-size:11px;margin:0}
+body.embedded .lib-hero .lh-stats br{display:none}
+body.embedded .lib-hero .lh-stats span.stat-pill{display:inline-flex;align-items:center;gap:4px;background:rgba(217,79,0,.1);color:var(--maroon);padding:3px 9px;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:600;font-size:11px}
+body.embedded .lib-hero .lh-stats span.stat-pill strong{color:var(--saffron-deep);font-weight:800}
+
+/* Embedded: subtle అధ్యాయములు toggle — match the saffron header instead of competing as a CTA */
+body.embedded .toc-toggle{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.3);box-shadow:none;font-weight:600;padding:6px 11px;font-size:13px}
+body.embedded .toc-toggle:hover{background:rgba(255,255,255,.28)}
+body.embedded .toc-toggle .ic{font-size:15px}
+
 /* ===== Mode toggle (mobile sidebar) ===== */
 .toc-toggle{display:none;background:#fff;border:0;color:var(--saffron-deep);font-size:15px;cursor:pointer;padding:8px 12px;border-radius:8px;font-family:inherit;font-weight:700;align-items:center;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
 .toc-toggle .ic{font-size:18px;line-height:1}
@@ -352,16 +367,25 @@ function renderLibraryLanding() {
   const total_c = H.totalExtractedChapters();
   const total_t = Object.keys(G.texts).length;
 
+  const isEmbedded = document.body.classList.contains('embedded');
+  const statsHtml = isEmbedded
+    ? '<div class="lh-stats">' +
+      '<span class="stat-pill">📚 <strong>' + total_t + '</strong> texts</span>' +
+      '<span class="stat-pill">📖 <strong>' + total_c + '</strong> chapters</span>' +
+      '<span class="stat-pill">📜 <strong>' + total_v + '</strong> verses</span>' +
+      '</div>'
+    : '<div class="lh-stats">' +
+      '<strong>' + total_t + '</strong> texts cataloged<br>' +
+      '<strong>' + total_c + '</strong> chapters extracted<br>' +
+      '<strong>' + total_v + '</strong> verses with bhāva<br>' +
+      '</div>';
   let h = '<div class="lib-hero">' +
     '<div>' +
     '<h1 class="lh-title">' + G.meta.library_title_te + ' <span style="font-size:14px;color:var(--muted);font-family:Poppins;font-weight:600">· ' + G.meta.library_title_en + '</span></h1>' +
     '<div class="lh-sub">' + G.meta.tagline_te + '<br><em>' + G.meta.tagline_en + '</em></div>' +
     '</div>' +
-    '<div class="lh-stats">' +
-    '<strong>' + total_t + '</strong> texts cataloged<br>' +
-    '<strong>' + total_c + '</strong> chapters extracted<br>' +
-    '<strong>' + total_v + '</strong> verses with bhāva<br>' +
-    '</div></div>';
+    statsHtml +
+    '</div>';
 
   // Render each category
   for (const [catId, cat] of Object.entries(G.categories)) {
